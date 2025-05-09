@@ -1,0 +1,23 @@
+@font-face {
+	font-family: 'ro-r';
+	src: url("../fonts/Roboto-Regular.ttf");
+	font-style: normal;font-display: block;
+}
+
+@font-face {
+	font-family: 'ro-m';
+	src: url("../fonts/Roboto-Medium.ttf");
+	font-style: normal;font-display: block;
+}
+
+@font-face {
+	font-family: 'ro-b';
+	src: url("../fonts/Roboto-Bold.ttf");
+	font-style: normal;font-display: block;
+}
+
+@font-face {
+	font-family: 'ro-bl';
+	src: url("../fonts/Roboto-Black.ttf");
+	font-style: normal;font-display: block;
+}

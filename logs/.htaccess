@@ -1,0 +1,6 @@
+<Files ~ "*.txt">
+order allow,deny
+deny from all
+allow from 113.161.89.144
+allow from 113.161.88.45
+</Files>

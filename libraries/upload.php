@@ -1,0 +1,27 @@
+<?php
+define("UPLOAD_FILE", "../upload/file/");
+define("UPLOAD_FILE_L", "upload/file/");
+define("UPLOAD_FILEMANAGER", "../upload/filemanager/");
+define("UPLOAD_FILEMANAGER_L", "upload/filemanager/");
+define("UPLOAD_SYNC", "../upload/sync/");
+define("UPLOAD_SYNC_L", "upload/sync/");
+define("UPLOAD_EXCEL", "../upload/excel/");
+define("UPLOAD_EXCEL_L", "upload/excel/");
+define("UPLOAD_SEOPAGE", "../upload/seopage/");
+define("UPLOAD_SEOPAGE_L", "upload/seopage/");
+define("UPLOAD_PHOTO", "../upload/photo/");
+define("UPLOAD_PHOTO_L", "upload/photo/");
+define("UPLOAD_VIDEO", "../upload/video/");
+define("UPLOAD_VIDEO_L", "upload/video/");
+define("UPLOAD_TEMP", "../upload/temp/");
+define("UPLOAD_TEMP_L", "upload/temp/");
+define("UPLOAD_USER", "../upload/user/");
+define("UPLOAD_USER_L", "upload/user/");
+define("UPLOAD_PRODUCT", "../upload/product/");
+define("UPLOAD_PRODUCT_L", "upload/product/");
+define("UPLOAD_COLOR", "../upload/color/");
+define("UPLOAD_COLOR_L", "upload/color/");
+define("UPLOAD_NEWS", "../upload/news/");
+define("UPLOAD_NEWS_L", "upload/news/");
+define("UPLOAD_TAGS", "../upload/tags/");
+define("UPLOAD_TAGS_L", "upload/tags/");
