@@ -2801,6 +2801,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {});
 
+var week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 function updateTime() {
   var cd = new Date();
   var time =
@@ -2810,7 +2811,17 @@ function updateTime() {
     ":" +
     zeroPadding(cd.getSeconds(), 2);
 
+  var date =
+    zeroPadding(cd.getFullYear(), 4) +
+    "-" +
+    zeroPadding(cd.getMonth() + 1, 2) +
+    "-" +
+    zeroPadding(cd.getDate(), 2) +
+    " " +
+    week[cd.getDay()];
+
   $("#time").text(time);
+  $("#date").text(date);
 }
 
 function zeroPadding(num, digit) {

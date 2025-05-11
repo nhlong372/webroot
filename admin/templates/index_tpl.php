@@ -89,10 +89,10 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
 <section class="content pb-4">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header statistic-header">
+            <div class="card-header">
                 <h5 class="mb-0">Thống kê truy cập tháng <?= $month ?>/<?= $year ?></h5>
             </div>
-            <div class="card-body statistic-footer">
+            <div class="card-body">
                 <form class="form-filter-charts row align-items-center mb-1" action="index.php" method="get" name="form-thongke" accept-charset="utf-8">
                     <div class="col-md-4">
                         <div class="form-group">
