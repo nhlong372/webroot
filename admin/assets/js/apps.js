@@ -1679,50 +1679,50 @@ $(document).ready(function () {
   });
 
   //thông báo xoá video
-	$('body').on('click', '.delete_1video', function(event) {
-        //alert('fdbfdbdbfdb');
-        event.preventDefault();
-        var ele = $(this);
-        $.confirm({
-            title: 'Thông báo',
-            icon: 'fas fa-exclamation-triangle', // font awesome
-            type: 'blue', // red, green, orange, blue, purple, dark
-            content: 'Bạn muốn video này ?', // html, text
-            backgroundDismiss: true,
-            animationSpeed: 600,
-            animation: 'zoom',
-            closeAnimation: 'scale',
-            typeAnimated: true,
-            animateFromElement: false,
-            autoClose: 'cancel|3000',
-            escapeKey: 'cancel',
-            buttons: {
-                success: {
-                    text: '<i class="fas fa-check align-middle mr-2"></i>Đồng ý',
-                    btnClass: 'btn-blue btn-sm bg-gradient-primary',
-                    action: function () {
-                        var id = ele.attr('data-id');
-                        var table = ele.attr('data-table');
-                        var cot = ele.attr('data-cot');
-                        var type = ele.attr('data-type');
-                        var vitrixoa = ele.attr('data-vitrixoa');
-                        $.ajax({
-                            type:'POST',
-                            url:"api/xoa1hinh.php",
-                            data:{id:id,table:table,cot:cot,type:type},
-                            success:function(re){
-                                location.reload();
-                            }
-                        });
-                    }
-                },
-                cancel: {
-                    text: '<i class="fas fa-times align-middle mr-2"></i>Hủy',
-                    btnClass: 'btn-red btn-sm bg-gradient-danger'
-                }
-            }
-        });
+  $("body").on("click", ".delete_1video", function (event) {
+    //alert('fdbfdbdbfdb');
+    event.preventDefault();
+    var ele = $(this);
+    $.confirm({
+      title: "Thông báo",
+      icon: "fas fa-exclamation-triangle", // font awesome
+      type: "blue", // red, green, orange, blue, purple, dark
+      content: "Bạn muốn video này ?", // html, text
+      backgroundDismiss: true,
+      animationSpeed: 600,
+      animation: "zoom",
+      closeAnimation: "scale",
+      typeAnimated: true,
+      animateFromElement: false,
+      autoClose: "cancel|3000",
+      escapeKey: "cancel",
+      buttons: {
+        success: {
+          text: '<i class="fas fa-check align-middle mr-2"></i>Đồng ý',
+          btnClass: "btn-blue btn-sm bg-gradient-primary",
+          action: function () {
+            var id = ele.attr("data-id");
+            var table = ele.attr("data-table");
+            var cot = ele.attr("data-cot");
+            var type = ele.attr("data-type");
+            var vitrixoa = ele.attr("data-vitrixoa");
+            $.ajax({
+              type: "POST",
+              url: "api/xoa1hinh.php",
+              data: { id: id, table: table, cot: cot, type: type },
+              success: function (re) {
+                location.reload();
+              },
+            });
+          },
+        },
+        cancel: {
+          text: '<i class="fas fa-times align-middle mr-2"></i>Hủy',
+          btnClass: "btn-red btn-sm bg-gradient-danger",
+        },
+      },
     });
+  });
 
   /* Send email */
   if ($("#send-email").length) {
@@ -2399,7 +2399,7 @@ $(document).ready(function () {
       config.entities_greek = false;
       config.basicEntities = false;
       config.contentsCss = [CONFIG_BASE + ADMIN + "/ckeditor/contents.css"];
-	  config.versionCheck = false;
+      config.versionCheck = false;
       config.pasteFromWordRemoveFontStyles = false;
       //config.extraPlugins ='image2,ckeditorfa';
       config.extraPlugins = "image2,ckeditorfa";
@@ -2767,3 +2767,56 @@ function videoZone(eDrag, iDrag, eLoad) {
 if ($("#video-zone").length) {
   videoZone("#video-zone", "#video-input", "#video-preview");
 }
+
+function updateIcon() {
+  const now = new Date();
+  const hours = now.getHours();
+  let icon;
+
+  if (hours >= 4 && hours < 8) {
+    icon = "1.png"; // (4h - 8h sáng)
+  } else if (hours >= 8 && hours < 11) {
+    icon = "2.png"; // (8h sáng - 11h trưa)
+  } else if (hours >= 11 && hours < 15) {
+    icon = "3.png"; // (11h trưa - 15h chiều)
+  } else if (hours >= 15 && hours < 17) {
+    icon = "4.png"; // (15h chiều - 17h chiều)
+  } else if (hours >= 17 && hours < 20) {
+    icon = "5.png"; // (17h chiều - 20h tối)
+  } else if (hours >= 20 && hours < 24) {
+    icon = "6.png"; // (20h tối - 24h khuya hoặc 0h sáng hôm sau)
+  } else {
+    icon = "7.png"; // (24h khuya hoặc 0h sáng hôm sau - 4h sáng)
+  }
+
+  $("#timeIcon").attr("src", "assets/images/time/" + icon);
+}
+
+// Cập nhật ngay khi tải trang
+$(document).ready(function () {
+  updateIcon();
+  // Cập nhật mỗi phút (60000ms)
+  setInterval(updateIcon, 60000);
+});
+
+$(document).ready(function () {});
+
+function updateTime() {
+  var cd = new Date();
+  var time =
+    zeroPadding(cd.getHours(), 2) +
+    ":" +
+    zeroPadding(cd.getMinutes(), 2) +
+    ":" +
+    zeroPadding(cd.getSeconds(), 2);
+
+  $("#time").text(time);
+}
+
+function zeroPadding(num, digit) {
+  return num.toString().padStart(digit, "0");
+}
+
+// Gọi ngay và sau mỗi 1 giây
+updateTime();
+setInterval(updateTime, 1000);

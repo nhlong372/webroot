@@ -290,6 +290,7 @@ echo $js->get();
                 }
             }
         }
+
         if (document.layers) {
             document.captureEvents(Event.MOUSEDOWN);
             document.onmousedown = clickNS;
@@ -298,6 +299,7 @@ echo $js->get();
             document.oncontextmenu = clickIE;
             document.onselectstart = clickIE
         }
+        
         document.oncontextmenu = new Function("return false")
     </script>
     <script type="text/javascript">

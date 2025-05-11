@@ -1,6 +1,6 @@
 <!-- Js Config -->
 <script type="text/javascript">
-    var PHP_VERSION = <?=PHP_VERSION_ID?>;
+    var PHP_VERSION = <?= PHP_VERSION_ID ?>;
     var CONFIG_BASE = '<?= $configBase ?>';
     var TOKEN = '<?= TOKEN ?>';
     var ADMIN = '<?= ADMIN ?>';

@@ -54,22 +54,26 @@ if (isset($config['news'])) {
 <!-- Header -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light text-sm">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav align-items-center navbar-navleft">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            <div class="nav-toggler" data-widget="pushmenu"><i class="fas fa-bars"></i></div>
         </li>
         <li class="nav-item nav-item-hello d-sm-inline-block">
-            <a class="nav-link"><span class="text-split">Xin chào, <?= $_SESSION[$loginAdmin]['username'] ?>!</span></a>
+            <div class="navbar-block" id="clock-greeting">
+                <!-- <span class="time-of-day" id="timeIcon"></span> -->
+                <img src="assets/images/broken_image.png" alt="Mốc Khung Giờ" id="timeIcon">
+                <span class="text-split" id="greetingBox">Xin chào, <?= $_SESSION[$loginAdmin]['username'] ?>!</span>
+            </div>
         </li>
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto navbar-navright">
         <!-- Version -->
         <!-- <li class="nav-item me-2 me-xl-0">
             <a class="nav-link text-danger text-decoration-none font-weight-bold">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-php"
-                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c02026"
+                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#dc3545"
                     fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 12m-10 0a10 9 0 1 0 20 0a10 9 0 1 0 -20 0" />
@@ -80,12 +84,18 @@ if (isset($config['news'])) {
                     <path d="M12 7.5l-1 5.5" />
                     <path d="M11.6 10h2.4l-.5 3" />
                 </svg>
-                VERSION <?=phpversion()?>
+                VERSION <?php //echo phpversion() ?>
             </a>
         </li> -->
+        <li class="nav-item" id="display-clock">
+            <div id="digital-clock">
+                <div id="time" class="number">
+                </div>
+            </div>
+        </li>
         <!-- Website -->
         <li class="nav-item d-sm-inline-block">
-            <a href="../" target="_blank" class="nav-link view-website px-1"><i class="fas fa-reply"></i> <span class="tooltip-view">Xem website</span></a>
+            <a href="../" target="_blank" class="nav-link view-website"><i class="fas fa-reply"></i> <span class="tooltip-view">Xem website</span></a>
         </li>
         <!-- Setting -->
         <li class="nav-item dropdown">

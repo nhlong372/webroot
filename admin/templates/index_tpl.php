@@ -92,54 +92,6 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
             <div class="card-header statistic-header">
                 <h5 class="mb-0">Thống kê truy cập tháng <?= $month ?>/<?= $year ?></h5>
             </div>
-            <div class="card-body statistic-body">
-                <div class="row gy-3 chart-online">
-                    <div class="col-md-3 col-6">
-                        <div class="d-flex align-items-center">
-                            <div class="statistic-badge rounded-pill statistic-primary mr-3 p-2">
-                                <i class="fas fa-chart-simple"></i>
-                            </div>
-                            <div class="card-info">
-                                <h5 class="mb-0"><?= $counter['today'] ?></h5>
-                                <small>Trong ngày</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="d-flex align-items-center">
-                            <div class="statistic-badge rounded-pill statistic-danger mr-3 p-2">
-                                <i class="fas fa-chart-simple"></i>
-                            </div>
-                            <div class="card-info">
-                                <h5 class="mb-0"><?= $counter['week'] ?></h5>
-                                <small>Trong tuần</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="d-flex align-items-center">
-                            <div class="statistic-badge rounded-pill statistic-success mr-3 p-2">
-                                <i class="fas fa-chart-simple"></i>
-                            </div>
-                            <div class="card-info">
-                                <h5 class="mb-0"><?= $counter['month'] ?></h5>
-                                <small>Trong tháng</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class="d-flex align-items-center">
-                            <div class="statistic-badge rounded-pill statistic-warning mr-3 p-2">
-                                <i class="fas fa-chart-simple"></i>
-                            </div>
-                            <div class="card-info">
-                                <h5 class="mb-0"><?= $counter['total'] ?></h5>
-                                <small>Tổng</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="card-body statistic-footer">
                 <form class="form-filter-charts row align-items-center mb-1" action="index.php" method="get" name="form-thongke" accept-charset="utf-8">
                     <div class="col-md-4">

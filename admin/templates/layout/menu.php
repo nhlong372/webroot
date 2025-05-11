@@ -624,15 +624,15 @@
                 <?php } ?>
 
                 <!-- Coupon -->
-                <?php if(isset($config['order']['coupon']) && $config['order']['coupon'] == true){ ?>
+                <?php if (isset($config['order']['coupon']) && $config['order']['coupon'] == true) { ?>
                     <?php
-                        $none = "";
-                        $active = "";
-                        if($kiemtra) if($func->check_access('coupon', 'man', '', null, 'phrase-1')) $none = "d-none";
-                        if($com=='coupon') $active = 'active';
+                    $none = "";
+                    $active = "";
+                    if ($kiemtra) if ($func->check_access('coupon', 'man', '', null, 'phrase-1')) $none = "d-none";
+                    if ($com == 'coupon') $active = 'active';
                     ?>
-                    <li class="nav-item <?=$active?> <?=$none?>">
-                        <a class="nav-link <?=$active?>" href="index.php?com=coupon&act=man" title="Quản lý mã ưu đãi">
+                    <li class="nav-item <?= $active ?> <?= $none ?>">
+                        <a class="nav-link <?= $active ?>" href="index.php?com=coupon&act=man" title="Quản lý mã ưu đãi">
                             <i class="nav-icon text-sm fas fa-qrcode"></i>
                             <p>Quản lý mã ưu đãi</p>
                         </a>
@@ -641,15 +641,15 @@
                 <?php } ?>
 
                 <!-- Birthday -->
-                <?php if(isset($config['user']['birthday']) && $config['user']['birthday'] == true){ ?>
+                <?php if (isset($config['user']['birthday']) && $config['user']['birthday'] == true) { ?>
                     <?php
-                        $none = "";
-                        $active = "";
-                        if($kiemtra) if($func->check_access('birthday', 'man_birthday', '', null, 'phrase-1')) $none = "d-none";
-                        if($com=='birthday') $active = 'active';
+                    $none = "";
+                    $active = "";
+                    if ($kiemtra) if ($func->check_access('birthday', 'man_birthday', '', null, 'phrase-1')) $none = "d-none";
+                    if ($com == 'birthday') $active = 'active';
                     ?>
-                    <li class="nav-item <?=$active?> <?=$none?>">
-                        <a class="nav-link <?=$active?>" href="index.php?com=birthday&act=man_birthday" title="Thông báo sinh nhật">
+                    <li class="nav-item <?= $active ?> <?= $none ?>">
+                        <a class="nav-link <?= $active ?>" href="index.php?com=birthday&act=man_birthday" title="Thông báo sinh nhật">
                             <i class="nav-icon text-sm fa-solid fa-cake-candles"></i>
                             <p>Thông báo sinh nhật</p>
                         </a>
