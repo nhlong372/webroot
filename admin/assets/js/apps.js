@@ -2792,42 +2792,37 @@ function updateIcon() {
   $("#timeIcon").attr("src", "assets/images/time/" + icon);
 }
 
-// Cập nhật ngay khi tải trang
+// Cập nhật icon khoảng khung thời gian trên trang (cạnh câu xin chào,...!)
 $(document).ready(function () {
   updateIcon();
   // Cập nhật mỗi phút (60000ms)
   setInterval(updateIcon, 60000);
 });
 
-$(document).ready(function () {});
-
-var week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 function updateTime() {
-  var cd = new Date();
-  var time =
-    zeroPadding(cd.getHours(), 2) +
-    ":" +
-    zeroPadding(cd.getMinutes(), 2) +
-    ":" +
-    zeroPadding(cd.getSeconds(), 2);
+  var cd = new Date(); // Lấy thời gian hiện tại
 
-  var date =
-    zeroPadding(cd.getFullYear(), 4) +
-    "-" +
-    zeroPadding(cd.getMonth() + 1, 2) +
-    "-" +
-    zeroPadding(cd.getDate(), 2) +
-    " " +
-    week[cd.getDay()];
+  // Tách giờ và phút, thêm số 0 nếu cần
+  var hour = zeroPadding(cd.getHours(), 2);
+  var minute = zeroPadding(cd.getMinutes(), 2);
 
-  $("#time").text(time);
-  $("#date").text(date);
+  // Cập nhật nội dung từng phần
+  $("#hour").text(hour);
+  $("#minutes").text(minute);
+
+  // Nhấp nháy dấu ":" mỗi giây (hiển thị hoặc ẩn)
+  if (cd.getSeconds() % 2 === 0) {
+    $("#dot").text(":");
+  } else {
+    $("#dot").text(" "); // hoặc "" nếu muốn mất hẳn dấu :
+  }
 }
 
 function zeroPadding(num, digit) {
   return num.toString().padStart(digit, "0");
 }
-
-// Gọi ngay và sau mỗi 1 giây
-updateTime();
-setInterval(updateTime, 1000);
+$(document).ready(function () {
+  // Gọi ngay và sau mỗi 1 giây
+  updateTime();
+  setInterval(updateTime, 1000);
+});

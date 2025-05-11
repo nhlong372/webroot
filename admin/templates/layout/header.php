@@ -84,18 +84,20 @@ if (isset($config['news'])) {
                     <path d="M12 7.5l-1 5.5" />
                     <path d="M11.6 10h2.4l-.5 3" />
                 </svg>
-                VERSION <?php //echo phpversion() ?>
+                VERSION <?php //echo phpversion() 
+                        ?>
             </a>
         </li> -->
         <li class="nav-item" id="display-clock">
             <div id="digital-clock">
-                <div id="time" class="number">
-                </div>
+                <div id="hour" class="number"></div>
+                <div id="dot" class="number">:</div>
+                <div id="minutes" class="number"></div>
             </div>
         </li>
         <!-- Website -->
         <li class="nav-item d-sm-inline-block">
-            <a href="../" target="_blank" class="nav-link view-website"><i class="fas fa-reply"></i> <span class="tooltip-view">Xem website</span></a>
+            <a href="../" target="_blank" class="nav-link view-website"><i class="fas fa-reply mr-1"></i> <span class="tooltip-view">Xem website</span></a>
         </li>
         <!-- Setting -->
         <li class="nav-item dropdown">
