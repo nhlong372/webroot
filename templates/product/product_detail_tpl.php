@@ -1,6 +1,6 @@
 <div class="display-pro-detail w-clear">
     <div class="row">
-        <div class="left-pro-detail col-md-6 col-lg-5 mb-4">
+        <div class="left-pro-detail col-md-6 col-lg-6 mb-4">
             <?php if (CARTSITEADVANCE == true) { // giỏ hàng nâng cao
             ?>
 
@@ -14,22 +14,22 @@
                 </div>
 
             <?php } else { ?>
-                <a id="Zoom-1" class="MagicZoom" data-options="zoomMode: on; hint: off; rightClick: true; selectorTrigger: hover; expandCaption: false; history: false;" href="<?= ASSET . THUMBS ?>/540x540x2/<?= UPLOAD_PRODUCT_L . $rowDetail['photo'] ?>" title="<?= $rowDetail['name' . $lang] ?>">
-                    <?= $func->getImage(['isLazy' => false, 'sizes' => '540x540x2', 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $rowDetail['photo'], 'alt' => $rowDetail['name' . $lang]]) ?>
+                <a id="Zoom-1" class="MagicZoom" data-options="zoomMode: on; hint: off; rightClick: true; selectorTrigger: hover; expandCaption: false; history: false;" href="<?= ASSET . THUMBS ?>/740x740x2/<?= UPLOAD_PRODUCT_L . $rowDetail['photo'] ?>" title="<?= $rowDetail['name' . $lang] ?>">
+                    <?= $func->getImage(['isLazy' => false, 'sizes' => '740x740x2', 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $rowDetail['photo'], 'alt' => $rowDetail['name' . $lang]]) ?>
                 </a>
                 <?php if ($rowDetailPhoto) {
                     if (count($rowDetailPhoto) > 0) { ?>
                         <div class="gallery-thumb-pro">
                             <div class="owl-page owl-carousel owl-theme owl-pro-detail" data-items="screen:0|items:5|margin:10" data-nav="1" data-navcontainer=".control-pro-detail">
                                 <div>
-                                    <a class="thumb-pro-detail" data-zoom-id="Zoom-1" href="<?= ASSET . THUMBS ?>/540x540x2/<?= UPLOAD_PRODUCT_L . $rowDetail['photo'] ?>" title="<?= $rowDetail['name' . $lang] ?>">
-                                        <?= $func->getImage(['isLazy' => false, 'sizes' => '540x540x2', 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $rowDetail['photo'], 'alt' => $rowDetail['name' . $lang]]) ?>
+                                    <a class="thumb-pro-detail" data-zoom-id="Zoom-1" href="<?= ASSET . THUMBS ?>/740x740x2/<?= UPLOAD_PRODUCT_L . $rowDetail['photo'] ?>" title="<?= $rowDetail['name' . $lang] ?>">
+                                        <?= $func->getImage(['isLazy' => false, 'sizes' => '740x740x2', 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $rowDetail['photo'], 'alt' => $rowDetail['name' . $lang]]) ?>
                                     </a>
                                 </div>
                                 <?php foreach ($rowDetailPhoto as $v) { ?>
                                     <div>
-                                        <a class="thumb-pro-detail" data-zoom-id="Zoom-1" href="<?= ASSET . THUMBS ?>/540x540x2/<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" title="<?= $rowDetail['name' . $lang] ?>">
-                                            <?= $func->getImage(['isLazy' => false, 'sizes' => '540x540x2', 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $v['photo'], 'alt' => $rowDetail['name' . $lang]]) ?>
+                                        <a class="thumb-pro-detail" data-zoom-id="Zoom-1" href="<?= ASSET . THUMBS ?>/740x740x2/<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" title="<?= $rowDetail['name' . $lang] ?>">
+                                            <?= $func->getImage(['isLazy' => false, 'sizes' => '740x740x2', 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $v['photo'], 'alt' => $rowDetail['name' . $lang]]) ?>
                                         </a>
                                     </div>
                                 <?php } ?>
@@ -40,7 +40,7 @@
                 } ?>
             <?php } ?>
         </div>
-        <div class="right-pro-detail col-md-6 col-lg-7 mb-4">
+        <div class="right-pro-detail col-md-6 col-lg-6 mb-4">
             <p class="title-pro-detail mb-2"><?= $rowDetail['name' . $lang] ?></p>
             <?php /*
             <div class="comment-pro-detail mb-3">

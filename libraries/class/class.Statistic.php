@@ -35,7 +35,13 @@ class Statistic
         $yesterdaystart = $daystart - (24 * 60 * 60);
         $now = time();
         $ip = $_SERVER['REMOTE_ADDR'];
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $func =  new Functions($this->d, $this->cache);
 
+        $browser = $func->getBrowserInfo($userAgent);
+        $device = $func->getDeviceType($userAgent);
+
+        /* Get all visitors */
         $t = $this->cache->get("select max(id) as total from #_counter", null, 'fetch', 1800);
         $all_visitors = $t['total'];
 
@@ -49,8 +55,8 @@ class Statistic
 
         $vip = $this->d->rawQueryOne("select count(*) as visitip from #_counter where ip='$ip' and (tm+'$locktime')>'$now' limit 0,1");
         $items = $vip['visitip'];
-
-        if (empty($items)) $this->d->rawQuery("insert into #_counter (tm, ip) values ('$now', '$ip')");
+        
+        if (empty($items)) $this->d->rawQuery("insert into #_counter (tm, ip, browser, device) values ('$now', '$ip', '$browser', '$device')");
 
         $n = $all_visitors;
         $div = 100000;
@@ -61,7 +67,7 @@ class Statistic
         $weekrec = $this->cache->get("select count(*) as weekrec from #_counter where tm >= '$weekstart'", null, 'fetch', 1800);
         $monthrec = $this->cache->get("select count(*) as monthrec from #_counter where tm >= '$monthstart'", null, 'fetch', 1800);
         $totalrec = $this->cache->get("select max(id) as totalrec from #_counter", null, 'fetch', 1800);
-
+        
         $result['today'] = $todayrec['todayrecord'];
         $result['yesterday'] = $yesrec['yesterdayrec'];
         $result['week'] = $weekrec['weekrec'];

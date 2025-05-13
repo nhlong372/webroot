@@ -1,5 +1,6 @@
 <?php
 require LIBRARIES . 'WebpConvert/vendor/autoload.php';
+require_once LIBRARIES . 'UserAgentParser.php';
 
 use WebPConvert\WebPConvert;
 
@@ -2473,21 +2474,21 @@ class Functions
             }
             $strpro .= '<div class="box-product"><a class="text-decoration-none" href="' . $v[$sluglang] . '" title="' . $v['name' . $lang] . '">
                         <div class="pic-product">';
-                            if(!empty($v['photo2'])){
-                                $strpro .= '<p class="mb-0 display-2img">
+            if (!empty($v['photo2'])) {
+                $strpro .= '<p class="mb-0 display-2img">
                                     <span class="w-100 first-img scale-img">
                                         ' . $this->getImage(['sizes' =>  $thumbsp, 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $v['photo'], 'alt' => $v['name' . $lang], 'isLazy' => $isLazy]) . '
                                     </span>
                                     <span class="w-100 second-img scale-img">
-                                    '. $this->getImage(['sizes' =>  $thumbsp, 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $v['photo2'], 'alt' => $v['name' . $lang], 'isLazy' => $isLazy]) .'
+                                    ' . $this->getImage(['sizes' =>  $thumbsp, 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $v['photo2'], 'alt' => $v['name' . $lang], 'isLazy' => $isLazy]) . '
                                     </span>';
-                                $strpro .= '</p>';
-                            } else {
-                                $strpro .= '<p class="mb-0 scale-img">
+                $strpro .= '</p>';
+            } else {
+                $strpro .= '<p class="mb-0 scale-img">
                                 ' . $this->getImage(['sizes' =>  $thumbsp, 'isWatermark' => WATERMARKPRODUCT, 'prefix' => 'product', 'upload' => UPLOAD_PRODUCT_L, 'image' => $v['photo'], 'alt' => $v['name' . $lang], 'isLazy' => $isLazy]) . '
                                 </p>';
-                            }    
-            $strpro .='</div>
+            }
+            $strpro .= '</div>
             </a>';
             if (SHOWBRAND == true) {
                 $strpro .= '<a href="' . $namebrand[$sluglang] . '" class="text-decoration-none info-brand"><span>' . $namebrand['name' . $lang] . '</span></a>';
@@ -2497,7 +2498,7 @@ class Functions
                     <h3 class="name-product text-split">' . $v['name' . $lang] . '</h3>';
             if (OPENDESC == true) $strpro .= '<div class="desc-product text-split">' . $v['desc' . $lang] . '</div>';
             $strpro .= ' <p class="price-product">
-                            <span class="price-title">'. gia .': </span>';
+                            <span class="price-title">' . gia . ': </span>';
             if ($v['sale_price'] > 0 && $v['regular_price'] > 0) {
                 $strpro .= '<span class="price-new">' . $this->formatMoney($v['sale_price']) . '</span>
                             <span class="price-old">' . $this->formatMoney($v['regular_price']) . '</span>
@@ -2667,14 +2668,14 @@ class Functions
             ?>
                 <div class="album">
                     <a class=" text-decoration-none" data-fancybox="gallery<?= $v['id'] ?>" href="<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" data-caption="<?= $v['name' . $lang] ?>">
-                        <p class="pic-album hover_sang2"><img onerror="this.src='<?=THUMBS?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?=THUMBS?>/<?= $thumb ?>/<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" width="350" height="350" /></p>
+                        <p class="pic-album hover_sang2"><img onerror="this.src='<?= THUMBS ?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?= THUMBS ?>/<?= $thumb ?>/<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" width="350" height="350" /></p>
                         <h3 class="name-album text-split"><span><?= $v['name' . $lang] ?></span></h3>
                     </a>
 
                     <?php foreach ($hinhanhsp as $k2 => $v2) { ?>
 
                         <a class=" text-decoration-none none" data-fancybox="gallery<?= $v['id'] ?>" href="<?= UPLOAD_PRODUCT_L . $v2['photo'] ?>" data-caption="<?= $v['name' . $lang] ?>">
-                            <p class="pic-album hover_sang2"><img onerror="this.src='<?=THUMBS?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?=THUMBS?>/<?= $thumb ?>/<?= UPLOAD_PRODUCT_L . $v2['photo'] ?>" alt="<?= $v2['name' . $lang] ?>" width="350" height="350" /></p>
+                            <p class="pic-album hover_sang2"><img onerror="this.src='<?= THUMBS ?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?= THUMBS ?>/<?= $thumb ?>/<?= UPLOAD_PRODUCT_L . $v2['photo'] ?>" alt="<?= $v2['name' . $lang] ?>" width="350" height="350" /></p>
                         </a>
                     <?php } ?>
                 </div>
@@ -2683,7 +2684,7 @@ class Functions
 
             foreach ($truyvan as $k => $v) { ?>
                 <a class="album text-decoration-none" href="<?= $v[$sluglang] ?>" title="<?= $v['name' . $lang] ?>">
-                    <p class="pic-album hover_sang2"><img onerror="this.src='<?=THUMBS?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?=THUMBS?>/<?= $thumb ?>/<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" width="350" height="350" /></p>
+                    <p class="pic-album hover_sang2"><img onerror="this.src='<?= THUMBS ?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?= THUMBS ?>/<?= $thumb ?>/<?= UPLOAD_PRODUCT_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" width="350" height="350" /></p>
                     <h3 class="name-album text-split"><?= $v['name' . $lang] ?></h3>
                 </a>
             <?php }
@@ -2701,7 +2702,7 @@ class Functions
             ?>
             <div class="album">
                 <a class=" text-decoration-none" data-fancybox="gallery<?= $v['id'] ?>" href="<?= UPLOAD_PHOTO_L . $v['photo'] ?>" data-caption="<?= $v['name' . $lang] ?>">
-                    <p class="pic-album scale-img"><img onerror="this.src='<?=THUMBS?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?=THUMBS?>/<?= $thumb ?>/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" width="350" height="350" /></p>
+                    <p class="pic-album scale-img"><img onerror="this.src='<?= THUMBS ?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?= THUMBS ?>/<?= $thumb ?>/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" width="350" height="350" /></p>
                     <h3 class="name-album text-split"><span><?= $v['name' . $lang] ?></span></h3>
                 </a>
             </div>
@@ -2731,7 +2732,7 @@ class Functions
                 <p class="pic-video scale-img"><img onerror="this.src='<?= THUMBS ?>/<?= $thumb ?>/assets/images/noimage.png';" src="<?= THUMBS ?>/<?= $thumb ?>/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" /></p>
                 <h3 class="name-video text-split"><?= $v['name' . $lang] ?></h3>
             </a>
-        <?php }
+<?php }
     }
     /*--- Lấy video ----*/
 
@@ -2791,14 +2792,14 @@ class Functions
         return $truyvan = $this->d->rawQuery($sql, $arr_sqlc_num);
     }
 
-        /*lấy cấp sản phẩm theo id_list, cat, item, sub*/
-        function get_product_id($dieukien, $typesp, $loaiid, $iddanhmuc, $gioihan)
-        {
-            global $lang;
-            $sql = "select type, id, name$lang, slugvi, slugen, desc$lang, content$lang, code, view, id_brand,  id_list, id_cat, id_item, id_sub,  photo, options,  sale_price, regular_price from #_product where type='" . $typesp . "' and " . $loaiid . "=" . $iddanhmuc . " and find_in_set('hienthi',status) and find_in_set('" . $dieukien . "',status)  order by numb asc limit 0," . $gioihan;
-            $arr_cap = array();
-            return $truyvan = $this->d->rawQuery($sql, $arr_cap);
-        }
+    /*lấy cấp sản phẩm theo id_list, cat, item, sub*/
+    function get_product_id($dieukien, $typesp, $loaiid, $iddanhmuc, $gioihan)
+    {
+        global $lang;
+        $sql = "select type, id, name$lang, slugvi, slugen, desc$lang, content$lang, code, view, id_brand,  id_list, id_cat, id_item, id_sub,  photo, options,  sale_price, regular_price from #_product where type='" . $typesp . "' and " . $loaiid . "=" . $iddanhmuc . " and find_in_set('hienthi',status) and find_in_set('" . $dieukien . "',status)  order by numb asc limit 0," . $gioihan;
+        $arr_cap = array();
+        return $truyvan = $this->d->rawQuery($sql, $arr_cap);
+    }
 
     /*lấy sản phẩm theo loại noibat, banchay */
     function get_product($dieukien, $typesp, $gioihan)
@@ -2825,7 +2826,7 @@ class Functions
         }
         return true;
     }
-    
+
     public function get_youtube_shorts($str)
     {
         $char = 'shorts/';
@@ -2834,5 +2835,60 @@ class Functions
             $str = "https://www.youtube.com/watch?v=" . end(explode($char, $str));
         }
         return $str;
+    }
+
+    function getBrowserInfo($user_agent = null)
+    {
+        if ($user_agent === null) {
+            $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        }
+
+        $ua = \donatj\UserAgent\parse_user_agent($user_agent);
+
+        // Detect browser
+        if (preg_match('/MSIE/i', $ua['browser']) || preg_match('/Trident/i', $ua['browser'])) {
+            $browser = 'Internet Explorer';
+        } elseif (preg_match('/Edge/i', $ua['browser'])) {
+            $browser = 'Edge';
+        } elseif (preg_match('/OPR/i', $ua['browser']) || preg_match('/Opera/i', $ua['browser'])) {
+            $browser = 'Opera';
+        } elseif (preg_match('/CocCocBrowser/i', $ua['browser'])) {
+            $browser = 'Coc Coc';
+        } elseif (preg_match('/Firefox/i', $ua['browser'])) {
+            $browser = 'Firefox';
+        } elseif (preg_match('/Chrome/i', $ua['browser'])) {
+            $browser = 'Chrome';
+        } elseif (preg_match('/Safari/i', $ua['browser'])) {
+            $browser = 'Safari';
+        } else{
+            $browser = 'Others';
+        }
+
+        return $browser;
+    }
+
+    public function getDeviceType($userAgent)
+    {
+        // Định nghĩa các từ khóa để kiểm tra
+        $tabletKeywords = '/tablet|ipad|tab|surface|kindle|playbook/i'; // Mở rộng từ khóa
+        $mobileKeywords = '/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i';
+
+        $detect = new MobileDetect();
+
+        // Kiểm tra tablet
+        if ($detect->isTablet() || preg_match($tabletKeywords, $userAgent)) {
+            $device = 'Tablet';
+        } elseif (preg_match('/Macintosh.*Safari/i', $userAgent) && !preg_match('/Chrome|Firefox/i', $userAgent)) { // Thêm điều kiện cho iPad Air/Pro trong chế độ Desktop Mode
+            // iPad Air/Pro thường dùng Safari và giả dạng Macintosh, nhưng không phải Chrome/Firefox
+            $device = 'Tablet';
+        } elseif (preg_match('/Windows NT.*Touch/i', $userAgent) || preg_match('/Surface/i', $userAgent)) { // Nhận diện Surface Pro dựa trên Windows + khả năng cảm ứng (nếu có dữ liệu từ client)
+            $device = 'Tablet';
+        } elseif ($detect->isMobile() || preg_match($mobileKeywords, $userAgent)) {
+            $device = 'Mobile';
+        } else {
+            $device = 'Desktop';
+        }
+
+        return $device;
     }
 }
