@@ -290,6 +290,7 @@ a.upload-file-image-remove:hover,.delete_1hinh:hover,.delete_1video:hover{backgr
 }
 @media (max-width:641px){
 .main-header .navbar-nav .nav-item .nav-link,.main-header .navbar-nav .nav-item .nav-toggler{padding:0.35rem 0.55rem!important;}
+.view-website .tooltip-view{display: none;}
 }
 @media (max-width:569px){
 .form-search{width:100%;margin-left:0px!important;margin-top:0.75rem!important;}

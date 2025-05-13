@@ -274,3 +274,4 @@
 ::1()--query--tables(delete from table_user_online where time < 1747117418) (13:33:38 13/05/2025)
 ::1()--query--tables(delete from table_user_online where time < 1747117920) (13:42:00 13/05/2025)
 ::1()--query--tables(delete from table_user_online where time < 1747117981) (13:43:01 13/05/2025)
+::1(admin)--query--tables(delete from table_user_online where time < 1747122323) (14:55:23 13/05/2025)

@@ -97,7 +97,7 @@ if (isset($config['news'])) {
         </li>
         <!-- Website -->
         <li class="nav-item d-sm-inline-block">
-            <a href="../" target="_blank" class="nav-link view-website"><i class="fas fa-reply mr-1"></i> <span class="tooltip-view">Xem website</span></a>
+            <a href="../" target="_blank" class="nav-link view-website" title="Xem website"><i class="fas fa-reply mr-1"></i> <span class="tooltip-view">Xem website</span></a>
         </li>
         <!-- Setting -->
         <li class="nav-item dropdown">
