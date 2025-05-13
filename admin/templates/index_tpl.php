@@ -39,6 +39,10 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
     $charts['series'][] = $today_visitors;
     $charts['labels'][] = 'D' . $i;
 }
+$browser = $cache->get("select browser from #_counter where browser <> '' group by browser", null, 'result', 7200);
+$countBrowser = $cache->get("select count(*) from #_counter where browser <> ''", null, 'result', 7200);
+$topIp = $cache->get("select ip, count(*) as visits from #_counter group by ip order by visits desc limit 0,5", null, 'result', 7200);
+$device = $cache->get("select device from #_counter where device <> '' group by device", null, 'result', 7200);
 ?>
 <!-- Main content -->
 <section class="content mb-3">
@@ -88,7 +92,7 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
 
 <section class="content pb-4">
     <div class="container-fluid">
-            <div class="card">
+        <div class="card">
             <div class="card-header">
                 <h5 class="mb-0">Thống kê truy cập tháng <?= $month ?>/<?= $year ?></h5>
             </div>

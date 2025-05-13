@@ -2847,21 +2847,21 @@ class Functions
 
         // Detect browser
         if (preg_match('/MSIE/i', $ua['browser']) || preg_match('/Trident/i', $ua['browser'])) {
-            $browser = 'Internet Explorer';
+            $browser = 'iternet explorer';
         } elseif (preg_match('/Edge/i', $ua['browser'])) {
-            $browser = 'Edge';
+            $browser = 'edge';
         } elseif (preg_match('/OPR/i', $ua['browser']) || preg_match('/Opera/i', $ua['browser'])) {
-            $browser = 'Opera';
-        } elseif (preg_match('/CocCocBrowser/i', $ua['browser'])) {
-            $browser = 'Coc Coc';
+            $browser = 'opera';
+        } elseif (preg_match('/UCBrowser/i', $ua['browser'])) {
+            $browser = 'ucbrowser';
         } elseif (preg_match('/Firefox/i', $ua['browser'])) {
-            $browser = 'Firefox';
+            $browser = 'firefox';
         } elseif (preg_match('/Chrome/i', $ua['browser'])) {
-            $browser = 'Chrome';
+            $browser = 'chrome';
         } elseif (preg_match('/Safari/i', $ua['browser'])) {
-            $browser = 'Safari';
-        } else{
-            $browser = 'Others';
+            $browser = 'safari';
+        } else {
+            $browser = 'others';
         }
 
         return $browser;
@@ -2877,16 +2877,16 @@ class Functions
 
         // Kiểm tra tablet
         if ($detect->isTablet() || preg_match($tabletKeywords, $userAgent)) {
-            $device = 'Tablet';
+            $device = 'tablet';
         } elseif (preg_match('/Macintosh.*Safari/i', $userAgent) && !preg_match('/Chrome|Firefox/i', $userAgent)) { // Thêm điều kiện cho iPad Air/Pro trong chế độ Desktop Mode
             // iPad Air/Pro thường dùng Safari và giả dạng Macintosh, nhưng không phải Chrome/Firefox
-            $device = 'Tablet';
+            $device = 'tablet';
         } elseif (preg_match('/Windows NT.*Touch/i', $userAgent) || preg_match('/Surface/i', $userAgent)) { // Nhận diện Surface Pro dựa trên Windows + khả năng cảm ứng (nếu có dữ liệu từ client)
-            $device = 'Tablet';
+            $device = 'tablet';
         } elseif ($detect->isMobile() || preg_match($mobileKeywords, $userAgent)) {
-            $device = 'Mobile';
+            $device = 'mobile';
         } else {
-            $device = 'Desktop';
+            $device = 'desktop';
         }
 
         return $device;
