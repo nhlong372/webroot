@@ -16,6 +16,9 @@
 <body>
     <div id="notfound">
         <div class="notfound">
+            <?php /*<div class="notfound-image">
+                <img src="<?= $configBase ?>assets/404_files/panda.gif" alt="Panda Playground" id="panda"/>
+            </div> */?>
             <div class="notfound-404">
                 <h1>404</h1>
             </div>

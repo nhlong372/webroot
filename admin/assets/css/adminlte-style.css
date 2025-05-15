@@ -279,14 +279,24 @@ a.upload-file-image-remove:hover,.delete_1hinh:hover,.delete_1video:hover{backgr
 #greetingBox{max-width:200px;padding-right:0;color:rgba(0,0,0,0.5);font-size:0.875rem!important;}
 .nav-toggler{cursor:pointer;color:rgba(0,0,0,0.5);font-size:1rem!important;padding:0.35rem 1rem;}
 .nav-item-hello .navbar-block{padding:0.35rem 1rem;padding-left:0;}
-.navbar-navleft{    /* width:15%; */}
-.navbar-navright{    /* width:75%; */ /* justify-content:flex-end; */ align-items:center;}
+.navbar-navleft{/* width:15%; */}
+.navbar-navright{/* width:75%; */ /* justify-content:flex-end; */ align-items:center;}
 #digital-clock{text-align:center;background:#e1e1e1;padding:0;border-radius:1.5rem;border:.2rem solid #afafaf;width:85px;display:flex;justify-content:center;align-items:center;-webkit-user-select:none;user-select:none;}
 #digital-clock .number{font-size:1rem!important;display:block;color:#000;font-family:"digital";cursor:default;}
 #digital-clock #dot{width:5px;margin:0 0.1rem;}
 #display-clock{display:block;}
+.card-statistics{display: flex; flex-wrap: wrap;}
+.list-browser,.list-device,.list-ip{list-style:none;padding:0;margin:0;}
+.list-browser li,.list-device li,.list-ip li{display:inline-block;}
+.list-browser li:last-child,.list-device li:last-child,.list-ip li:last-child{margin-bottom: 0;}
+.card-browser{padding-left: 0;}
+.card-device{}
+.card-ip{padding-right: 0;}
 @media (max-width:1201px){
 .watermark-position{max-width:300px;height:300px;}
+}
+@media (max-width:1199px){
+.card-browser,.card-device,.card-ip{padding: 0 !important; margin-bottom: 1rem !important;}
 }
 @media (max-width:641px){
 .main-header .navbar-nav .nav-item .nav-link,.main-header .navbar-nav .nav-item .nav-toggler{padding:0.35rem 0.55rem!important;}

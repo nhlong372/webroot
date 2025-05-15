@@ -39,10 +39,11 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
     $charts['series'][] = $today_visitors;
     $charts['labels'][] = 'D' . $i;
 }
-$browser = $cache->get("select browser from #_counter where browser <> '' group by browser", null, 'result', 7200);
-$countBrowser = $cache->get("select count(*) from #_counter where browser <> ''", null, 'result', 7200);
-$topIp = $cache->get("select ip, count(*) as visits from #_counter group by ip order by visits desc limit 0,5", null, 'result', 7200);
-$device = $cache->get("select device from #_counter where device <> '' group by device", null, 'result', 7200);
+$browser = $d->rawQuery("select browser from #_counter where browser <> '' group by browser", null, 'result', 7200);
+$countBrowser = $d->rawQueryOne("select count(*) as total from #_counter where browser <> '' or browser is not null", null, 'fetch', 1800);
+$topIp = $d->rawQuery("select ip, count(*) as visits from #_counter group by ip order by visits desc limit 0,5", null, 'result', 7200);
+$device = $d->rawQuery("select device from #_counter where device <> '' group by device", null, 'result', 7200);
+$countDevice = $d->rawQueryOne("select count(*) as total from #_counter where device <> '' and device is not null", null, 'fetch', 1800);
 ?>
 <!-- Main content -->
 <section class="content mb-3">
@@ -131,6 +132,109 @@ $device = $cache->get("select device from #_counter where device <> '' group by 
                     </div>
                 </form>
                 <div id="apexMixedChart"></div>
+            </div>
+        </div>
+        <div class="card-statistics">
+            <!-- Browser Statistics -->
+            <div class="col-xl-4 col-md-12 card-browser">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="card-title m-0 me-2">
+                            <h5 class="m-0 me-2">Danh sách trình duyệt truy cập</h5>
+                            <small class="text-muted">Thống kê đến ngày <?= date('d/m/Y', time()) ?></small>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-browser">
+                            <?php foreach ($browser ?? [] as $k => $value) { ?>
+                                <li class="mb-3 pb-1 d-flex">
+                                    <div class="d-flex w-50 align-items-center mr-3">
+                                        <img onerror="this.src='./assets/images/noimage.png';" src="./assets/images/browser/<?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['img'] ?>.png"
+                                            alt="<?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['name'] ?>"
+                                            class="mr-3 img-browser" width="35" />
+                                        <div class="name-browser">
+                                            <h6 class="mb-0">
+                                                <?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['name'] ?>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-grow-1 align-items-center">
+                                        <div class="progress w-100 mr-3 rounded" style="height: 8px">
+                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                style="width: <?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['figure'] ?>%"
+                                                aria-valuenow="<?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['figure'] ?>"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <span class="text-muted"><?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['figure'] ?>%</span>
+                                    </div>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Device Statistics -->
+            <div class="col-xl-4 col-md-12 card-device">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="card-title m-0 me-2">
+                            <h5 class="m-0 me-2">Danh sách thiết bị truy cập</h5>
+                            <small class="text-muted">Thống kê đến ngày <?= date('d/m/Y', time()) ?></small>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-device">
+                            <?php foreach ($device ?? [] as $k => $value) { ?>
+                                <li class="mb-3 pb-1 d-flex">
+                                    <div class="d-flex w-50 align-items-center mr-3">
+                                        <img onerror="this.src='./assets/images/noimage.png';" src="./assets/images/device/<?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['img'] ?>.png"
+                                            alt="<?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['name'] ?>"
+                                            class="mr-3 img-browser" width="35" />
+                                        <div class="name-device">
+                                            <h6 class="mb-0">
+                                                <?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['name'] ?>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-grow-1 align-items-center">
+                                        <div class="progress w-100 mr-3 rounded" style="height: 8px">
+                                            <div class="progress-bar bg-danger" role="progressbar"
+                                                style="width: <?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['figure'] ?>%"
+                                                aria-valuenow="<?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['figure'] ?>"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <span class="text-muted"><?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['figure'] ?>%</span>
+                                    </div>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- IP Statistics -->
+            <div class="col-xl-4 col-md-12 card-ip">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="card-title m-0 me-2">
+                            <h5 class="m-0 me-2">Danh sách địa chỉ IP truy cập nhiều nhất</h5>
+                            <small class="text-muted">Thống kê đến ngày <?= date('d/m/Y', time()) ?></small>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-ip">
+                            <?php foreach ($topIp ?? [] as $k => $value) { ?>
+                                <li class="mb-3 pb-1 d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="mb-0 ip-address"><?= $value['ip'] ?></h6>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <span class="text-muted"><?= $value['visits'] ?></span>
+                                    </div>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -2844,11 +2844,11 @@ class Functions
         }
 
         $ua = \donatj\UserAgent\parse_user_agent($user_agent);
-
+        
         // Detect browser
-        if (preg_match('/MSIE/i', $ua['browser']) || preg_match('/Trident/i', $ua['browser'])) {
-            $browser = 'iternet explorer';
-        } elseif (preg_match('/Edge/i', $ua['browser'])) {
+        if (preg_match('/Chrome/i', $ua['browser'])) {
+            $browser = 'chrome';
+        } elseif (preg_match('/Edge/i', $ua['browser']) || preg_match('/Edg/i', $ua['browser'])) {
             $browser = 'edge';
         } elseif (preg_match('/OPR/i', $ua['browser']) || preg_match('/Opera/i', $ua['browser'])) {
             $browser = 'opera';
@@ -2856,8 +2856,8 @@ class Functions
             $browser = 'ucbrowser';
         } elseif (preg_match('/Firefox/i', $ua['browser'])) {
             $browser = 'firefox';
-        } elseif (preg_match('/Chrome/i', $ua['browser'])) {
-            $browser = 'chrome';
+        } elseif (preg_match('/MSIE/i', $ua['browser']) || preg_match('/Trident/i', $ua['browser'])) {
+            $browser = 'ie';
         } elseif (preg_match('/Safari/i', $ua['browser'])) {
             $browser = 'safari';
         } else {
@@ -2890,5 +2890,84 @@ class Functions
         }
 
         return $device;
+    }
+
+
+    public function getBrowserStatistic($browser = '', $sum = 0)
+    {
+        $figure = 0;
+        $sql = "select count(*) as todayrecord from #_counter where browser='" . $browser . "'";
+        $arr = array();
+        $row = $this->d->rawQueryOne($sql, $arr);
+        $figure = round(($row['todayrecord'] / $sum) * 100, 2);
+        return match ($browser) {
+            'chrome' => [
+                'name' => 'Google Chrome',
+                'img' => 'chrome',
+                'figure' => $figure
+            ],
+            'edge' => [
+                'name' => 'Microsoft Edge',
+                'img' => 'edge',
+                'figure' => $figure
+            ],
+            'opera' => [
+                'name' => 'Opera',
+                'img' => 'opera',
+                'figure' => $figure
+            ],
+            'ucbrowser' => [
+                'name' => 'UCBrowser',
+                'img' => 'ucbrowser',
+                'figure' => $figure
+            ],
+            'firefox' => [
+                'name' => 'Mozilla Firefox',
+                'img' => 'firefox',
+                'figure' => $figure
+            ],
+            'ie' => [
+                'name' => 'Internet Explorer',
+                'img' => 'ie',
+                'figure' => $figure
+            ],
+            'safari' => [
+                'name' => 'Safari',
+                'img' => 'safari',
+                'figure' => $figure
+            ],
+            default => [
+                'name' => 'Others',
+                'img' => 'other',
+                'figure' => $figure
+            ]
+        };
+    }
+
+    public function getDeviceStatistic($device = '', $sum = 0)
+    {
+        $figure = 0;
+        $sql = "select count(*) as todayrecord from #_counter where device='" . $device . "'";
+        $arr = array();
+        $row = $this->d->rawQueryOne($sql, $arr);
+        $figure = round(($row['todayrecord'] / $sum) * 100, 2);
+        return match ($device) {
+            'desktop' => [
+                'name' => 'Desktop',
+                'img' => 'desktop',
+                'figure' => $figure
+            ],
+            'phone' => [
+                'name' => 'Mobile',
+                'img' => 'phone',
+                'figure' => $figure
+            ],
+            'tablet' => [
+                'name' => 'Tablet',
+                'img' => 'tablet',
+                'figure' => $figure
+            ],
+            default => []
+        };
     }
 }
