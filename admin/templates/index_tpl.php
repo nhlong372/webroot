@@ -1,5 +1,4 @@
 <?php
-$counter = $statistic->getCounter();
 if ((isset($_GET['month']) && $_GET['month'] != '') && (isset($_GET['year']) && $_GET['year'] != '')) {
     $time = $_GET['year'] . '-' . $_GET['month'] . '-1';
     $date = strtotime($time);
@@ -39,11 +38,18 @@ for ($i = 1; $i <= $daysInMonth; $i++) {
     $charts['series'][] = $today_visitors;
     $charts['labels'][] = 'D' . $i;
 }
-$browser = $d->rawQuery("select browser from #_counter where browser <> '' group by browser", null, 'result', 7200);
-$countBrowser = $d->rawQueryOne("select count(*) as total from #_counter where browser <> '' or browser is not null", null, 'fetch', 1800);
-$topIp = $d->rawQuery("select ip, count(*) as visits from #_counter group by ip order by visits desc limit 0,5", null, 'result', 7200);
-$device = $d->rawQuery("select device from #_counter where device <> '' group by device", null, 'result', 7200);
-$countDevice = $d->rawQueryOne("select count(*) as total from #_counter where device <> '' and device is not null", null, 'fetch', 1800);
+$browser = $d->rawQuery("select browser from #_counter where browser <> '' group by browser", array());
+$countBrowser = $d->rawQueryOne("select count(*) as total from #_counter where browser <> '' or browser is not null", array());
+// $topIp = $d->rawQuery("select ip, count(*) as visits from #_counter group by ip order by visits desc limit 0,5", array());
+$device = $d->rawQuery("select device from #_counter where device <> '' group by device", array());
+$countDevice = $d->rawQueryOne("select count(*) as total from #_counter where device <> '' and device is not null", array());
+$Booked = $d->rawQueryOne("select count(*) as total from #_order where order_status = 1", array());
+$Confirmed = $d->rawQueryOne("select count(*) as total from #_order where order_status = 2", array());
+$Delivered = $d->rawQueryOne("select count(*) as total from #_order where order_status = 4", array());
+$Cancelled = $d->rawQueryOne("select count(*) as total from #_order where order_status = 5", array());
+$piecharts = array(
+    'data' => array($Booked['total'], $Confirmed['total'], $Delivered['total'], $Cancelled['total'])
+);
 ?>
 <!-- Main content -->
 <section class="content mb-3">
@@ -68,7 +74,7 @@ $countDevice = $d->rawQueryOne("select count(*) as total from #_counter where de
                     </div>
                 </a>
             </div>
-            <div class="clearfix hidden-md-up"></div>
+            <div class="clearfix hidden-md-up d-none"></div>
             <div class="col-12 col-sm-6 col-md-3">
                 <a class="my-info-box info-box" href="index.php?com=user&act=info_admin&changepass=1" title="Đổi mật khẩu">
                     <span class="my-info-box-icon info-box-icon bg-success"><i class="fas fa-key"></i></span>
@@ -136,7 +142,7 @@ $countDevice = $d->rawQueryOne("select count(*) as total from #_counter where de
         </div>
         <div class="card-statistics">
             <!-- Browser Statistics -->
-            <div class="col-xl-4 col-md-12 card-browser">
+            <div class="<?= (CARTSITE) ? "col-xl-4" : "col-xl-6 " ?> col-md-12 card-browser">
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title m-0 me-2">
@@ -174,7 +180,7 @@ $countDevice = $d->rawQueryOne("select count(*) as total from #_counter where de
                 </div>
             </div>
             <!-- Device Statistics -->
-            <div class="col-xl-4 col-md-12 card-device">
+            <div class="<?= (CARTSITE) ? "col-xl-4" : "col-xl-6 card-device" ?> col-md-12">
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between">
                         <div class="card-title m-0 me-2">
@@ -211,31 +217,35 @@ $countDevice = $d->rawQueryOne("select count(*) as total from #_counter where de
                     </div>
                 </div>
             </div>
-            <!-- IP Statistics -->
-            <div class="col-xl-4 col-md-12 card-ip">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="card-title m-0 me-2">
-                            <h5 class="m-0 me-2">Danh sách địa chỉ IP truy cập nhiều nhất</h5>
-                            <small class="text-muted">Thống kê đến ngày <?= date('d/m/Y', time()) ?></small>
+            <!-- Order Statistics -->
+            <?php if (CARTSITE) { ?>
+                <div class="col-xl-4 col-md-12 card-order">
+                    <div class="card h-100">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="card-title m-0 me-2">
+                                <h5 class="m-0 me-2">Danh sách thống kê đơn hàng</h5>
+                                <small class="text-muted">Thống kê đến ngày <?= date('d/m/Y', time()) ?></small>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="col-md-8">
+                                <div class="chart-responsive">
+                                    <canvas id="pieChart" height="150"></canvas>
+                                </div>
+                                <!-- ./chart-responsive -->
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="chart-legend clearfix">
+                                    <li class="mb-4"><i class="fas fa-circle text-primary"></i> <span class="text-capitalize font-weight-bold">Mới đặt</span></li>
+                                    <li class="mb-4"><i class="fas fa-circle text-info"></i> <span class="text-capitalize font-weight-bold">Đã xác nhận</span></li>
+                                    <li class="mb-4"><i class="fas fa-circle text-success"></i> <span class="text-capitalize font-weight-bold">Đã Giao</span></li>
+                                    <li class="mb-0"><i class="fas fa-circle text-danger"></i> <span class="text-capitalize font-weight-bold">Đã hủy</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-ip">
-                            <?php foreach ($topIp ?? [] as $k => $value) { ?>
-                                <li class="mb-3 pb-1 d-flex justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="mb-0 ip-address"><?= $value['ip'] ?></h6>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <span class="text-muted"><?= $value['visits'] ?></span>
-                                    </div>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </section>

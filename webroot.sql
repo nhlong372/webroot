@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 06:37 PM
+-- Generation Time: May 16, 2025 at 09:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -4156,7 +4156,14 @@ INSERT INTO `table_counter` (`id`, `tm`, `ip`, `browser`, `device`) VALUES
 (10646, 1747322548, '::1', 'chrome', 'desktop'),
 (10647, 1747323472, '::1', 'chrome', 'desktop'),
 (10648, 1747324895, '::1', 'chrome', 'desktop'),
-(10649, 1747326042, '::1', 'chrome', 'desktop');
+(10649, 1747326042, '::1', 'chrome', 'desktop'),
+(10650, 1747374598, '::1', 'edge', 'desktop'),
+(10651, 1747375598, '::1', 'edge', 'desktop'),
+(10652, 1747376604, '::1', 'chrome', 'desktop'),
+(10653, 1747377750, '::1', 'chrome', 'desktop'),
+(10654, 1747378661, '::1', 'edge', 'desktop'),
+(10655, 1747380053, '::1', 'edge', 'desktop'),
+(10656, 1747380984, '::1', 'edge', 'desktop');
 
 -- --------------------------------------------------------
 
@@ -5512,8 +5519,8 @@ CREATE TABLE `table_order` (
 --
 
 INSERT INTO `table_order` (`id`, `id_user`, `code`, `fullname`, `phone`, `address`, `email`, `order_payment`, `temp_price`, `total_price`, `city`, `district`, `ward`, `ship_price`, `requirements`, `notes`, `date_created`, `order_status`, `numb`) VALUES
-(32, 0, 'QTQYJQ', 'Lưu Thành Công', '0988900981', 'IT test web, Không có mua, Xã Tân Hòa, Huyện Bình Gia, Tỉnh Lạng Sơn', 'tvcong@gmail.com', 9, 77777, 77777, 13, 136, 2317, 0, '123123123', '', 1673063260, 1, 1),
-(33, 0, 'JW9J7H', 'Lê thanh Son', '0986655456', 'ccc, Xã Tiên Lữ, Huyện Lập Thạch, Tỉnh Vĩnh Phúc', 'lethanhson.nina@gmail.com', 10, 250000, 250000, 17, 183, 3118, 0, 'ccccc', '', 1673314038, 1, 1),
+(32, 0, 'QTQYJQ', 'Lưu Thành Công', '0988900981', 'IT test web, Không có mua, Xã Tân Hòa, Huyện Bình Gia, Tỉnh Lạng Sơn', 'tvcong@gmail.com', 9, 77777, 77777, 13, 136, 2317, 0, '123123123', '', 1673063260, 4, 1),
+(33, 0, 'JW9J7H', 'Lê thanh Son', '0986655456', 'ccc, Xã Tiên Lữ, Huyện Lập Thạch, Tỉnh Vĩnh Phúc', 'lethanhson.nina@gmail.com', 10, 250000, 250000, 17, 183, 3118, 0, 'ccccc', '', 1673314038, 2, 1),
 (35, 0, 'DGQPMU', 'Long Hoàng', '0901317252', '63 Ngô Gia Tự, Phường Thanh Bình, Thành phố Hải Dương, Tỉnh Hải Dương', 'nhlong.nina@gmail.com', 10, 4694444, 4694444, 19, 198, 3355, 0, 'đóng gói kỹ nhé shop', '', 1709525603, 1, 1);
 
 -- --------------------------------------------------------
@@ -6419,7 +6426,7 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`id`, `id_permission`, `username`, `password`, `confirm_code`, `avatar`, `fullname`, `phone`, `email`, `address`, `gender`, `login_session`, `user_token`, `lastlogin`, `status`, `role`, `secret_key`, `birthday`, `numb`) VALUES
-(1, 0, 'admin', '79709a28906d1f7a08a0d067896ea1d5', '', '', 'Administrator', '0939513667', 'admin@gmail.com', '222 huỳnh thị na', 1, 'cdd5129f3ac2a705131260a4ab12a285', 'bdfee33c6a8d2954d1c34dfa094a6e60', '1747326866', 'hienthi', 3, 'cdd5129f3ac2a705131260a4ab12a285', 1608051600, 0);
+(1, 0, 'admin', '79709a28906d1f7a08a0d067896ea1d5', '', '', 'Administrator', '0939513667', 'admin@gmail.com', '222 huỳnh thị na', 1, 'cdd5129f3ac2a705131260a4ab12a285', 'e84f05491f184e0202d7baf882cffa80', '1747381650', 'hienthi', 3, 'cdd5129f3ac2a705131260a4ab12a285', 1608051600, 0);
 
 -- --------------------------------------------------------
 
@@ -6679,7 +6686,9 @@ INSERT INTO `table_user_log` (`id`, `id_user`, `ip`, `timelog`, `user_agent`) VA
 (216, 1, '::1', 1721359541, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0'),
 (217, 1, '::1', 1747296715, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 OPR/118.0.0.0'),
 (218, 1, '::1', 1747317106, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'),
-(219, 1, '::1', 1747326453, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0');
+(219, 1, '::1', 1747326453, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0'),
+(220, 1, '::1', 1747374618, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0'),
+(221, 1, '::1', 1747375647, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -6698,8 +6707,7 @@ CREATE TABLE `table_user_online` (
 --
 
 INSERT INTO `table_user_online` (`session`, `time`, `ip`) VALUES
-('c9vfdn9rmc76j9qje7q8d1f3bj', 1747326419, '::1'),
-('mfpfloqavb2fh9okfiogjcs67i', 1747326197, '::1');
+('br3jcju0snf4vgp5bteb2oiad2', 1747378742, '::1');
 
 -- --------------------------------------------------------
 
@@ -17737,7 +17745,7 @@ ALTER TABLE `table_contact`
 -- AUTO_INCREMENT for table `table_counter`
 --
 ALTER TABLE `table_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10650;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10657;
 
 --
 -- AUTO_INCREMENT for table `table_coupon`
@@ -17971,7 +17979,7 @@ ALTER TABLE `table_user_limit`
 -- AUTO_INCREMENT for table `table_user_log`
 --
 ALTER TABLE `table_user_log`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT for table `table_variants_color`

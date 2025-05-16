@@ -16,6 +16,7 @@
     var LOGIN_PAGE = <?= (empty($_SESSION[$loginAdmin]['active'])) ? 'true' : 'false' ?>;
     var MAX_DATE = '<?= date("Y/m/d", time()) ?>';
     var CHARTS = <?= (!empty($charts)) ? json_encode($charts) : '{}' ?>;
+    var PIECHARTS = <?= (!empty($piecharts)) ? json_encode($piecharts) : '{}' ?>;
     var ADD_OR_EDIT_PERMISSIONS = <?= (!empty($com) && $com == 'user' && !empty($act) && in_array($act, array('add_permission_group', 'edit_permission_group'))) ? 'true' : 'false' ?>;
     var IMPORT_IMAGE_EXCELL = <?= (!empty($com) && $com == 'import' && !empty($config['import']['images'])) ? 'true' : 'false' ?>;
     var ORDER_ADVANCED_SEARCH = <?= (!empty($com) && $com == 'order' && !empty($config['order']['search'])) ? 'true' : 'false' ?>;
@@ -45,6 +46,7 @@
 <script src="assets/js/adminlte.js"></script>
 <script src="ckeditor/ckeditor.js"></script>
 <script src="assets/apexcharts/apexcharts.min.js"></script>
+<script src="assets/apexcharts/chart.min.js"></script>
 <script src="assets/simplenotify/simple-notify.js"></script>
 <script src="assets/comment/comment.js"></script>
 <script src="assets/js/apps.js"></script>

@@ -2826,3 +2826,32 @@ $(document).ready(function () {
   updateTime();
   setInterval(updateTime, 1000);
 });
+
+var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+var pieData = {
+  labels: ["Mới đặt", "Đã xác nhận", "Đã Giao", "Đã hủy"],
+  datasets: [
+    {
+      data: [PIECHARTS['data'][0], PIECHARTS['data'][1], PIECHARTS['data'][2], PIECHARTS['data'][3]],
+      backgroundColor: [
+        "#007bff",
+        "#17a2b8",
+        "#28a745",
+        "#dc3545",
+      ],
+    },
+  ],
+};
+var pieOptions = {
+  legend: {
+    display: false,
+  },
+};
+// Create pie or douhnut chart
+// You can switch between pie and douhnut using the method below.
+// eslint-disable-next-line no-unused-vars
+var pieChart = new Chart(pieChartCanvas, {
+  type: "doughnut",
+  data: pieData,
+  options: pieOptions,
+});

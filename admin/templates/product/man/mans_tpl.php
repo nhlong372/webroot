@@ -82,7 +82,7 @@ $copyImg = (isset($config['product'][$type]['copy_image']) && $config['product']
                         <?php } ?>
                         <th class="align-middle" style="width:30%">Tiêu đề</th>
                         <?php if (isset($config['product'][$type]['gallery']) && count($config['product'][$type]['gallery']) > 0) { ?>
-                            <th class="align-middle">Bộ sưu tập</th>
+                            <th class="align-middle"><?= ($type == 'san-pham') ? 'Hình ảnh chi tiết sản phẩm' : 'Bộ sưu tập'?></th>
                         <?php } ?>
                         <?php if (isset($config['product'][$type]['check'])) {
                             foreach ($config['product'][$type]['check'] as $key => $value) { ?>
