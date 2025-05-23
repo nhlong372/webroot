@@ -26,7 +26,7 @@ if (isset($_POST['data'])) {
     if (isset($_REQUEST['keyword'])) $strUrl .= "&keyword=" . htmlspecialchars($_REQUEST['keyword']);
 }
 switch ($act) {
-        /* Man */
+    /* Man */
     case "man":
         viewMans();
         $template = "product/man/mans";
@@ -50,7 +50,7 @@ switch ($act) {
     case "delete":
         deleteMan();
         break;
-        /* Size */
+    /* Size */
     case "man_size":
         viewSizes();
         $template = "product/size/sizes";
@@ -68,7 +68,7 @@ switch ($act) {
     case "delete_size":
         deleteSize();
         break;
-        /* Color */
+    /* Color */
     case "man_color":
         viewColors();
         $template = "product/color/colors";
@@ -86,7 +86,7 @@ switch ($act) {
     case "delete_color":
         deleteColor();
         break;
-        /* Brand */
+    /* Brand */
     case "man_brand":
         viewBrands();
         $template = "product/brand/brand";
@@ -104,7 +104,7 @@ switch ($act) {
     case "delete_brand":
         deleteBrand();
         break;
-        /* List */
+    /* List */
     case "man_list":
         viewLists();
         $template = "product/list/lists";
@@ -122,7 +122,7 @@ switch ($act) {
     case "delete_list":
         deleteList();
         break;
-        /* Cat */
+    /* Cat */
     case "man_cat":
         viewCats();
         $template = "product/cat/cats";
@@ -140,7 +140,7 @@ switch ($act) {
     case "delete_cat":
         deleteCat();
         break;
-        /* Item */
+    /* Item */
     case "man_item":
         viewItems();
         $template = "product/item/items";
@@ -158,7 +158,7 @@ switch ($act) {
     case "delete_item":
         deleteItem();
         break;
-        /* Sub */
+    /* Sub */
     case "man_sub":
         viewSubs();
         $template = "product/sub/subs";
@@ -176,7 +176,7 @@ switch ($act) {
     case "delete_sub":
         deleteSub();
         break;
-        /* Gallery */
+    /* Gallery */
     case "man_photo":
     case "add_photo":
     case "edit_photo":
@@ -255,11 +255,11 @@ function saveMan()
         $func->transfer("Không nhận được dữ liệu", "index.php?com=product&act=man&type=" . $type . "&p=" . $curPage . $strUrl, false);
     }
     $id_opt = (isset($id)) ? htmlspecialchars($id) : 0;
-    $row_opt = $d->rawQueryOne("select id, options from #_product where id = ? and type = ? limit 0,1",array($id_opt, $type));
-    $option = json_decode($row_opt['options'],true);
+    $row_opt = $d->rawQueryOne("select id, options from #_product where id = ? and type = ? limit 0,1", array($id_opt, $type));
+    $option = json_decode($row_opt['options'], true);
 
-    $row_opt2 = $d->rawQueryOne("select id, options2 from #_product where id = ? and type = ? limit 0,1",array($id_opt, $type));
-    $option2 = json_decode($row_opt2['options2'],true);
+    $row_opt2 = $d->rawQueryOne("select id, options2 from #_product where id = ? and type = ? limit 0,1", array($id_opt, $type));
+    $option2 = json_decode($row_opt2['options2'], true);
     /* Post dữ liệu */
     $message = '';
     $response = array();
@@ -271,69 +271,60 @@ function saveMan()
     $dataSize = (!empty($_POST['dataSize'])) ? $_POST['dataSize'] : null;
     $buildSchema = (!empty($_POST['build-schema'])) ? true : false;
     if ($data) {
-        if($_POST['code']) {
+        if ($_POST['code']) {
             foreach ($_POST['code'] as $key => $value) {
                 $dataVariants = array();
-                $dataVariants['id_parent'] = (!empty($_POST['id_parent'.$value])) ? $_POST['id_parent'.$value] : 0;
-                $dataVariants['color'] = ($_POST['color'.$value]) ? $_POST['color'.$value] : 0;
-                $var_check = $d->rawQueryOne("select id,photo from table_variants_color where id_parent = ? and color = ? limit 0,1",array($_POST['id_parent'.$value], $_POST['color'.$value]));
-                if($var_check) {
-                    $file_name = $func->uploadName($_FILES["photo".$value]["name"]);
-                    if($photo = $func->uploadImage("photo".$value, $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name))
-                    {
-                        if(!empty($var_check))
-                        {
-                            $func->deleteFile(UPLOAD_PRODUCT.$var_check['photo']);
+                $dataVariants['id_parent'] = (!empty($_POST['id_parent' . $value])) ? $_POST['id_parent' . $value] : 0;
+                $dataVariants['color'] = ($_POST['color' . $value]) ? $_POST['color' . $value] : 0;
+                $var_check = $d->rawQueryOne("select id,photo from table_variants_color where id_parent = ? and color = ? limit 0,1", array($_POST['id_parent' . $value], $_POST['color' . $value]));
+                if ($var_check) {
+                    $file_name = $func->uploadName($_FILES["photo" . $value]["name"]);
+                    if ($photo = $func->uploadImage("photo" . $value, $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name)) {
+                        if (!empty($var_check)) {
+                            $func->deleteFile(UPLOAD_PRODUCT . $var_check['photo']);
                         }
                         $dataVariants['photo'] = $photo;
                     }
-                }
-                else {
-                    $file_name = $func->uploadName($_FILES["photo".$value]["name"]);
-                    if($photo = $func->uploadImage("photo".$value, $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name))
-                    {
+                } else {
+                    $file_name = $func->uploadName($_FILES["photo" . $value]["name"]);
+                    if ($photo = $func->uploadImage("photo" . $value, $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name)) {
                         $dataVariants['photo'] = $photo;
                     }
                 }
-                if($var_check) {
+                if ($var_check) {
                     $d->where('id', $var_check['id']);
                     $d->update('variants_color', $dataVariants);
-                }
-                else {
+                } else {
                     $d->insert('variants_color', $dataVariants);
                 }
             }
         }
 
-        if($_POST['code1']) {
+        if ($_POST['code1']) {
             foreach ($_POST['code1'] as $key => $value1) {
                 $dataVariants1 = array();
-                $dataVariants1['id_parent'] = ($_POST['id_parent'.$value1]) ? $_POST['id_parent'.$value1] : 0;
-                $dataVariants1['size'] = ($_POST['size'.$value1]) ? $_POST['size'.$value1] : 0;
-                $var_check1 = $d->rawQueryOne("select id,price_new from table_variants_size where id_parent = ? and size = ? limit 0,1",array($_POST['id_parent'.$value1], $_POST['size'.$value1]));
-                $dataVariants1['price_new'] = ($_POST['price_new'.$value1]) ? str_replace(',', '', $_POST['price_new'.$value1]) : 0;
-                $dataVariants1['price_old'] = ($_POST['price_old'.$value1]) ? str_replace(',', '', $_POST['price_old'.$value1]) : 0;
-                if($var_check1) {
+                $dataVariants1['id_parent'] = ($_POST['id_parent' . $value1]) ? $_POST['id_parent' . $value1] : 0;
+                $dataVariants1['size'] = ($_POST['size' . $value1]) ? $_POST['size' . $value1] : 0;
+                $var_check1 = $d->rawQueryOne("select id,price_new from table_variants_size where id_parent = ? and size = ? limit 0,1", array($_POST['id_parent' . $value1], $_POST['size' . $value1]));
+                $dataVariants1['price_new'] = ($_POST['price_new' . $value1]) ? str_replace(',', '', $_POST['price_new' . $value1]) : 0;
+                $dataVariants1['price_old'] = ($_POST['price_old' . $value1]) ? str_replace(',', '', $_POST['price_old' . $value1]) : 0;
+                if ($var_check1) {
                     $d->where('id', $var_check1['id']);
                     $d->update('variants_size', $dataVariants1);
-                }
-                else {
+                } else {
                     $d->insert('variants_size', $dataVariants1);
                 }
             }
         }
-       
-        foreach ($data as $column => $value) { 
-            if(is_array($value))
-            {
-                foreach($value as $k2 => $v2) $option[$k2] = $v2;
+
+        foreach ($data as $column => $value) {
+            if (is_array($value)) {
+                foreach ($value as $k2 => $v2) $option[$k2] = $v2;
                 $data[$column] = json_encode($option);
 
-                foreach($value as $k2 => $v2) $option2[$k2] = $v2;
+                foreach ($value as $k2 => $v2) $option2[$k2] = $v2;
                 $data[$column] = json_encode($option2);
-            }
-            else
-            {
+            } else {
                 if (strpos($column, 'content') !== false || strpos($column, 'desc') !== false) {
                     $data[$column] = htmlspecialchars($func->sanitize($value, 'iframe'));
                 } else {
@@ -358,8 +349,8 @@ function saveMan()
         $data['sale_price'] = (isset($data['sale_price']) && $data['sale_price'] != '') ? str_replace(",", "", $data['sale_price']) : 0;
         $data['discount'] = (isset($data['discount']) && $data['discount'] != '') ? $data['discount'] : 0;
         $data['type'] = $type;
-        $data['color'] = ($_POST['dataColor']!='') ? implode(',', $_POST['dataColor']) : '';
-        $data['size'] = ($_POST['dataSize']!='') ? implode(',', $_POST['dataSize']) : '';
+        $data['color'] = ($_POST['dataColor'] != '') ? implode(',', $_POST['dataColor']) : '';
+        $data['size'] = ($_POST['dataSize'] != '') ? implode(',', $_POST['dataSize']) : '';
     }
     /* Post seo */
     if (isset($config['product'][$type]['seo']) && $config['product'][$type]['seo'] == true) {
@@ -453,26 +444,23 @@ function saveMan()
             }
 
             /* Photo 2 */
-                if($func->hasFile("file2"))
-                {
-                    $photoUpdate2 = array();
-                    $file_name2 = $func->uploadName($_FILES["file2"]["name"]);
-                    
-                    if($photo2 = $func->uploadImage("file2", $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name2))
-                    {
-                        $row = $d->rawQueryOne("select id, photo2 from #_product where id = ? and type = ? limit 0,1",array($id,$type));
+            if ($func->hasFile("file2")) {
+                $photoUpdate2 = array();
+                $file_name2 = $func->uploadName($_FILES["file2"]["name"]);
 
-                        if(!empty($row))
-                        {
-                            $func->deleteFile(UPLOAD_PRODUCT.$row['photo2']);
-                        }
+                if ($photo2 = $func->uploadImage("file2", $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name2)) {
+                    $row = $d->rawQueryOne("select id, photo2 from #_product where id = ? and type = ? limit 0,1", array($id, $type));
 
-                        $photoUpdate2['photo2'] = $photo2;
-                        $d->where('id', $id);
-                        $d->update('product', $photoUpdate2);
-                        unset($photoUpdate2);
+                    if (!empty($row)) {
+                        $func->deleteFile(UPLOAD_PRODUCT . $row['photo2']);
                     }
+
+                    $photoUpdate2['photo2'] = $photo2;
+                    $d->where('id', $id);
+                    $d->update('product', $photoUpdate2);
+                    unset($photoUpdate2);
                 }
+            }
 
             /* SEO */
             if (isset($config['product'][$type]['seo']) && $config['product'][$type]['seo'] == true) {
@@ -532,109 +520,95 @@ function saveMan()
                 }
             }
 
-        if(CARTSITEADVANCE==true){
-           
-            /* Size - Color Giỏ Hàng Nâng Cao */
-            /* Color */
-            
-            if(!empty($config['product'][$type]['color']))
-            {
-                if(!empty($dataColor))
-                {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_color';
-                    $dataSale1['data'] = $dataColor;
-                }
+            if (CARTSITEADVANCE == true) {
 
-                if(!empty($dataSale1['data']))
-                {
-                    $d->rawQuery("delete from #_product_sale_color where id_parent = ?",array($id));
+                /* Size - Color Giỏ Hàng Nâng Cao */
+                /* Color */
 
-                    foreach($dataSale1['data'] as $v_sale1)
-                    {
-                        $dataSale = array();
-                        $dataSale['id_parent'] = $id;
-                        $dataSale[$dataSale1['id']] = $v_sale1;
-                        $d->insert('product_sale_color',$dataSale);
+                if (!empty($config['product'][$type]['color'])) {
+                    if (!empty($dataColor)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_color';
+                        $dataSale1['data'] = $dataColor;
+                    }
+
+                    if (!empty($dataSale1['data'])) {
+                        $d->rawQuery("delete from #_product_sale_color where id_parent = ?", array($id));
+
+                        foreach ($dataSale1['data'] as $v_sale1) {
+                            $dataSale = array();
+                            $dataSale['id_parent'] = $id;
+                            $dataSale[$dataSale1['id']] = $v_sale1;
+                            $d->insert('product_sale_color', $dataSale);
+                        }
+                    } else {
+                        $d->rawQuery("delete from #_product_sale_color where id_parent = ?", array($id));
                     }
                 }
-                else
-                {
-                    $d->rawQuery("delete from #_product_sale_color where id_parent = ?",array($id));
-                }
-            }
-            /* Size */
-            if(!empty($config['product'][$type]['size']))
-            {
-                if(!empty($dataSize))
-                {
-                    $dataSale2 = array();
-                    $dataSale2['id'] = 'id_size';
-                    $dataSale2['data'] = $dataSize;
-                }
+                /* Size */
+                if (!empty($config['product'][$type]['size'])) {
+                    if (!empty($dataSize)) {
+                        $dataSale2 = array();
+                        $dataSale2['id'] = 'id_size';
+                        $dataSale2['data'] = $dataSize;
+                    }
 
-                
-                if(!empty($dataSale2['data']))
-                {
-                    $d->rawQuery("delete from #_product_sale_size where id_parent = ?",array($id));
 
-                    foreach($dataSale2['data'] as $v_sale1)
-                    {
-                        $dataSale = array();
-                        $dataSale['id_parent'] = $id;
-                        $dataSale[$dataSale2['id']] = $v_sale1;
-                        $d->insert('product_sale_size',$dataSale);
+                    if (!empty($dataSale2['data'])) {
+                        $d->rawQuery("delete from #_product_sale_size where id_parent = ?", array($id));
+
+                        foreach ($dataSale2['data'] as $v_sale1) {
+                            $dataSale = array();
+                            $dataSale['id_parent'] = $id;
+                            $dataSale[$dataSale2['id']] = $v_sale1;
+                            $d->insert('product_sale_size', $dataSale);
+                        }
+                    } else {
+                        $d->rawQuery("delete from #_product_sale where id_parent = ?", array($id));
                     }
                 }
-                else
-                {
-                    $d->rawQuery("delete from #_product_sale where id_parent = ?",array($id));
-                }
-            }
-        
-        }else{ // giỏ hàng size màu cơ bản
+            } else { // giỏ hàng size màu cơ bản
 
-            /* Sale */ 
-            /* Nếu không dùng giỏ hàng nâng cao thì mở phần này đóng phần Size - Color Giỏ Hàng Nâng Cao*/
-            if (!empty($config['product'][$type]['color']) || !empty($config['product'][$type]['size'])) {
-                if (!empty($dataColor) && !empty($dataSize)) {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_color';
-                    $dataSale1['data'] = $dataColor;
-                    $dataSale2 = array();
-                    $dataSale2['id'] = 'id_size';
-                    $dataSale2['data'] = $dataSize;
-                } else if (!empty($dataColor)) {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_color';
-                    $dataSale1['data'] = $dataColor;
-                } else if (!empty($dataSize)) {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_size';
-                    $dataSale1['data'] = $dataSize;
-                }
-                if (!empty($dataSale1['data']) || !empty($dataSale2['data'])) {
-                    $d->rawQuery("delete from #_product_sale where id_parent = ?", array($id));
-                    foreach ($dataSale1['data'] as $v_sale1) {
-                        $dataSale = array();
-                        $dataSale['id_parent'] = $id;
-                        $dataSale[$dataSale1['id']] = $v_sale1;
-                        if (!empty($dataSale2['data'])) {
-                            foreach ($dataSale2['data'] as $v_sale2) {
-                                $dataSale[$dataSale2['id']] = $v_sale2;
+                /* Sale */
+                /* Nếu không dùng giỏ hàng nâng cao thì mở phần này đóng phần Size - Color Giỏ Hàng Nâng Cao*/
+                if (!empty($config['product'][$type]['color']) || !empty($config['product'][$type]['size'])) {
+                    if (!empty($dataColor) && !empty($dataSize)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_color';
+                        $dataSale1['data'] = $dataColor;
+                        $dataSale2 = array();
+                        $dataSale2['id'] = 'id_size';
+                        $dataSale2['data'] = $dataSize;
+                    } else if (!empty($dataColor)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_color';
+                        $dataSale1['data'] = $dataColor;
+                    } else if (!empty($dataSize)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_size';
+                        $dataSale1['data'] = $dataSize;
+                    }
+                    if (!empty($dataSale1['data']) || !empty($dataSale2['data'])) {
+                        $d->rawQuery("delete from #_product_sale where id_parent = ?", array($id));
+                        foreach ($dataSale1['data'] as $v_sale1) {
+                            $dataSale = array();
+                            $dataSale['id_parent'] = $id;
+                            $dataSale[$dataSale1['id']] = $v_sale1;
+                            if (!empty($dataSale2['data'])) {
+                                foreach ($dataSale2['data'] as $v_sale2) {
+                                    $dataSale[$dataSale2['id']] = $v_sale2;
+                                    $d->insert('product_sale', $dataSale);
+                                }
+                            } else {
                                 $d->insert('product_sale', $dataSale);
                             }
-                        } else {
-                            $d->insert('product_sale', $dataSale);
                         }
+                    } else {
+                        $d->rawQuery("delete from #_product_sale where id_parent = ?", array($id));
                     }
-                } else {
-                    $d->rawQuery("delete from #_product_sale where id_parent = ?", array($id));
                 }
-            } 
-            
-           } // giỏ hàng cơ bản
-        
+            } // giỏ hàng cơ bản
+
             if ($savehere || $buildSchema) {
                 $func->transfer("Cập nhật dữ liệu thành công", "index.php?com=product&act=edit&type=" . $type . "&p=" . $curPage . $strUrl . "&id=" . $id);
             } else {
@@ -668,19 +642,17 @@ function saveMan()
                 }
             }
             /* Photo */
-                if($func->hasFile("file2"))
-                {
-                    $photoUpdate2 = array();
-                    $file_name2 = $func->uploadName($_FILES['file2']["name"]);
+            if ($func->hasFile("file2")) {
+                $photoUpdate2 = array();
+                $file_name2 = $func->uploadName($_FILES['file2']["name"]);
 
-                    if($photo2 = $func->uploadImage("file2", $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name2))
-                    {
-                        $photoUpdate2['photo2'] = $photo2;
-                        $d->where('id', $id_insert);
-                        $d->update('product', $photoUpdate2);
-                        unset($photoUpdate2);
-                    }
+                if ($photo2 = $func->uploadImage("file2", $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name2)) {
+                    $photoUpdate2['photo2'] = $photo2;
+                    $d->where('id', $id_insert);
+                    $d->update('product', $photoUpdate2);
+                    unset($photoUpdate2);
                 }
+            }
             /* SEO */
             if (isset($config['product'][$type]['seo']) && $config['product'][$type]['seo'] == true) {
                 $dataSeo['id_parent'] = $id_insert;
@@ -734,89 +706,79 @@ function saveMan()
                 }
             }
 
-        if(CARTSITEADVANCE==true){
-            /* Size - Color Giỏ Hàng Nâng Cao */
-            /* Color */
-            if(!empty($config['product'][$type]['color']))
-            {
-                if(!empty($dataColor))
-                {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_color';
-                    $dataSale1['data'] = $dataColor;
-                }
-
-                if(!empty($dataSale1['data']))
-                {
-                    foreach($dataSale1['data'] as $v_sale1)
-                    {
-                        $dataSale = array();
-                        $dataSale['id_parent'] = $id_insert;
-                        $dataSale[$dataSale1['id']] = $v_sale1;
-                        $d->insert('product_sale_color',$dataSale);
+            if (CARTSITEADVANCE == true) {
+                /* Size - Color Giỏ Hàng Nâng Cao */
+                /* Color */
+                if (!empty($config['product'][$type]['color'])) {
+                    if (!empty($dataColor)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_color';
+                        $dataSale1['data'] = $dataColor;
                     }
-                }
-            }
-             /* Size */
-            if(!empty($config['product'][$type]['size']))
-            {
-                if(!empty($dataSize))
-                {
-                    $dataSale2 = array();
-                    $dataSale2['id'] = 'id_size';
-                    $dataSale2['data'] = $dataSize;
-                }
 
-                if(!empty($dataSale2['data']))
-                {
-                    foreach($dataSale2['data'] as $v_sale1)
-                    {
-                        $dataSale = array();
-                        $dataSale['id_parent'] = $id_insert;
-                        $dataSale[$dataSale2['id']] = $v_sale1;
-                        $d->insert('product_sale_size',$dataSale);
-                    }
-                }
-            }
-            
-        }else{ // giỏ hang cơ bản
-            /* Sale Size - Color*/
-            /* Nếu không dùng giỏ hàng nâng cao thì mở phần này đóng phần Size - Color Giỏ Hàng Nâng Cao*/
-            if (!empty($config['product'][$type]['color']) || !empty($config['product'][$type]['size'])) {
-                if (!empty($dataColor) && !empty($dataSize)) {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_color';
-                    $dataSale1['data'] = $dataColor;
-                    $dataSale2 = array();
-                    $dataSale2['id'] = 'id_size';
-                    $dataSale2['data'] = $dataSize;
-                } else if (!empty($dataColor)) {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_color';
-                    $dataSale1['data'] = $dataColor;
-                } else if (!empty($dataSize)) {
-                    $dataSale1 = array();
-                    $dataSale1['id'] = 'id_size';
-                    $dataSale1['data'] = $dataSize;
-                }
-                if (!empty($dataSale1['data']) || !empty($dataSale2['data'])) {
-                    foreach ($dataSale1['data'] as $v_sale1) {
-                        $dataSale = array();
-                        $dataSale['id_parent'] = $id_insert;
-                        $dataSale[$dataSale1['id']] = $v_sale1;
-                        if (!empty($dataSale2['data'])) {
-                            foreach ($dataSale2['data'] as $v_sale2) {
-                                $dataSale[$dataSale2['id']] = $v_sale2;
-                                $d->insert('product_sale', $dataSale);
-                            }
-                        } else {
-                            $d->insert('product_sale', $dataSale);
+                    if (!empty($dataSale1['data'])) {
+                        foreach ($dataSale1['data'] as $v_sale1) {
+                            $dataSale = array();
+                            $dataSale['id_parent'] = $id_insert;
+                            $dataSale[$dataSale1['id']] = $v_sale1;
+                            $d->insert('product_sale_color', $dataSale);
                         }
                     }
                 }
-            }
-            
-           } // end gio hang co ban
+                /* Size */
+                if (!empty($config['product'][$type]['size'])) {
+                    if (!empty($dataSize)) {
+                        $dataSale2 = array();
+                        $dataSale2['id'] = 'id_size';
+                        $dataSale2['data'] = $dataSize;
+                    }
+
+                    if (!empty($dataSale2['data'])) {
+                        foreach ($dataSale2['data'] as $v_sale1) {
+                            $dataSale = array();
+                            $dataSale['id_parent'] = $id_insert;
+                            $dataSale[$dataSale2['id']] = $v_sale1;
+                            $d->insert('product_sale_size', $dataSale);
+                        }
+                    }
+                }
+            } else { // giỏ hang cơ bản
+                /* Sale Size - Color*/
+                /* Nếu không dùng giỏ hàng nâng cao thì mở phần này đóng phần Size - Color Giỏ Hàng Nâng Cao*/
+                if (!empty($config['product'][$type]['color']) || !empty($config['product'][$type]['size'])) {
+                    if (!empty($dataColor) && !empty($dataSize)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_color';
+                        $dataSale1['data'] = $dataColor;
+                        $dataSale2 = array();
+                        $dataSale2['id'] = 'id_size';
+                        $dataSale2['data'] = $dataSize;
+                    } else if (!empty($dataColor)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_color';
+                        $dataSale1['data'] = $dataColor;
+                    } else if (!empty($dataSize)) {
+                        $dataSale1 = array();
+                        $dataSale1['id'] = 'id_size';
+                        $dataSale1['data'] = $dataSize;
+                    }
+                    if (!empty($dataSale1['data']) || !empty($dataSale2['data'])) {
+                        foreach ($dataSale1['data'] as $v_sale1) {
+                            $dataSale = array();
+                            $dataSale['id_parent'] = $id_insert;
+                            $dataSale[$dataSale1['id']] = $v_sale1;
+                            if (!empty($dataSale2['data'])) {
+                                foreach ($dataSale2['data'] as $v_sale2) {
+                                    $dataSale[$dataSale2['id']] = $v_sale2;
+                                    $d->insert('product_sale', $dataSale);
+                                }
+                            } else {
+                                $d->insert('product_sale', $dataSale);
+                            }
+                        }
+                    }
+                }
+            } // end gio hang co ban
 
             /* Cập nhật hash khi upload multi */
             $hash = (isset($_POST['hash']) && $_POST['hash'] != '') ? addslashes($_POST['hash']) : null;
