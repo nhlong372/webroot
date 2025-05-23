@@ -122,7 +122,7 @@ $linkSave = "index.php?com=order&act=save";
                                         </a>
                                     </td>
                                     <td class="align-middle">
-                                        <p class="text-primary mb-1"><?= $v['name'] ?></p>
+                                        <a href="index.php?com=product&act=edit&type=san-pham&id=<?= $v['id_product'] ?>"><p class="text-primary mb-1"><?= $v['name'] ?></p></a>
                                         <?php if ($v['color'] != '' || $v['size'] != '') { ?>
                                             <p class="mb-0">
                                                 <?php if ($v['color'] != '') { ?>
