@@ -23,6 +23,7 @@
     var PHONENUMBER = '<?= $optsetting['hotline'] ?>';
     var ZALO = '<?= $optsetting['zalo'] ?>';
     var SOURCE = '<?= ($source == 'index') ? "index" : "" ?>';
+    var CARTSITEADVANCE = '<?= (CARTSITEADVANCE) ? 'true' : 'false' ?>';
 </script>
 <!-- Js Files -->
 <?php

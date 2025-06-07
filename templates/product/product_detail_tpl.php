@@ -126,7 +126,16 @@
                             <p class="pro_guarantee__label proprice_item_label f-title mb-0">Màu sắc:</p>
                             <div class="prod_details_color">
                                 <?php foreach ($rowColor as $k => $v) {
-                                    $productColor = $d->rawQuery("select id_parent, color, photo from table_variants_color where id_parent = ? and color = ?", array($rowDetail['id'], $v['id']));
+                                    $productColor = $d->rawQuery("select id_parent, color, photo, price_new from table_variants_color where id_parent = ? and color = ?", array($rowDetail['id'], $v['id']));
+                                    $gia_min_color = 0;
+                                    foreach ($productColor as $key => $value) {
+                                        if ($value['price_new'] > 0) {
+                                            $gia_min_color = $value['price_new'];
+                                            break;
+                                        } else {
+                                            $gia_min_color = 0;
+                                        }
+                                    }
                                 ?>
                                     <div class="align-items-center">
                                         <?php foreach ($productColor as $key2 => $value2) {
@@ -134,7 +143,7 @@
                                             $variants_check = $d->rawQueryOne("select id from table_product_sale where id_parent = ? and id_color = ? limit 1", array($rowDetail['id'], $value2['color']));
                                             /*if(!$variants_check['id'] or $variants_check['id']=='' or $variants_check['id']==0) continue;*/
                                         ?>
-                                            <div class="proprice_item_color proprice_item1" data-photo="<?= $value2['photo'] ?>" data-img="<?= THUMBS ?>/740x740x1/<?= UPLOAD_PRODUCT_L . $value2['photo'] ?>" data-id="<?= $value2['color'] ?>" data-id_prod="<?= $rowDetail['id'] ?>">
+                                            <div class="proprice_item_color proprice_item1" data-photo="<?= $value2['photo'] ?>" data-img="<?= THUMBS ?>/740x740x1/<?= UPLOAD_PRODUCT_L . $value2['photo'] ?>" data-id="<?= $value2['color'] ?>" data-id_prod="<?= $rowDetail['id'] ?>" data-tab="<?= $k ?>" data-min_price="<?= ($gia_min_color > 0) ? number_format($gia_min_color) : 0 ?>">
                                                 <a class="transition proprice_action" style="background: #<?= $color_name['color'] ?>;">
                                                     <?php if (!empty($color_name['name' . $lang])) { ?>
                                                         <div class="tooltip-pro-detail tooltipcolor"><span><?= $color_name['name' . $lang] ?></span></div>
@@ -159,16 +168,18 @@
                                 <div class="attr-content-pro-detail d-block">
                                     <?php foreach ($rowColor as $k => $v) { ?>
                                         <?php if ($v['type_show'] == 1) { ?>
+                                            
                                             <label for="color-pro-detail-<?= $v['id'] ?>" class="color-pro-detail text-decoration-none" data-idproduct="<?= $rowDetail['id'] ?>" style="background-image: url(<?= UPLOAD_COLOR_L . $v['photo'] ?>)">
-                                                <div class="tooltip-pro-detail tooltipcolor"><span><?= $v['name' . $lang] ?></span></div>
+                                                <?= $v['name' . $lang] ?>
                                                 <input type="radio" value="<?= $v['id'] ?>" id="color-pro-detail-<?= $v['id'] ?>" name="color-pro-detail">
                                             </label>
                                         <?php } else { ?>
-                                            <label for="color-pro-detail-<?= $v['id'] ?>" class="color-pro-detail text-decoration-none" data-idproduct="<?= $rowDetail['id'] ?>" style="background-color: #<?= $v['color'] ?>">
-                                                <div class="tooltip-pro-detail tooltipcolor"><span><?= $v['name' . $lang] ?></span></div>
+                                           
+                                            <label for="color-pro-detail-<?= $v['id'] ?>" class="color-pro-detail text-decoration-none" data-idproduct="<?= $rowDetail['id'] ?>">
                                                 <input type="radio" value="<?= $v['id'] ?>" id="color-pro-detail-<?= $v['id'] ?>" name="color-pro-detail">
+                                                <?= $v['name' . $lang] ?>
                                             </label>
-                                        <?php } ?>
+                                            <?php } ?>
                                     <?php } ?>
                                 </div>
                             </li>
@@ -189,7 +200,7 @@
                 <?php }
                 } //*/ 
                 ?>
-
+                
                 <?php if (CARTSITE == true) { ?>
                     <li class="w-clear">
                         <label class="attr-label-pro-detail d-block"><?= soluong ?>:</label>

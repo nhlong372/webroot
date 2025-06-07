@@ -143,7 +143,12 @@ function loadShip(id = 0) {
     }
 }
 function fill_price(price = 0) {
-    $('.price-new-pro-detail').html(price + 'đ');
-    $('.price-old-pro-detail').html('');
+    if (price == "Liên hệ" || price == 0 || price == null) {
+        $('.price-new-pro-detail').html("Liên hệ");
+        $('.price-old-pro-detail').html('');
+    } else {
+        $('.price-new-pro-detail').html(price + 'đ');
+        $('.price-old-pro-detail').html('');
+    }
     return false;
 }

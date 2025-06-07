@@ -116,97 +116,8 @@ if (
                         </div>
                     </div>
                 </div>
-                <?php if (CARTSITEADVANCE == true) { ?>
-                    <div class="card card-primary card-outline text-sm">
-                        <div class="card-header">
-                            <h3 class="card-title">Thêm hình ảnh cho màu sắc</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <?php
-                            $variants = $d->rawQuery("select * from #_product_sale_color where id_parent = ? order by id asc", array($item['id']));
-                            ?>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr align="center">
-                                        <th scope="col">STT</th>
-                                        <th scope="col">Màu sắc</th>
-                                        <th scope="col">Hình ảnh</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($variants as $key => $value) {
-                                        $sql = "select * from table_variants_color where id_parent = " . $value['id_parent'] . " and color = " . $value['id_color'] . " limit 0,1";
-                                        $var_check = $d->rawQueryOne($sql);
-                                        $color_detail = $d->rawQueryOne("select namevi,id from #_color where id = ? limit 1", array($value['id_color']));
-                                        $code = ($value['id_parent'] . $value['id_color']);
-                                    ?>
-                                        <tr align="center">
-                                            <input type="hidden" name="code[]" value="<?= $code ?>">
-                                            <input type="hidden" name="id_parent<?= $code ?>" value="<?= $value['id_parent'] ?>" />
-                                            <input type="hidden" name="color<?= $code ?>" value="<?= $value['id_color'] ?>" />
-                                            <th><?= $key + 1 ?></th>
-                                            <td><?= $color_detail['namevi'] ?></td>
-                                            <td>
-                                                <div class="viewPicture">
-                                                    <div class="viewPictureIcon">
-                                                        <img id="output<?= $value['id'] ?>" src="<?= ($var_check['photo'] != '') ? UPLOAD_PRODUCT . $var_check['photo'] : 'assets/images/noimage.png' ?>" />
-                                                    </div>
-                                                    <input type="file" name="photo<?= $code ?>" onchange="loadFile(event, 'output<?= $value['id'] ?>')" accept="image/*">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="card card-primary card-outline text-sm">
-                        <div class="card-header">
-                            <h3 class="card-title">Thêm giá cho từng size</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <?php
-                            $variants1 = $d->rawQuery("select * from #_product_sale_size where id_parent = ? order by id asc", array($item['id']));
-                            ?>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr align="center">
-                                        <th scope="col">STT</th>
-                                        <th scope="col">Size</th>
-                                        <th scope="col">Giá mới</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($variants1 as $key => $value1) {
-                                        $sql1 = "select * from table_variants_size where id_parent = " . $value1['id_parent'] . " and size = " . $value1['id_size'] . " limit 0,1";
-                                        $var_check1 = $d->rawQueryOne($sql1);
-                                        $size_detail1 = $d->rawQueryOne("select namevi,id from #_size where id = ? limit 1", array($value1['id_size']));
-                                        $code1 = ($value1['id_parent'] . $value1['id_size']);
-                                    ?>
-                                        <tr align="center">
-                                            <input type="hidden" name="code1[]" value="<?= $code1 ?>">
-                                            <input type="hidden" name="id_parent<?= $code1 ?>" value="<?= $value1['id_parent'] ?>" />
-                                            <input type="hidden" name="size<?= $code1 ?>" value="<?= $value1['id_size'] ?>" />
-                                            <th><?= $key + 1 ?></th>
-                                            <td><?= $size_detail1['namevi'] ?></td>
-                                            <td style="width: 150px !important">
-                                                <input type="text" name="price_new<?= $code1 ?>" class="format-price form-control" value="<?= ($var_check1['price_new'] != '') ? number_format($var_check1['price_new']) : 0 ?>" />
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                <?php } ?>
             </div>
+            
             <div class="<?= $colRight ?>">
                 <?php if (
                     (isset($config['product'][$type]['dropdown']) && $config['product'][$type]['dropdown'] == true) ||
@@ -477,6 +388,109 @@ if (
                 <?php } ?>
             </div>
         </div>
+
+        <?php if (CARTSITEADVANCE == true) { ?>
+            <div class="card card-primary card-outline text-sm">
+                <div class="card-header">
+                    <h3 class="card-title">Thêm hình ảnh cho từng màu</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?php
+                    $variants = $d->rawQuery("select * from #_product_sale_color where id_parent = ? order by id asc", array($item['id']));
+                    ?>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr align="center">
+                                <th scope="col">STT</th>
+                                <th scope="col">Màu sắc</th>
+                                <th scope="col">Hình ảnh</th>
+                                <th scope="col">Giá mới theo từng màu</th>
+                                <th scope="col">Giá cũ theo từng màu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($variants as $key => $value) {
+                                $sql = "select * from table_variants_color where id_parent = " . $value['id_parent'] . " and color = " . $value['id_color'] . " limit 0,1";
+                                $var_check = $d->rawQueryOne($sql);
+                                $color_detail = $d->rawQueryOne("select namevi, id from #_color where id = ? limit 0,1", array($value['id_color']));
+                                $code = ($value['id_parent'] . $value['id_color']);
+                            ?>
+                                <tr align="center">
+                                    <input type="hidden" name="code[]" value="<?= $code ?>">
+                                    <input type="hidden" name="id_parent<?= $code ?>" value="<?= $value['id_parent'] ?>" />
+                                    <input type="hidden" name="color<?= $code ?>" value="<?= $value['id_color'] ?>" />
+                                    <td class="text-bold"><?= $key + 1 ?></td>
+                                    <td><?= $color_detail['namevi'] ?></td>
+                                    <td>
+                                        <div class="viewPicture">
+                                            <div class="viewPictureIcon">
+                                                <img id="output<?= $value['id'] ?>" src="<?= ($var_check['photo'] != '') ? UPLOAD_PRODUCT . $var_check['photo'] : 'assets/images/noimage.png' ?>" />
+                                            </div>
+                                            <input type="file" name="photo<?= $code ?>" onchange="loadFile(event, 'output<?= $value['id'] ?>')" accept="image/*">
+                                        </div>
+                                    </td>
+                                    <td style="width: 200px !important">
+                                        <input type="text" name="price_new_color<?= $code ?>" class="format-price form-control" value="<?= ($var_check['price_new'] != '') ? number_format($var_check['price_new']) : 0 ?>" />
+                                    </td>
+                                    <td style="width: 200px !important">
+                                        <input type="text" name="price_old_color<?= $code ?>" class="format-price form-control" value="<?= ($var_check['price_old'] != '') ? number_format($var_check['price_old']) : 0 ?>" />
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card card-primary card-outline text-sm">
+                <div class="card-header">
+                    <h3 class="card-title">Thêm giá cho từng size</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?php
+                    $variants1 = $d->rawQuery("select * from #_product_sale_size where id_parent = ? order by id asc", array($item['id']));
+                    ?>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr align="center">
+                                <th scope="col">STT</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Giá mới theo từng size</th>
+                                <th scope="col">Giá cũ theo từng size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($variants1 as $key => $value1) {
+                                $sql1 = "select * from table_variants_size where id_parent = " . $value1['id_parent'] . " and size = " . $value1['id_size'] . " limit 0,1";
+                                $var_check1 = $d->rawQueryOne($sql1);
+                                $size_detail1 = $d->rawQueryOne("select namevi, id from #_size where id = ? limit 0,1", array($value1['id_size']));
+                                $code1 = ($value1['id_parent'] . $value1['id_size']);
+                            ?>
+                                <tr align="center">
+                                    <input type="hidden" name="code1[]" value="<?= $code1 ?>">
+                                    <input type="hidden" name="id_parent<?= $code1 ?>" value="<?= $value1['id_parent'] ?>" />
+                                    <input type="hidden" name="size<?= $code1 ?>" value="<?= $value1['id_size'] ?>" />
+                                    <td class="text-bold"><?= $key + 1 ?></td>
+                                    <td><?= $size_detail1['namevi'] ?></td>
+                                    <td style="width: 200px !important">
+                                        <input type="text" name="price_new_size<?= $code1 ?>" class="format-price form-control" value="<?= ($var_check1['price_new'] != '') ? number_format($var_check1['price_new']) : 0 ?>" />
+                                    </td>
+                                    <td style="width: 200px !important">
+                                        <input type="text" name="price_old_size<?= $code1 ?>" class="format-price form-control" value="<?= ($var_check1['price_old'] != '') ? number_format($var_check1['price_old']) : 0 ?>" />
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <?php } ?>
 
         <?php if (isset($flagGallery) && $flagGallery == true) { ?>
             <div class="card card-primary card-outline text-sm">

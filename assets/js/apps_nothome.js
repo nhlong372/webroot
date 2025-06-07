@@ -180,7 +180,6 @@ NN_FRAMEWORK.Cart2 = function () {
 	});
 	/* Counter */
 	$('body').on('click', '.counter-procart', function () {
-
 		var button = $(this);
 		var quantity = 1;
 		var input = button.parent().find('input');
@@ -380,13 +379,14 @@ NN_FRAMEWORK.doigia = function(){
 
 NN_FRAMEWORK.doihinh = function(){
 	if (isExist($('.proprice_item_color'))) {
-		$(document).on('click', '.proprice_item_color', function(event) {
+		$(document).on('click', '.proprice_item_color', function (event) {
+			console.log();
 			event.preventDefault();
 			$('.proprice_item1').removeClass('active');
 			$(this).addClass('active').siblings('.proprice_item_color').removeClass('active');
 			var photo = $('.proprice_item1.active').data('img');
 			var id_product = $('.proprice_item1.active').data('id_prod');
-			
+			fill_price($(this).data('min_price'));
 			$.ajax({
 				url: 'doihinh',
 				type: 'post',

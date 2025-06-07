@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2025 at 09:52 AM
+-- Generation Time: Jun 07, 2025 at 07:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -4163,7 +4163,16 @@ INSERT INTO `table_counter` (`id`, `tm`, `ip`, `browser`, `device`) VALUES
 (10653, 1747377750, '::1', 'chrome', 'desktop'),
 (10654, 1747378661, '::1', 'edge', 'desktop'),
 (10655, 1747380053, '::1', 'edge', 'desktop'),
-(10656, 1747380984, '::1', 'edge', 'desktop');
+(10656, 1747380984, '::1', 'edge', 'desktop'),
+(10657, 1748103023, '::1', 'opera', 'desktop'),
+(10658, 1749308583, '::1', 'chrome', 'desktop'),
+(10659, 1749309695, '::1', 'chrome', 'desktop'),
+(10660, 1749310891, '::1', 'chrome', 'desktop'),
+(10661, 1749312642, '::1', 'opera', 'desktop'),
+(10662, 1749313556, '::1', 'safari', 'phone'),
+(10663, 1749314516, '::1', 'opera', 'desktop'),
+(10664, 1749315507, '::1', 'opera', 'desktop'),
+(10665, 1749316413, '::1', 'opera', 'desktop');
 
 -- --------------------------------------------------------
 
@@ -5822,9 +5831,9 @@ CREATE TABLE `table_product` (
 --
 
 INSERT INTO `table_product` (`id`, `id_list`, `id_item`, `id_cat`, `id_sub`, `id_brand`, `photo`, `photo2`, `options`, `options2`, `slugvi`, `slugen`, `contenten`, `contentvi`, `descen`, `descvi`, `nameen`, `namevi`, `code`, `regular_price`, `discount`, `sale_price`, `numb`, `status`, `type`, `date_created`, `date_updated`, `view`, `size`, `color`) VALUES
-(1, 1, 1, 1, 1, 1, 'poduct-1-1318-4164-9280.jpg', '', '{\"p\":\"poduct-1-1318-4164-9280.jpg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '{\"dientich\":\"\",\"phaply\":\"\",\"nhucau\":\"\",\"loai\":\"\",\"tang\":\"\",\"toa\":\"\",\"huong\":\"\",\"phongngu\":\"\",\"phongwc\":\"\"}', 'giay-slip-on-ultraboost-20', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 20', 'Giày Slip On Ultraboost 20', 'SOUL-20', 350000, 0, 250000, 1, 'noibat,hienthi', 'san-pham', 1609248457, 1712803681, 483, '1,2,3,4', '6,1,2,3,4'),
+(1, 1, 1, 1, 1, 1, 'poduct-1-1318-4164-9280.jpg', '', '{\"p\":\"poduct-1-1318-4164-9280.jpg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '{\"dientich\":\"\",\"phaply\":\"\",\"nhucau\":\"\",\"loai\":\"\",\"tang\":\"\",\"toa\":\"\",\"huong\":\"\",\"phongngu\":\"\",\"phongwc\":\"\"}', 'giay-slip-on-ultraboost-20', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 20', 'Giày Slip On Ultraboost 20', 'SOUL-20', 350000, 0, 250000, 1, 'noibat,hienthi', 'san-pham', 1609248457, 1749315781, 549, '1,2,3,4', '6,1,2,3,4'),
 (2, 2, 1, 2, 1, 2, 'poduct-4-1646-2779-2127.jpg', NULL, '{\"p\":\"poduct-4-1646-2779-2127.jpg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '', 'giay-slip-on-ultraboost-21', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 21', 'Giày Slip On Ultraboost 21', 'SOUL-21', 450000, 0, 300000, 2, 'noibat,hienthi', 'san-pham', 1609248594, 1704685964, 133, '', ''),
-(3, 1, 1, 1, 1, 3, 'poduct-1-1758-1072-5001.jpeg', NULL, '{\"p\":\"poduct-1-1758-1072-5001.jpeg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '', 'giay-slip-on-ultraboost-22', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 22', 'Giày Slip On Ultraboost 22', 'SOUL-22', 250000, 0, 150000, 3, 'noibat,hienthi', 'san-pham', 1609248686, 1704685922, 78, '', ''),
+(3, 1, 1, 1, 1, 3, 'poduct-1-1758-1072-5001.jpeg', NULL, '{\"p\":\"poduct-1-1758-1072-5001.jpeg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '', 'giay-slip-on-ultraboost-22', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 22', 'Giày Slip On Ultraboost 22', 'SOUL-22', 250000, 0, 150000, 3, 'noibat,hienthi', 'san-pham', 1609248686, 1704685922, 85, '', ''),
 (4, 2, 1, 2, 1, 4, 'poduct-5-3937-3600-5298.jpg', NULL, '{\"p\":\"poduct-5-3937-3600-5298.jpg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '', 'giay-slip-on-ultraboost-23', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 23', 'Giày Slip On Ultraboost 23', 'SOUL-23', 550000, 0, 400000, 4, 'noibat,hienthi', 'san-pham', 1609248760, 1704685973, 9, '', ''),
 (5, 1, 2, 1, 2, 5, 'poduct-2-3013-1627-5157.jpg', NULL, '{\"p\":\"poduct-2-3013-1627-5157.jpg\",\"w\":540,\"h\":540,\"m\":\"image\\/jpeg\"}', '', 'giay-slip-on-ultraboost-24', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 24', 'Giày Slip On Ultraboost 24', 'SOUL-24', 150000, 0, 90000, 5, 'noibat,hienthi', 'san-pham', 1609249040, 1704685933, 2, '', ''),
 (6, 2, 2, 2, 2, 6, 'poduct-6-8870-7717-8098.jpg', NULL, '{\"p\":\"poduct-6-8870-7717-8098.jpg\",\"w\":500,\"h\":500,\"m\":\"image\\/jpeg\"}', '', 'giay-slip-on-ultraboost-25', '', '&lt;p&gt;Dong Hai Men\'s Shoes - G0702 with Monkstrap design is a men\'s shoe that is loved by gentlemen because of its elegance and masculinity. Characteristic of Double Monkstrap, the G0702 has a unique design with a snap and two metal buckles across the upper part of the shoe. Made of high quality cowhide leather with moderate elasticity, suitable shape, and soft and soft shoe lining creating a comfortable feeling for men to use. Men\'s shoes G0702 has a luxurious but classic style that is suitable for office, meeting and party environments.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Product code: G0702&lt;/li&gt;\r\n	&lt;li&gt;Color: Yellow, Black&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Material: Cowhide&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '&lt;p&gt;Giày tây nam Đông Hải - G0702 với kiểu dáng Monkstrap là kiểu giày nam được quý ông yêu thích bởi sự lịch lãm, nam tính. Mang nét đặc trưng của Double Monkstrap, G0702 có thiết kế độc đáo với phần đóng mở bằng dây gài và 2 khóa kim loại vắt ngang qua phần thân giày. Được làm bằng chất liệu da bò cao cấp có độ co giãn vừa phải, form dáng phù hợp, cùng với lớp lót giày mềm mịn tạo cảm giác thoải mái, dễ chịu cho phái mạnh khi sử dụng. Giày tây nam G0702 mang phong cách sang trọng mà cổ điển phù hợp với môi trường công sở, hội họp và dự tiệc.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n	&lt;li&gt;Mã sản phẩm: G0702&lt;/li&gt;\r\n	&lt;li&gt;Màu: Vàng, Đen&lt;/li&gt;\r\n	&lt;li&gt;Size: 38 - 43&lt;/li&gt;\r\n	&lt;li&gt;Chất liệu: Da bò&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', 'Hurry to the streets without much time? Get your feet in these adidas Superstar slip-on shoes and easily create an elegant style at the last minute.\r\nThe wireless design on the body of the shoe combines a sporty stretch belt that hugs the feet for a comfortable fit. Wherever you go, whether paired with trousers or short skirts, the shoes will help you stand out with a modern style.', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót. \r\nThiết kế không dây trên thân giày kết hợp đai co giãn đậm chất thể thao ôm sát bàn chân cho độ vừa vặn thoải mái. Dù bạn đi đâu, dù phối với quần ống loe hay váy ngắn, đôi giày cũng sẽ giúp bạn nổi bật với phong cách hiện đại.', 'Slip On Ultraboost 25', 'Giày Slip On Ultraboost 25', 'SOUL-25', 150000, 0, 90000, 6, 'noibat,hienthi', 'san-pham', 1609249099, 1704685983, 6, '', ''),
@@ -6039,17 +6048,28 @@ INSERT INTO `table_product_sale` (`id`, `id_parent`, `id_color`, `id_size`) VALU
 (168, 8, 3, 1),
 (167, 8, 2, 4),
 (166, 8, 2, 1),
-(233, 1, 2, 3),
-(232, 1, 2, 2),
-(231, 1, 2, 1),
-(230, 1, 1, 3),
-(229, 1, 1, 2),
-(228, 1, 1, 1),
+(242, 1, 2, 1),
+(241, 1, 1, 4),
+(240, 1, 1, 3),
+(239, 1, 1, 2),
+(238, 1, 1, 1),
+(237, 1, 6, 4),
 (213, 3, 2, 3),
 (212, 3, 2, 2),
-(227, 1, 6, 3),
-(226, 1, 6, 2),
-(225, 1, 6, 1);
+(236, 1, 6, 3),
+(235, 1, 6, 2),
+(234, 1, 6, 1),
+(243, 1, 2, 2),
+(244, 1, 2, 3),
+(245, 1, 2, 4),
+(246, 1, 3, 1),
+(247, 1, 3, 2),
+(248, 1, 3, 3),
+(249, 1, 3, 4),
+(250, 1, 4, 1),
+(251, 1, 4, 2),
+(252, 1, 4, 3),
+(253, 1, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -6073,11 +6093,11 @@ INSERT INTO `table_product_sale_color` (`id`, `id_parent`, `id_color`) VALUES
 (8, 40, 2),
 (9, 40, 3),
 (10, 40, 4),
-(38, 1, 6),
-(39, 1, 1),
-(40, 1, 2),
-(41, 1, 3),
-(42, 1, 4);
+(143, 1, 6),
+(144, 1, 1),
+(145, 1, 2),
+(146, 1, 3),
+(147, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -6100,10 +6120,10 @@ INSERT INTO `table_product_sale_size` (`id`, `id_parent`, `id_size`) VALUES
 (6, 40, 2),
 (7, 40, 3),
 (8, 40, 4),
-(29, 1, 1),
-(30, 1, 2),
-(31, 1, 3),
-(32, 1, 4);
+(113, 1, 1),
+(114, 1, 2),
+(115, 1, 3),
+(116, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -6215,7 +6235,7 @@ INSERT INTO `table_seo` (`id`, `id_parent`, `com`, `act`, `type`, `titlevi`, `ke
 (17, 5, 'product', 'man_brand', 'san-pham', 'Reebook', 'Reebook', 'Reebook', 'Reebook', 'Reebook', 'Reebook', NULL, NULL),
 (18, 6, 'product', 'man_brand', 'san-pham', 'New balance', 'New balance', 'New balance', 'New balance', 'New balance', 'New balance', NULL, NULL),
 (19, 7, 'product', 'man_brand', 'san-pham', 'Puma', 'Puma', 'Puma', 'Puma', 'Puma', 'Puma', NULL, NULL),
-(392, 1, 'product', 'man', 'san-pham', 'Giày Slip On Ultraboost 20', 'Giày Slip On Ultraboost 20', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh', '', '', '', '{\r\n    &quot;@context&quot;: &quot;https://schema.org/&quot;,\r\n    &quot;@type&quot;: &quot;Product&quot;,\r\n    &quot;name&quot;: &quot;Giày Slip On Ultraboost 20&quot;,\r\n    &quot;image&quot;: [\r\n        &quot;http://localhost/sourcemau8/upload/product/poduct-1-1318-2291.jpg&quot;\r\n    ],\r\n    &quot;description&quot;: &quot;Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh&quot;,\r\n    &quot;sku&quot;: &quot;SP01&quot;,\r\n    &quot;mpn&quot;: &quot;SOUL-20&quot;,\r\n    &quot;brand&quot;: {\r\n        &quot;@type&quot;: &quot;Brand&quot;,\r\n        &quot;name&quot;: &quot;Giày nam&quot;\r\n    },\r\n    &quot;review&quot;: {\r\n        &quot;@type&quot;: &quot;Review&quot;,\r\n        &quot;reviewRating&quot;: {\r\n            &quot;@type&quot;: &quot;Rating&quot;,\r\n            &quot;ratingValue&quot;: &quot;5&quot;,\r\n            &quot;bestRating&quot;: &quot;5&quot;\r\n        },\r\n        &quot;author&quot;: {\r\n            &quot;@type&quot;: &quot;Person&quot;,\r\n            &quot;name&quot;: &quot;Sneaker Shoes VI&quot;\r\n        }\r\n    },\r\n    &quot;aggregateRating&quot;: {\r\n        &quot;@type&quot;: &quot;AggregateRating&quot;,\r\n        &quot;ratingValue&quot;: &quot;4.4&quot;,\r\n        &quot;reviewCount&quot;: &quot;89&quot;\r\n    },\r\n    &quot;offers&quot;: {\r\n        &quot;@type&quot;: &quot;Offer&quot;,\r\n        &quot;url&quot;: &quot;http://localhost/sourcemau8/giay-slip-on-ultraboost-20&quot;,\r\n        &quot;priceCurrency&quot;: &quot;VND&quot;,\r\n        &quot;priceValidUntil&quot;: &quot;2099-11-20&quot;,\r\n        &quot;price&quot;: &quot;350000&quot;,\r\n        &quot;itemCondition&quot;: &quot;https://schema.org/UsedCondition&quot;,\r\n        &quot;availability&quot;: &quot;https://schema.org/InStock&quot;\r\n    }\r\n}', ''),
+(434, 1, 'product', 'man', 'san-pham', 'Giày Slip On Ultraboost 20', 'Giày Slip On Ultraboost 20', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh', '', '', '', '{\r\n    &quot;@context&quot;: &quot;https://schema.org/&quot;,\r\n    &quot;@type&quot;: &quot;Product&quot;,\r\n    &quot;name&quot;: &quot;Giày Slip On Ultraboost 20&quot;,\r\n    &quot;image&quot;: [\r\n        &quot;http://localhost/sourcemau8/upload/product/poduct-1-1318-2291.jpg&quot;\r\n    ],\r\n    &quot;description&quot;: &quot;Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh&quot;,\r\n    &quot;sku&quot;: &quot;SP01&quot;,\r\n    &quot;mpn&quot;: &quot;SOUL-20&quot;,\r\n    &quot;brand&quot;: {\r\n        &quot;@type&quot;: &quot;Brand&quot;,\r\n        &quot;name&quot;: &quot;Giày nam&quot;\r\n    },\r\n    &quot;review&quot;: {\r\n        &quot;@type&quot;: &quot;Review&quot;,\r\n        &quot;reviewRating&quot;: {\r\n            &quot;@type&quot;: &quot;Rating&quot;,\r\n            &quot;ratingValue&quot;: &quot;5&quot;,\r\n            &quot;bestRating&quot;: &quot;5&quot;\r\n        },\r\n        &quot;author&quot;: {\r\n            &quot;@type&quot;: &quot;Person&quot;,\r\n            &quot;name&quot;: &quot;Sneaker Shoes VI&quot;\r\n        }\r\n    },\r\n    &quot;aggregateRating&quot;: {\r\n        &quot;@type&quot;: &quot;AggregateRating&quot;,\r\n        &quot;ratingValue&quot;: &quot;4.4&quot;,\r\n        &quot;reviewCount&quot;: &quot;89&quot;\r\n    },\r\n    &quot;offers&quot;: {\r\n        &quot;@type&quot;: &quot;Offer&quot;,\r\n        &quot;url&quot;: &quot;http://localhost/sourcemau8/giay-slip-on-ultraboost-20&quot;,\r\n        &quot;priceCurrency&quot;: &quot;VND&quot;,\r\n        &quot;priceValidUntil&quot;: &quot;2099-11-20&quot;,\r\n        &quot;price&quot;: &quot;350000&quot;,\r\n        &quot;itemCondition&quot;: &quot;https://schema.org/UsedCondition&quot;,\r\n        &quot;availability&quot;: &quot;https://schema.org/InStock&quot;\r\n    }\r\n}', ''),
 (326, 2, 'product', 'man', 'san-pham', 'Giày Slip On Ultraboost 21', 'Giày Slip On Ultraboost 21', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh', '', '', '', '', ''),
 (325, 3, 'product', 'man', 'san-pham', 'Giày Slip On Ultraboost 22', 'Giày Slip On Ultraboost 22', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh', '', '', '', '', ''),
 (328, 4, 'product', 'man', 'san-pham', 'Giày Slip On Ultraboost 23', 'Giày Slip On Ultraboost 23', 'Vội ra đường mà không có nhiều thời gian? Hãy xỏ chân vào đôi giày slip-on adidas Superstar này và dễ dàng tạo phong cách thanh lịch vào phút chót.  Thiết kế kh', '', '', '', '', ''),
@@ -6426,7 +6446,7 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`id`, `id_permission`, `username`, `password`, `confirm_code`, `avatar`, `fullname`, `phone`, `email`, `address`, `gender`, `login_session`, `user_token`, `lastlogin`, `status`, `role`, `secret_key`, `birthday`, `numb`) VALUES
-(1, 0, 'admin', '79709a28906d1f7a08a0d067896ea1d5', '', '', 'Administrator', '0939513667', 'admin@gmail.com', '222 huỳnh thị na', 1, 'cdd5129f3ac2a705131260a4ab12a285', 'e84f05491f184e0202d7baf882cffa80', '1747381650', 'hienthi', 3, 'cdd5129f3ac2a705131260a4ab12a285', 1608051600, 0);
+(1, 0, 'admin', '79709a28906d1f7a08a0d067896ea1d5', '', '', 'Administrator', '0939513667', 'admin@gmail.com', '222 huỳnh thị na', 1, 'cdd5129f3ac2a705131260a4ab12a285', '640bbea7c5b718c8f29993858dc8f61e', '1749317107', 'hienthi', 3, 'cdd5129f3ac2a705131260a4ab12a285', 1608051600, 0);
 
 -- --------------------------------------------------------
 
@@ -6688,7 +6708,9 @@ INSERT INTO `table_user_log` (`id`, `id_user`, `ip`, `timelog`, `user_agent`) VA
 (218, 1, '::1', 1747317106, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'),
 (219, 1, '::1', 1747326453, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0'),
 (220, 1, '::1', 1747374618, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0'),
-(221, 1, '::1', 1747375647, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
+(221, 1, '::1', 1747375647, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'),
+(222, 1, '::1', 1748103034, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 OPR/118.0.0.0'),
+(223, 1, '::1', 1749308603, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -6707,7 +6729,7 @@ CREATE TABLE `table_user_online` (
 --
 
 INSERT INTO `table_user_online` (`session`, `time`, `ip`) VALUES
-('br3jcju0snf4vgp5bteb2oiad2', 1747378742, '::1');
+('73qj21rsutmi69lq1gbtot16ba', 1749316413, '::1');
 
 -- --------------------------------------------------------
 
@@ -6719,19 +6741,21 @@ CREATE TABLE `table_variants_color` (
   `id` int(11) NOT NULL,
   `id_parent` int(11) DEFAULT NULL,
   `color` varchar(255) DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL
+  `photo` varchar(255) DEFAULT NULL,
+  `price_new` double DEFAULT NULL,
+  `price_old` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `table_variants_color`
 --
 
-INSERT INTO `table_variants_color` (`id`, `id_parent`, `color`, `photo`) VALUES
-(6, 1, '6', '15-500x500d44c0f10-1fd0-42f0-75a3-5e0a6d22d6e7grande-9004-3142-5048.png'),
-(7, 1, '1', '3329b1d3-2929-4959-b61e-bbd7427b7262-4403-4722.png'),
-(8, 1, '2', '13-500x500370eb75f-2542-43c9-adb8-69e7346a7b11grande-4439-1007-7056.png'),
-(9, 1, '3', '16-500x500grande-6504-3302-6921.png'),
-(10, 1, '4', 'dn1696-062-giay-nike-jordan-series-se-black-samurai-chinh-hang-gia-tot-den-king-shoes-1-8458.jpg');
+INSERT INTO `table_variants_color` (`id`, `id_parent`, `color`, `photo`, `price_new`, `price_old`) VALUES
+(6, 1, '6', '15-500x500d44c0f10-1fd0-42f0-75a3-5e0a6d22d6e7grande-9004-3142-5048.png', 0, 0),
+(7, 1, '1', '3329b1d3-2929-4959-b61e-bbd7427b7262-4403-4722.png', 11111, 0),
+(8, 1, '2', '13-500x500370eb75f-2542-43c9-adb8-69e7346a7b11grande-4439-1007-7056.png', 222222, 0),
+(9, 1, '3', '16-500x500grande-6504-3302-6921.png', 3333333, 0),
+(10, 1, '4', 'dn1696-062-giay-nike-jordan-series-se-black-samurai-chinh-hang-gia-tot-den-king-shoes-1-8458.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6743,8 +6767,8 @@ CREATE TABLE `table_variants_size` (
   `id` int(11) NOT NULL,
   `id_parent` int(11) DEFAULT NULL,
   `size` int(11) DEFAULT NULL,
-  `price_new` int(11) DEFAULT NULL,
-  `price_old` int(11) DEFAULT NULL
+  `price_new` double DEFAULT NULL,
+  `price_old` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -17745,7 +17769,7 @@ ALTER TABLE `table_contact`
 -- AUTO_INCREMENT for table `table_counter`
 --
 ALTER TABLE `table_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10657;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10666;
 
 --
 -- AUTO_INCREMENT for table `table_coupon`
@@ -17895,19 +17919,19 @@ ALTER TABLE `table_product_list`
 -- AUTO_INCREMENT for table `table_product_sale`
 --
 ALTER TABLE `table_product_sale`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
 
 --
 -- AUTO_INCREMENT for table `table_product_sale_color`
 --
 ALTER TABLE `table_product_sale_color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `table_product_sale_size`
 --
 ALTER TABLE `table_product_sale_size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `table_product_sub`
@@ -17931,7 +17955,7 @@ ALTER TABLE `table_pushonesignal`
 -- AUTO_INCREMENT for table `table_seo`
 --
 ALTER TABLE `table_seo`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
 
 --
 -- AUTO_INCREMENT for table `table_seopage`
@@ -17979,7 +18003,7 @@ ALTER TABLE `table_user_limit`
 -- AUTO_INCREMENT for table `table_user_log`
 --
 ALTER TABLE `table_user_log`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 
 --
 -- AUTO_INCREMENT for table `table_variants_color`

@@ -2884,7 +2884,7 @@ class Functions
         } elseif (preg_match('/Windows NT.*Touch/i', $userAgent) || preg_match('/Surface/i', $userAgent)) { // Nhận diện Surface Pro dựa trên Windows + khả năng cảm ứng (nếu có dữ liệu từ client)
             $device = 'tablet';
         } elseif ($detect->isMobile() || preg_match($mobileKeywords, $userAgent)) {
-            $device = 'mobile';
+            $device = 'phone';
         } else {
             $device = 'desktop';
         }
@@ -2958,7 +2958,7 @@ class Functions
                 'figure' => $figure
             ],
             'phone' => [
-                'name' => 'Mobile',
+                'name' => 'Phone',
                 'img' => 'phone',
                 'figure' => $figure
             ],

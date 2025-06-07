@@ -665,31 +665,33 @@ NN_FRAMEWORK.Cart = function () {
     /* size màu cơ bản*/
 
     /* size màu nâng cao*/
-    // if($('.proprice_item_size').length > 0) {
-    // 	if($('.proprice_item_size.active').length > 0) {
-    // 		var size = $('.proprice_item_size.active').data('id');
-    // 		var gia = $('.proprice_item_size.active').data('min_price');
-    // 	}
-    // 	else {
-    // 		var size = 0;
-    // 		var gia = 0;
-    //               notifyDialog('Bạn vui lòng chọn size!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
-    // 		return false;
-    // 	}
-    // }
+    if (CARTSITEADVANCE == true) {
+      if($('.proprice_item_size').length > 0) {
+        if($('.proprice_item_size.active').length > 0) {
+          var size = $('.proprice_item_size.active').data('id');
+          var gia = $('.proprice_item_size.active').data('min_price');
+        }
+        else {
+          var size = 0;
+          var gia = 0;
+          notifyDialog('Bạn vui lòng chọn size!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
+          return false;
+        }
+      }
 
-    // if($('.proprice_item_color').length > 0) {
-    // 	if($('.proprice_item_color.active').length > 0) {
-    // 		var color = $('.proprice_item_color.active').data('id');
-    // 		var photo = $('.proprice_item_color.active').data('photo');
-    // 	}
-    // 	else {
-    // 		var color = 0;
-    // 		var photo = 0;
-    //               notifyDialog('Bạn vui lòng chọn màu!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
-    // 		return false;
-    // 	}
-    // }
+      if($('.proprice_item_color').length > 0) {
+        if($('.proprice_item_color.active').length > 0) {
+          var color = $('.proprice_item_color.active').data('id');
+          var photo = $('.proprice_item_color.active').data('photo');
+        }
+        else {
+          var color = 0;
+          var photo = 0;
+          notifyDialog('Bạn vui lòng chọn màu!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
+          return false;
+        }
+      }
+    }
     /* size màu nâng cao*/
 
     if (id) {
@@ -868,42 +870,6 @@ $("body").on("click", ".apply-coupon", function () {
     },
   });
 });
-
-/*NN_FRAMEWORK.doigia = function(){
-	if (isExist($('.proprice_item_size'))) {
-		$(document).on('click', '.proprice_item_size', function(event) {
-			event.preventDefault();
-			$('.proprice_item').removeClass('active');
-			$(this).addClass('active').siblings('.proprice_item_size').removeClass('active');
-			fill_price($(this).data('min_price'));
-		});
-	}
-};
-
-NN_FRAMEWORK.doihinh = function(){
-	if (isExist($('.proprice_item_color'))) {
-		$(document).on('click', '.proprice_item_color', function(event) {
-			event.preventDefault();
-			$('.proprice_item1').removeClass('active');
-			$(this).addClass('active').siblings('.proprice_item_color').removeClass('active');
-			var photo = $('.proprice_item1.active').data('img');
-			var id_product = $('.proprice_item1.active').data('id_prod');
-			
-			$.ajax({
-				url: 'doihinh',
-				type: 'post',
-				data: {
-					id_product: id_product,
-					photo: photo,
-				},
-			})
-			.done(function(kq) {
-				$('.productTop1_fotorama').html(kq);
-				$('.fotorama').fotorama();
-			});		
-		});
-	}
-};*/
 
 NN_FRAMEWORK.ChangeImgToIframe = function () {
   /* Click img ra iframe */

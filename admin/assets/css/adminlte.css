@@ -10,8 +10,9 @@
 .delete_tt {display: inline-block; position: absolute; top: 48px; right: 48px; cursor: pointer; }
 .delete_1hinh,.delete_1video{cursor: pointer;margin-bottom: 5px;}
 .themphantu{display: inline-block;padding: 8px 20px;background: #2faa4b;color: #fff;margin-top: 9px;border-radius: 5px;}
-.viewPictureIcon img {max-width: 104px;width: 100%;margin-bottom: 7px;}
-.viewPictureIcon{display: inline-block; margin-right: 10px; }
+.viewPictureIcon img {/* margin-bottom: 7px; */ object-fit: cover; border: 1px solid rgba(0,0,0,.09); height: 104px;width: 104px; border-radius: .25rem!important;}
+.viewPictureIcon{display: inline-block; margin-right: 10px;}
+.table.table-striped td, .table.table-striped th{vertical-align: middle;}
 .flex_tt {display: flex;align-items: center;padding: 8px 20px;}
 .themthuoctinh {display: flex;flex-flow: wrap;margin: -5px;}
 .delete_tt_1 img,.delete_1video img{width: 18px;}

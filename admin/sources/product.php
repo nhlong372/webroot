@@ -276,7 +276,9 @@ function saveMan()
                 $dataVariants = array();
                 $dataVariants['id_parent'] = (!empty($_POST['id_parent' . $value])) ? $_POST['id_parent' . $value] : 0;
                 $dataVariants['color'] = ($_POST['color' . $value]) ? $_POST['color' . $value] : 0;
-                $var_check = $d->rawQueryOne("select id,photo from table_variants_color where id_parent = ? and color = ? limit 0,1", array($_POST['id_parent' . $value], $_POST['color' . $value]));
+                $var_check = $d->rawQueryOne("select id, photo, price_new, price_old from table_variants_color where id_parent = ? and color = ? limit 0,1", array($_POST['id_parent' . $value], $_POST['color' . $value]));
+                $dataVariants['price_new'] = ($_POST['price_new_color' . $value]) ? str_replace(',', '', $_POST['price_new_color' . $value]) : 0;
+                $dataVariants['price_old'] = ($_POST['price_old_color' . $value]) ? str_replace(',', '', $_POST['price_old_color' . $value]) : 0;
                 if ($var_check) {
                     $file_name = $func->uploadName($_FILES["photo" . $value]["name"]);
                     if ($photo = $func->uploadImage("photo" . $value, $config['product'][$type]['img_type'], UPLOAD_PRODUCT, $file_name)) {
@@ -305,9 +307,9 @@ function saveMan()
                 $dataVariants1 = array();
                 $dataVariants1['id_parent'] = ($_POST['id_parent' . $value1]) ? $_POST['id_parent' . $value1] : 0;
                 $dataVariants1['size'] = ($_POST['size' . $value1]) ? $_POST['size' . $value1] : 0;
-                $var_check1 = $d->rawQueryOne("select id,price_new from table_variants_size where id_parent = ? and size = ? limit 0,1", array($_POST['id_parent' . $value1], $_POST['size' . $value1]));
-                $dataVariants1['price_new'] = ($_POST['price_new' . $value1]) ? str_replace(',', '', $_POST['price_new' . $value1]) : 0;
-                $dataVariants1['price_old'] = ($_POST['price_old' . $value1]) ? str_replace(',', '', $_POST['price_old' . $value1]) : 0;
+                $var_check1 = $d->rawQueryOne("select id, price_new, price_old from table_variants_size where id_parent = ? and size = ? limit 0,1", array($_POST['id_parent' . $value1], $_POST['size' . $value1]));
+                $dataVariants1['price_new'] = ($_POST['price_new_size' . $value1]) ? str_replace(',', '', $_POST['price_new_size' . $value1]) : 0;
+                $dataVariants1['price_old'] = ($_POST['price_old_size' . $value1]) ? str_replace(',', '', $_POST['price_old_size' . $value1]) : 0;
                 if ($var_check1) {
                     $d->where('id', $var_check1['id']);
                     $d->update('variants_size', $dataVariants1);
