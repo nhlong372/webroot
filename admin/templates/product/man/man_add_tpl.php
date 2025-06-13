@@ -407,8 +407,8 @@ if (
                                 <th scope="col">STT</th>
                                 <th scope="col">Màu sắc</th>
                                 <th scope="col">Hình ảnh</th>
-                                <th scope="col">Giá mới theo từng màu</th>
-                                <th scope="col">Giá cũ theo từng màu</th>
+                                <!-- <th scope="col">Giá mới theo từng màu</th>
+                                <th scope="col">Giá cũ theo từng màu</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -432,12 +432,12 @@ if (
                                             <input type="file" name="photo<?= $code ?>" onchange="loadFile(event, 'output<?= $value['id'] ?>')" accept="image/*">
                                         </div>
                                     </td>
-                                    <td style="width: 200px !important">
+                                    <?php /*<td style="width: 200px !important">
                                         <input type="text" name="price_new_color<?= $code ?>" class="format-price form-control" value="<?= ($var_check['price_new'] != '') ? number_format($var_check['price_new']) : 0 ?>" />
                                     </td>
                                     <td style="width: 200px !important">
                                         <input type="text" name="price_old_color<?= $code ?>" class="format-price form-control" value="<?= ($var_check['price_old'] != '') ? number_format($var_check['price_old']) : 0 ?>" />
-                                    </td>
+                                    </td> */ ?>
                                 </tr>
                             <?php } ?>
                         </tbody>

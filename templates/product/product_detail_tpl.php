@@ -113,7 +113,7 @@
                                         }
                                     }
                                 ?>
-                                    <div class="proprice_item proprice_item_size" data-id="<?= $v['id'] ?>" data-tab="<?= $k ?>" data-min_price="<?= ($gia_min > 0) ? number_format($gia_min) : 0 ?>">
+                                    <div class="proprice_item proprice_item_size" data-id="<?= $v['id'] ?>" data-tab="<?= $k ?>" data-new_size_price="<?= ($gia_min > 0) ? number_format($gia_min) : 0 ?>">
                                         <a class="transition proprice_action">
                                             <span><?= $v['name' . $lang] ?></span>
                                         </a>
@@ -127,15 +127,15 @@
                             <div class="prod_details_color">
                                 <?php foreach ($rowColor as $k => $v) {
                                     $productColor = $d->rawQuery("select id_parent, color, photo, price_new from table_variants_color where id_parent = ? and color = ?", array($rowDetail['id'], $v['id']));
-                                    $gia_min_color = 0;
-                                    foreach ($productColor as $key => $value) {
-                                        if ($value['price_new'] > 0) {
-                                            $gia_min_color = $value['price_new'];
-                                            break;
-                                        } else {
-                                            $gia_min_color = 0;
-                                        }
-                                    }
+                                    // $gia_min_color = 0;
+                                    // foreach ($productColor as $key => $value) {
+                                    //     if ($value['price_new'] > 0) {
+                                    //         $gia_min_color = $value['price_new'];
+                                    //         break;
+                                    //     } else {
+                                    //         $gia_min_color = 0;
+                                    //     }
+                                    // }
                                 ?>
                                     <div class="align-items-center">
                                         <?php foreach ($productColor as $key2 => $value2) {
@@ -143,7 +143,7 @@
                                             $variants_check = $d->rawQueryOne("select id from table_product_sale where id_parent = ? and id_color = ? limit 1", array($rowDetail['id'], $value2['color']));
                                             /*if(!$variants_check['id'] or $variants_check['id']=='' or $variants_check['id']==0) continue;*/
                                         ?>
-                                            <div class="proprice_item_color proprice_item1" data-photo="<?= $value2['photo'] ?>" data-img="<?= THUMBS ?>/740x740x1/<?= UPLOAD_PRODUCT_L . $value2['photo'] ?>" data-id="<?= $value2['color'] ?>" data-id_prod="<?= $rowDetail['id'] ?>" data-tab="<?= $k ?>" data-min_price="<?= ($gia_min_color > 0) ? number_format($gia_min_color) : 0 ?>">
+                                            <div class="proprice_item_color proprice_item1" data-photo="<?= $value2['photo'] ?>" data-img="<?= THUMBS ?>/740x740x1/<?= UPLOAD_PRODUCT_L . $value2['photo'] ?>" data-id="<?= $value2['color'] ?>" data-id_prod="<?= $rowDetail['id'] ?>">
                                                 <a class="transition proprice_action" style="background: #<?= $color_name['color'] ?>;">
                                                     <?php if (!empty($color_name['name' . $lang])) { ?>
                                                         <div class="tooltip-pro-detail tooltipcolor"><span><?= $color_name['name' . $lang] ?></span></div>
@@ -221,11 +221,11 @@
             </ul>
             <?php if (CARTSITE == true) { ?>
                 <div class="cart-pro-detail">
-                    <a class="btn btn-success addcart rounded-0 mr-2" data-id="<?= $rowDetail['id'] ?>" data-action="addnow">
+                    <a class="btn btn-success <?= ($rowDetail['regular_price'] !=0 || !empty($rowDetail['regular_price'])) ? 'addcart' : 'btn-alert' ;?> rounded-0 mr-2 " data-id="<?= $rowDetail['id'] ?>" data-action="addnow">
                         <i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>
                         <span>Thêm vào giỏ hàng</span>
                     </a>
-                    <a class="btn btn-dark addcart rounded-0" data-id="<?= $rowDetail['id'] ?>" data-action="buynow">
+                    <a class="btn btn-dark <?= ($rowDetail['regular_price'] !=0 || !empty($rowDetail['regular_price'])) ? 'addcart' : 'btn-alert2' ;?> rounded-0" data-id="<?= $rowDetail['id'] ?>" data-action="buynow">
                         <i class="fa-sharp fa-regular fa-cash-register mr-1"></i>
                         <span>Mua ngay</span>
                     </a>

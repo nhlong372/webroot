@@ -639,8 +639,8 @@ NN_FRAMEWORK.DomChange = function () {
     });
   });
 };
-
 NN_FRAMEWORK.Cart = function () {
+ 
   /* Add */
   $("body").on("click", ".addcart", function () {
     $this = $(this);
@@ -653,47 +653,32 @@ NN_FRAMEWORK.Cart = function () {
     quantity = quantity ? quantity : 1;
 
     /* size màu cơ bản*/
-    var color = $parents
-      .find(".color-block-pro-detail")
-      .find(".color-pro-detail input:checked")
-      .val();
+    var color = $parents.find(".color-block-pro-detail").find(".color-pro-detail input:checked").val();
     color = color ? color : 0;
-    var size = $parents
-      .find(".size-block-pro-detail")
-      .find(".size-pro-detail input:checked")
-      .val();
+    var size = $parents.find(".size-block-pro-detail").find(".size-pro-detail input:checked").val();
     /* size màu cơ bản*/
 
     /* size màu nâng cao*/
-    if (CARTSITEADVANCE == true) {
-      if($('.proprice_item_size').length > 0) {
-        if($('.proprice_item_size.active').length > 0) {
-          var size = $('.proprice_item_size.active').data('id');
-          var gia = $('.proprice_item_size.active').data('min_price');
-        }
-        else {
-          var size = 0;
-          var gia = 0;
-          notifyDialog('Bạn vui lòng chọn size!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
-          return false;
-        }
-      }
+    if($('.proprice_item_size.active').length > 0) {
+      var size = $('.proprice_item_size.active').data('id');
+      var gia = $('.proprice_item_size.active').data('new_size_price');
+    } else {
+      var size = 0;
+      var gia = 0;
+      notifyDialog('Bạn vui lòng chọn size!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
+      return false;
+    }
 
-      if($('.proprice_item_color').length > 0) {
-        if($('.proprice_item_color.active').length > 0) {
-          var color = $('.proprice_item_color.active').data('id');
-          var photo = $('.proprice_item_color.active').data('photo');
-        }
-        else {
-          var color = 0;
-          var photo = 0;
-          notifyDialog('Bạn vui lòng chọn màu!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
-          return false;
-        }
-      }
+    if($('.proprice_item_color.active').length > 0) {
+      var color = $('.proprice_item_color.active').data('id');
+      var photo = $('.proprice_item_color.active').data('photo');
+    } else {
+      var color = 0;
+      var photo = 0;
+      notifyDialog('Bạn vui lòng chọn màu!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '3000');
+      return false;
     }
     /* size màu nâng cao*/
-
     if (id) {
       $.ajax({
         url: "api/cart.php",
@@ -706,8 +691,8 @@ NN_FRAMEWORK.Cart = function () {
           color: color,
           size: size,
           quantity: quantity,
-          // gia: gia,
-          // photo: photo
+          gia: gia,
+          photo: photo
         },
         beforeSend: function () {
           holdonOpen();

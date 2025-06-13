@@ -372,7 +372,7 @@ NN_FRAMEWORK.doigia = function(){
 			event.preventDefault();
 			$('.proprice_item').removeClass('active');
 			$(this).addClass('active').siblings('.proprice_item_size').removeClass('active');
-			fill_price($(this).data('min_price'));
+			fill_price($(this).data('new_size_price'));
 		});
 	}
 };
@@ -386,7 +386,7 @@ NN_FRAMEWORK.doihinh = function(){
 			$(this).addClass('active').siblings('.proprice_item_color').removeClass('active');
 			var photo = $('.proprice_item1.active').data('img');
 			var id_product = $('.proprice_item1.active').data('id_prod');
-			fill_price($(this).data('min_price'));
+			// fill_price($(this).data('min_price'));
 			$.ajax({
 				url: 'doihinh',
 				type: 'post',
@@ -412,10 +412,10 @@ NN_FRAMEWORK.Warning = function() {
 	const completeZalo = phoneNumber.replace(regex, "");
 
 	$('.btn-alert').click(function () {
-		notifyDialog('Hiện sản phẩm này chưa có giá, bạn vui lòng liên hệ qua hotline <a href="tel:'+ completePhone +'">' + PHONENUMBER + '</a> hoặc liên hệ qua zalo <a href="tel:'+ completeZalo +'">' + ZALO + '</a> để được báo giá', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '10000');
+		notifyDialog('Hiện sản phẩm này chưa có giá, bạn vui lòng liên hệ qua hotline <a href="tel:'+ completePhone +'">' + PHONENUMBER + '</a> hoặc liên hệ qua zalo <a href="tel:'+ completeZalo +'">' + ZALO + '</a> để được báo giá. Xin cảm ơn quý khách!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '10000');
 	});
 	$('.btn-alert2').click(function () {
-		notifyDialog('Hiện sản phẩm này chưa có giá, bạn vui lòng liên hệ qua hotline <a href="tel:'+ completePhone +'">' + PHONENUMBER + '</a> hoặc liên hệ qua zalo <a href="tel:'+ completeZalo +'">' + ZALO + '</a> để được báo giá', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '10000');
+		notifyDialog('Hiện sản phẩm này chưa có giá, bạn vui lòng liên hệ qua hotline <a href="tel:'+ completePhone +'">' + PHONENUMBER + '</a> hoặc liên hệ qua zalo <a href="tel:'+ completeZalo +'">' + ZALO + '</a> để được báo giá. Xin cảm ơn quý khách!!!', 'Thông báo', 'fas fa-exclamation-triangle', 'blue', '10000');
 	});
 }
 
@@ -430,5 +430,5 @@ $(document).ready(function () {
 	NN_FRAMEWORK.doigia();
 	NN_FRAMEWORK.doihinh();
 	// NN_FRAMEWORK.Toc();
-	// NN_FRAMEWORK.Warning();
+	NN_FRAMEWORK.Warning();
 });

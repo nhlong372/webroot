@@ -12,7 +12,7 @@ define('NN_AUTHOR', 'NINA_DEVELOPER');
 define('COPYSITE', true);
 
 /* Cấu hình giỏ hàng */
-define('CARTSITE', true); // MỞ GIỎ HÀNG
+define('CARTSITE', false); // MỞ GIỎ HÀNG
 define('CARTSITEADVANCE', false);// GIỎ HÀNG  NÂNG CAO
 define('WATERMARKPRODUCT', false); // ĐÓNG DẤU SẢN PHẨM
 define('SEARCHPRODUCT', false); // TÌM KIẾM NÂNG CAO CỘT TRÁI SẢN PHẨM

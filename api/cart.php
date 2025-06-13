@@ -10,7 +10,6 @@ $photo = (!empty($_POST['photo'])) ? htmlspecialchars($_POST['photo']) : 0;
 $quantity = (!empty($_POST['quantity'])) ? htmlspecialchars($_POST['quantity']) : 1;
 $code = (!empty($_POST['code'])) ? htmlspecialchars($_POST['code']) : '';
 $ward = (!empty($_POST['ward'])) ? htmlspecialchars($_POST['ward']) : 0;
-
 if ($cmd == 'add-cart' && $id > 0) 
 {
     $cart->addToCart($quantity,$id,$color,$size,$gia,$photo);

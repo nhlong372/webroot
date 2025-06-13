@@ -2511,19 +2511,19 @@ class Functions
             $strpro .= '</p></div>
                 </a></div>';
             if (CARTSITE == true) {
-                $strpro .= '<div class="cart-product w-clear">
+                /* $strpro .= '<div class="cart-product w-clear">
                     <span class="btn btn-sm btn-success cart-add addcart mr-2" data-id="' . $v['id'] . '" data-action="addnow"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>
                     <span class="btn btn-sm btn-danger cart-buy addcart" data-id="' . $v['id'] . '" data-action="buynow"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>
-                </div>';
-                /*$strpro .= '<div class="cart-product w-clear">';
+                </div>'; */
+                $strpro .= '<div class="cart-product w-clear">';
                 if ($v['regular_price'] > 0) {
-                    $strpro .= '<span class="btn btn-sm btn-success cart-add addcart" data-id="' . $v['id'] . '" data-action="addnow"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
+                    $strpro .= '<span class="btn btn-sm btn-success cart-add addcart mr-2" data-id="' . $v['id'] . '" data-action="addnow"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
                     $strpro .= '<span class="btn btn-sm btn-danger cart-buy addcart" data-id="' . $v['id'] . '" data-action="buynow"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>';
                 } else {
-                    $strpro .= '<span class="btn btn-sm btn-success btn-alert"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
+                    $strpro .= '<span class="btn btn-sm btn-success btn-alert mr-2"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
                     $strpro .= '<span class="btn btn-sm btn-danger btn-alert2"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>';
                 }
-                $strpro .= '</div>';*/
+                $strpro .= '</div>';
             }
             $strpro .= '</div>';
         }
@@ -2576,19 +2576,19 @@ class Functions
             }
             $strpro .= '</p></div></a></div>';
             if (CARTSITE == true) {
-                $strpro .= '<div class="cart-product w-clear">
+                /* $strpro .= '<div class="cart-product w-clear">
                     <span class="btn btn-sm btn-success cart-add addcart mr-2" data-id="' . $v['id'] . '" data-action="addnow"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>
                     <span class="btn btn-sm btn-danger cart-buy addcart" data-id="' . $v['id'] . '" data-action="buynow"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>
-                </div>';
-                // $strpro .= '<div class="cart-product w-clear">';
-                // if ($v['regular_price'] > 0) {
-                //     $strpro .= '<span class="btn btn-sm btn-success cart-add addcart" data-id="' . $v['id'] . '" data-action="addnow"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
-                //     $strpro .= '<span class="btn btn-sm btn-danger cart-buy addcart" data-id="' . $v['id'] . '" data-action="buynow"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>';
-                // } else {
-                //     $strpro .= '<span class="btn btn-sm btn-success btn-alert"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
-                //     $strpro .= '<span class="btn btn-sm btn-danger btn-alert2"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>';
-                // }
-                // $strpro .= '</div>';
+                </div>'; */
+                $strpro .= '<div class="cart-product w-clear">';
+                if ($v['regular_price'] > 0) {
+                    $strpro .= '<span class="btn btn-sm btn-success cart-add addcart mr-2" data-id="' . $v['id'] . '" data-action="addnow"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
+                    $strpro .= '<span class="btn btn-sm btn-danger cart-buy addcart" data-id="' . $v['id'] . '" data-action="buynow"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>';
+                } else {
+                    $strpro .= '<span class="btn btn-sm btn-success btn-alert mr-2"><i class="fa-sharp fa-regular fa-cart-plus mr-1"></i>Thêm vào giỏ hàng</span>';
+                    $strpro .= '<span class="btn btn-sm btn-danger btn-alert2"><i class="fa-sharp fa-regular fa-cash-register mr-1"></i>Mua ngay</span>';
+                }
+                $strpro .= '</div>';
             }
             $strpro .= '</div>';
         }
