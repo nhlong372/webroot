@@ -6,7 +6,7 @@ if (!defined('SOURCES')) die("Error");
 @$idi = htmlspecialchars($_GET['idi']);
 @$ids = htmlspecialchars($_GET['ids']);
 @$idb = htmlspecialchars($_GET['idb']);
-if($_REQUEST['sort']!='') {
+if ($_REQUEST['sort'] != '') {
     switch ($_REQUEST['sort']) {
         case 'ngaytao_desc':
             $order_by = "date_created desc";
@@ -21,19 +21,18 @@ if($_REQUEST['sort']!='') {
             $order_by = 'numb,id desc';
             break;
     }
-}
-else {
+} else {
     $order_by = 'numb,id desc';
 }
-if(isset($_REQUEST['filter_active']) and $_REQUEST['filter_active']==1) {
-    if($_REQUEST['brand']!='') {
-        $where_add .= " and CONCAT(',',id_brand, ',') REGEXP ',(".str_replace(',', '|', $_REQUEST['brand'])."),' ";
+if (isset($_REQUEST['filter_active']) and $_REQUEST['filter_active'] == 1) {
+    if ($_REQUEST['brand'] != '') {
+        $where_add .= " and CONCAT(',',id_brand, ',') REGEXP ',(" . str_replace(',', '|', $_REQUEST['brand']) . "),' ";
     }
-    if($_REQUEST['size']!='') {
-        $where_add .= " and CONCAT(',',size, ',') REGEXP ',(".str_replace(',', '|', $_REQUEST['size'])."),' ";
+    if ($_REQUEST['size'] != '') {
+        $where_add .= " and CONCAT(',',size, ',') REGEXP ',(" . str_replace(',', '|', $_REQUEST['size']) . "),' ";
     }
-    if($_REQUEST['color']!='') {
-        $where_add .= " and CONCAT(',',color, ',') REGEXP ',(".str_replace(',', '|', $_REQUEST['color'])."),' ";
+    if ($_REQUEST['color'] != '') {
+        $where_add .= " and CONCAT(',',color, ',') REGEXP ',(" . str_replace(',', '|', $_REQUEST['color']) . "),' ";
     }
 }
 if ($id != '') {
@@ -61,6 +60,7 @@ if ($id != '') {
     //         $recently_viewed = $d->rawQuery($sql);
     //     }
     // }
+    
     /* Cập nhật lượt xem */
     $views = array();
     $views['view'] = $rowDetail['view'] + 1;
@@ -72,36 +72,34 @@ if ($id != '') {
     if (!empty($productTags)) {
         $rowTags = $d->rawQuery("select id, name$lang, slugvi, slugen from #_tags where type='" . $type . "' and id in ($productTags) and find_in_set('hienthi',status) order by numb,id desc");
     }*/
-if(CARTSITEADVANCE==true){ // giỏ hàng nâng cao
-    /* Lấy màu */
-    $productColor = $d->rawQuery("select id_color from #_product_sale_color where id_parent = ?", array($rowDetail['id']));
-    $productColor = (!empty($productColor)) ? $func->joinCols($productColor, 'id_color') : array();
-    if (!empty($productColor)) {
-        $rowColor = $d->rawQuery("select type_show, photo, color, id, name$lang from #_color where type='" . $type . "' and id in ($productColor) and find_in_set('hienthi',status) order by numb,id desc");
-    }
-    /* Lấy size */
-    $productSize = $d->rawQuery("select id_size from #_product_sale_size where id_parent = ?", array($rowDetail['id']));
-    $productSize = (!empty($productSize)) ? $func->joinCols($productSize, 'id_size') : array();
-    if (!empty($productSize)) {
-        $rowSize = $d->rawQuery("select id, name$lang from #_size where type='" . $type . "' and id in ($productSize) and find_in_set('hienthi',status) order by numb,id desc");
-    }
+    if (CARTSITEADVANCE == true) { // giỏ hàng nâng cao
+        /* Lấy màu */
+        $productColor = $d->rawQuery("select id_color from #_product_sale_color where id_parent = ?", array($rowDetail['id']));
+        $productColor = (!empty($productColor)) ? $func->joinCols($productColor, 'id_color') : array();
+        if (!empty($productColor)) {
+            $rowColor = $d->rawQuery("select type_show, photo, color, id, name$lang from #_color where type='" . $type . "' and id in ($productColor) and find_in_set('hienthi',status) order by numb,id desc");
+        }
+        /* Lấy size */
+        $productSize = $d->rawQuery("select id_size from #_product_sale_size where id_parent = ?", array($rowDetail['id']));
+        $productSize = (!empty($productSize)) ? $func->joinCols($productSize, 'id_size') : array();
+        if (!empty($productSize)) {
+            $rowSize = $d->rawQuery("select id, name$lang from #_size where type='" . $type . "' and id in ($productSize) and find_in_set('hienthi',status) order by numb,id desc");
+        }
+    } else { // gio hang co ban
 
-}else{ // gio hang co ban
-
-    /* Lấy màu */
-    $productColor = $d->rawQuery("select id_color from #_product_sale where id_parent = ?", array($rowDetail['id']));
-    $productColor = (!empty($productColor)) ? $func->joinCols($productColor, 'id_color') : array();
-    if (!empty($productColor)) {
-        $rowColor = $d->rawQuery("select type_show, photo, color, id, name$lang from #_color where type='" . $type . "' and id in ($productColor) and find_in_set('hienthi',status) order by numb,id desc");
+        /* Lấy màu */
+        $productColor = $d->rawQuery("select id_color from #_product_sale where id_parent = ?", array($rowDetail['id']));
+        $productColor = (!empty($productColor)) ? $func->joinCols($productColor, 'id_color') : array();
+        if (!empty($productColor)) {
+            $rowColor = $d->rawQuery("select type_show, photo, color, id, name$lang from #_color where type='" . $type . "' and id in ($productColor) and find_in_set('hienthi',status) order by numb,id desc");
+        }
+        /* Lấy size */
+        $productSize = $d->rawQuery("select id_size from #_product_sale where id_parent = ?", array($rowDetail['id']));
+        $productSize = (!empty($productSize)) ? $func->joinCols($productSize, 'id_size') : array();
+        if (!empty($productSize)) {
+            $rowSize = $d->rawQuery("select id, name$lang from #_size where type='" . $type . "' and id in ($productSize) and find_in_set('hienthi',status) order by numb,id desc");
+        }
     }
-    /* Lấy size */
-    $productSize = $d->rawQuery("select id_size from #_product_sale where id_parent = ?", array($rowDetail['id']));
-    $productSize = (!empty($productSize)) ? $func->joinCols($productSize, 'id_size') : array();
-    if (!empty($productSize)) {
-        $rowSize = $d->rawQuery("select id, name$lang from #_size where type='" . $type . "' and id in ($productSize) and find_in_set('hienthi',status) order by numb,id desc");
-    }
-
-}
     /* Lấy cấp 1 */
     $productList = $d->rawQueryOne("select id, name$lang, slugvi, slugen from #_product_list where id = ? and type = ? and find_in_set('hienthi',status) limit 0,1", array($rowDetail['id_list'], $type));
     /* Lấy cấp 2 */
@@ -413,18 +411,16 @@ if(CARTSITEADVANCE==true){ // giỏ hàng nâng cao
     }
     /* Lấy tất cả sản phẩm */
     $where = "";
-    if($com == 'noi-bat'){
+    if ($com == 'noi-bat') {
         $where = "type = ? and find_in_set('noibat',status)";
-    }
-    elseif($com == 'yeu-thich' and $_SESSION['list_saved']!='') {
+    } elseif ($com == 'yeu-thich' and $_SESSION['list_saved'] != '') {
         /* Sản phẩm yêu thích */
         $arr_like = json_decode($_SESSION['list_saved'], true);
         $arr_like = array_column($arr_like, 'id');
         $arr_like = implode('|', $arr_like);
-        $where_add .= " and CONCAT(',',id, ',') REGEXP ',(".$arr_like."),'";
+        $where_add .= " and CONCAT(',',id, ',') REGEXP ',(" . $arr_like . "),'";
         //$type = 'san-pham';
-    }
-    else{
+    } else {
         $where = "type = ? and find_in_set('hienthi',status)";
     }
     $params = array($type);
