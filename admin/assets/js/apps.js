@@ -2767,38 +2767,6 @@ function videoZone(eDrag, iDrag, eLoad) {
 if ($("#video-zone").length) {
   videoZone("#video-zone", "#video-input", "#video-preview");
 }
-
-function updateIcon() {
-  const now = new Date();
-  const hours = now.getHours();
-  let icon;
-
-  if (hours >= 4 && hours < 8) {
-    icon = "1.png"; // (4h - 8h sáng)
-  } else if (hours >= 8 && hours < 11) {
-    icon = "2.png"; // (8h sáng - 11h trưa)
-  } else if (hours >= 11 && hours < 15) {
-    icon = "3.png"; // (11h trưa - 15h chiều)
-  } else if (hours >= 15 && hours < 17) {
-    icon = "4.png"; // (15h chiều - 17h chiều)
-  } else if (hours >= 17 && hours < 20) {
-    icon = "5.png"; // (17h chiều - 20h tối)
-  } else if (hours >= 20 && hours < 24) {
-    icon = "6.png"; // (20h tối - 24h khuya hoặc 0h sáng hôm sau)
-  } else {
-    icon = "7.png"; // (24h khuya hoặc 0h sáng hôm sau - 4h sáng)
-  }
-
-  $("#timeIcon").attr("src", "assets/images/time/" + icon);
-}
-
-// Cập nhật icon khoảng khung thời gian trên trang (cạnh câu xin chào,...!)
-$(document).ready(function () {
-  updateIcon();
-  // Cập nhật mỗi phút (60000ms)
-  setInterval(updateIcon, 60000);
-});
-
 function updateTime() {
   var cd = new Date(); // Lấy thời gian hiện tại
 

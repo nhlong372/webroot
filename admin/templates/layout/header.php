@@ -59,10 +59,8 @@ if (isset($config['news'])) {
             <div class="nav-toggler" data-widget="pushmenu"><i class="fas fa-bars"></i></div>
         </li>
         <li class="nav-item nav-item-hello d-sm-inline-block">
-            <div class="navbar-block" id="clock-greeting">
-                <!-- <span class="time-of-day" id="timeIcon"></span> -->
-                <img src="assets/images/broken_image.png" alt="Mốc Khung Giờ" id="timeIcon">
-                <span class="text-split" id="greetingBox">Xin chào, <?= $_SESSION[$loginAdmin]['username'] ?>!</span>
+            <div class="navbar-block" id="greeting">
+                <span class="text-split">Xin chào, <?= $_SESSION[$loginAdmin]['username'] ?>!</span>
             </div>
         </li>
     </ul>
