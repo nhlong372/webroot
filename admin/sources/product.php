@@ -307,7 +307,7 @@ function saveMan()
                 $dataVariants1 = array();
                 $dataVariants1['id_parent'] = ($_POST['id_parent' . $value1]) ? $_POST['id_parent' . $value1] : 0;
                 $dataVariants1['size'] = ($_POST['size' . $value1]) ? $_POST['size' . $value1] : 0;
-                $var_check1 = $d->rawQueryOne("select id, price_new, price_old from table_variants_size where id_parent = ? and size = ? limit 0,1", array($_POST['id_parent' . $value1], $_POST['size' . $value1]));
+                $var_check1 = $d->rawQueryOne("select id, price_new, price_old from #_variants_size where id_parent = ? and size = ? limit 0,1", array($_POST['id_parent' . $value1], $_POST['size' . $value1]));
                 $dataVariants1['price_new'] = ($_POST['price_new_size' . $value1]) ? str_replace(',', '', $_POST['price_new_size' . $value1]) : 0;
                 $dataVariants1['price_old'] = ($_POST['price_old_size' . $value1]) ? str_replace(',', '', $_POST['price_old_size' . $value1]) : 0;
                 if ($var_check1) {
