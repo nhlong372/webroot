@@ -18,7 +18,7 @@ define('WATERMARKPRODUCT', false); // ĐÓNG DẤU SẢN PHẨM
 define('SEARCHPRODUCT', false); // TÌM KIẾM NÂNG CAO CỘT TRÁI SẢN PHẨM
 define('FAVORITEPRODUCT', false); // SẢN PHẨM YÊU THÍCH
 define('OPENDESC', false); // MỞ MÔ TẢ SẢN PHẨM
-define('COLORSIZE', true); //MỞ MÀU - KÍCH THƯỚC CƠ BẢN
+define('COLORSIZE', false); //MỞ MÀU - KÍCH THƯỚC CƠ BẢN
 define('SHOWBRAND', false); //MỞ THƯƠNG HIỆU
 define('SHOWCOMMENT', false); //MỞ ĐÁNH GIÁ SAO
 

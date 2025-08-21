@@ -467,7 +467,7 @@ if (
                         </thead>
                         <tbody>
                             <?php foreach ($variants1 as $key => $value1) {
-                                $sql1 = "select * from table_variants_size where id_parent = " . $value1['id_parent'] . " and size = " . $value1['id_size'] . " limit 0,1";
+                                $sql1 = "select * from #_variants_size where id_parent = " . $value1['id_parent'] . " and size = " . $value1['id_size'] . " limit 0,1";
                                 $var_check1 = $d->rawQueryOne($sql1);
                                 $size_detail1 = $d->rawQueryOne("select namevi, id from #_size where id = ? limit 0,1", array($value1['id_size']));
                                 $code1 = ($value1['id_parent'] . $value1['id_size']);
