@@ -20,9 +20,9 @@
     <?php
     include TEMPLATE . LAYOUT . "footer.php";
     include TEMPLATE . LAYOUT . "modal.php";
-    if (OPENPHONECOMBO == true) include TEMPLATE . LAYOUT . "phone_combo.php";
-    if($deviceType=='mobile') include TEMPLATE.LAYOUT."phone.php";
     include TEMPLATE . LAYOUT . "js.php";
+    if($deviceType=='mobile') include TEMPLATE.LAYOUT."phone.php";
+    if (OPENPHONECOMBO == true) include TEMPLATE . LAYOUT . "phone_combo.php";
     include LIBRARIES . 'ZaloQR/qrcodejs.php';
     ?>
     </div>

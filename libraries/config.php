@@ -30,7 +30,7 @@ define("QUICKVIEW",false); // MỞ XEM NHANH
 define("POPUP",false); //MỞ POPUP
 
 /* Cấu hình các nút tiện ích góc phải dưới */
-define('OPENPHONECOMBO',false);
+define('OPENPHONECOMBO',true);
 
 /* Cấu hình chung */
 $config = array(

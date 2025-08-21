@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="assets/arcontactus/arcontactus.css" type="text/css" media="all">
-<script src="assets/arcontactus/arcontactus.js"></script>
+<script text="text/javascript" src="assets/arcontactus/arcontactus.js"></script>
 <script>
     //<![CDATA[
     var arCuMessages = [];
@@ -19,7 +19,6 @@
                 return false;
             }
             arCuShowMessages();
-
         });
         jQuery('#arcontactus').on('arcontactus.openMenu', function() {
             clearTimeout(_arCuTimeOut);
@@ -55,15 +54,15 @@
         arcItem.class = 'msg-item-skype';
         arcItem.title = 'Skype Chat';
         arcItem.icon = '<svg xmlns="//www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M424.7 299.8c2.9-14 4.7-28.9 4.7-43.8 0-113.5-91.9-205.3-205.3-205.3-14.9 0-29.7 1.7-43.8 4.7C161.3 40.7 137.7 32 112 32 50.2 32 0 82.2 0 144c0 25.7 8.7 49.3 23.3 68.2-2.9 14-4.7 28.9-4.7 43.8 0 113.5 91.9 205.3 205.3 205.3 14.9 0 29.7-1.7 43.8-4.7 19 14.6 42.6 23.3 68.2 23.3 61.8 0 112-50.2 112-112 .1-25.6-8.6-49.2-23.2-68.1zm-194.6 91.5c-65.6 0-120.5-29.2-120.5-65 0-16 9-30.6 29.5-30.6 31.2 0 34.1 44.9 88.1 44.9 25.7 0 42.3-11.4 42.3-26.3 0-18.7-16-21.6-42-28-62.5-15.4-117.8-22-117.8-87.2 0-59.2 58.6-81.1 109.1-81.1 55.1 0 110.8 21.9 110.8 55.4 0 16.9-11.4 31.8-30.3 31.8-28.3 0-29.2-33.5-75-33.5-25.7 0-42 7-42 22.5 0 19.8 20.8 21.8 69.1 33 41.4 9.3 90.7 26.8 90.7 77.6 0 59.1-57.1 86.5-112 86.5z"></path></svg>';
-        arcItem.href = 'skype://<?= $optsetting['hotline'] ?>?chat';
+        arcItem.href = 'skype://<?php //$optsetting['hotline'] ?>?chat';
         arcItem.color = '#1C9CC5';
         arcItems.push(arcItem);*/
         var arcItem = {};
         arcItem.id = 'msg-item-7';
         arcItem.class = 'msg-item-envelope';
         arcItem.title = 'Gửi Email';
-        arcItem.icon =
-            '<svg  xmlns="//www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM48 96h416c8.8 0 16 7.2 16 16v41.4c-21.9 18.5-53.2 44-150.6 121.3-16.9 13.4-50.2 45.7-73.4 45.3-23.2.4-56.6-31.9-73.4-45.3C85.2 197.4 53.9 171.9 32 153.4V112c0-8.8 7.2-16 16-16zm416 320H48c-8.8 0-16-7.2-16-16V195c22.8 18.7 58.8 47.6 130.7 104.7 20.5 16.4 56.7 52.5 93.3 52.3 36.4.3 72.3-35.5 93.3-52.3 71.9-57.1 107.9-86 130.7-104.7v205c0 8.8-7.2 16-16 16z"></path></svg>';
+        //arcItem.icon ='<svg  xmlns="//www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM48 96h416c8.8 0 16 7.2 16 16v41.4c-21.9 18.5-53.2 44-150.6 121.3-16.9 13.4-50.2 45.7-73.4 45.3-23.2.4-56.6-31.9-73.4-45.3C85.2 197.4 53.9 171.9 32 153.4V112c0-8.8 7.2-16 16-16zm416 320H48c-8.8 0-16-7.2-16-16V195c22.8 18.7 58.8 47.6 130.7 104.7 20.5 16.4 56.7 52.5 93.3 52.3 36.4.3 72.3-35.5 93.3-52.3 71.9-57.1 107.9-86 130.7-104.7v205c0 8.8-7.2 16-16 16z"></path></svg>';
+        arcItem.icon ='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="currentColor" d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"/></svg>';
         arcItem.href = 'mailto:<?= $optsetting['email'] ?>';
         arcItem.color = '#d7473b';
         arcItems.push(arcItem);
@@ -73,16 +72,16 @@
         arcItem.title = 'Call <?= $optsetting['hotline'] ?>';
         arcItem.icon = '<i class="fas fa-phone"></i>';
         arcItem.href = 'tel:<?= preg_replace('/[^0-9]/', '', $optsetting['hotline']); ?>';
-        arcItem.color = '#4EB625';
+        arcItem.color = '#4eb625';
         arcItems.push(arcItem);
 
         var arcItem = {};
         arcItem.id = 'msg-item-9';
         arcItem.class = 'msg-item-chiduong';
         arcItem.title = 'Bản đồ';
-        arcItem.icon = '<img src="assets/images/maps.png" alt="Chỉ đường">';//worldwide-location--v2
+        arcItem.icon = '<img src="assets/images/mp.png" alt="Map">';//worldwide-location--v2
         arcItem.href = '<?= $optsetting['map'] ?>';
-        arcItem.color = '#FFCE00';
+        arcItem.color = '#ffce00';
         arcItems.push(arcItem);
 
         jQuery('#arcontactus').contactUs({
