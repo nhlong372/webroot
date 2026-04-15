@@ -12,7 +12,8 @@ $css->set("slick/slick.css");
 $css->set("slick/slick-theme.css");
 $css->set("slick/slick-style.css");
 $css->set("fotorama/fotorama.css");
-$css->set("fotorama/fotorama-style.css");
+// $css->set("fotorama/fotorama-style.css");
+$css->set("select2/select2.css");
 //$css->set("datetimepicker/jquery.datetimepicker.css");
 //$css->set("simplenotify/simple-notify.css");
 //$css->set("fileuploader/font-fileuploader.css");
@@ -22,6 +23,7 @@ $css->set("fotorama/fotorama-style.css");
 if (SHOWCOMMENT) {$css->set("css/comment.css");}
 $css->set("css/fonts.css");
 $css->set("css/effect.css");
+$css->set("css/select2custom.css");
 $css->set("css/style.css");
 $css->set("css/style-responsive.css");
 echo $css->get();

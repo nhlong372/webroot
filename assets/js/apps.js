@@ -1159,6 +1159,38 @@ NN_FRAMEWORK.ToolsApp = function () {
   });
 };
 
+NN_FRAMEWORK.RenderBranch = function () {
+
+  // Preload ảnh
+  $(".gallery-item img").each(function () {
+    $("<img>").attr("src", this.src); // preload ngầm
+  });
+
+  // Ẩn hết trừ cái đầu
+  $(".gallery-item").hide();
+  $(".gallery-item").first().show();
+
+  $("#branchSelect").on("change", function () {
+    var selectedId = $(this).val();
+    if (!selectedId) return;
+
+    // Ẩn hiện nhanh, không fade để tránh giật
+    $(".gallery-item").hide(0); // hide ngay
+    $("#" + selectedId).show(0); // show ngay
+
+    // Optional: nếu vẫn muốn fade nhẹ nhưng mượt
+    $('.gallery-item').fadeOut(100);
+    $('#' + selectedId).fadeIn(200);
+  });
+
+  // Nếu dùng Select2, trigger change ban đầu
+  // if (typeof $.fn.select2 !== "undefined") {
+  //   $("#branchSelect").select2();
+  //   $("#branchSelect").trigger("change");
+  // }
+};
+
+
 /* Ready */
 $(document).ready(function () {
   NN_FRAMEWORK.Lazys();
@@ -1191,4 +1223,5 @@ $(document).ready(function () {
   NN_FRAMEWORK.NotifyForm();
   if (SOURCE == "index") NN_FRAMEWORK.RunSlick();
   NN_FRAMEWORK.ToolsApp();
+  //NN_FRAMEWORK.RenderBranch();
 });

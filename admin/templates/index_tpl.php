@@ -152,7 +152,8 @@ $piecharts = array(
                     </div>
                     <div class="card-body">
                         <ul class="list-browser">
-                            <?php foreach ($browser ?? [] as $k => $value) { ?>
+                            <?php foreach ($browser ?? [] as $k => $value) { 
+                                ?>
                                 <li class="mb-3 pb-1 d-flex">
                                     <div class="d-flex w-50 align-items-center mr-3">
                                         <img onerror="this.src='./assets/images/noimage.png';" src="./assets/images/browser/<?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['img'] ?>.png"
@@ -169,7 +170,8 @@ $piecharts = array(
                                             <div class="progress-bar bg-primary" role="progressbar"
                                                 style="width: <?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['figure'] ?>%"
                                                 aria-valuenow="<?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['figure'] ?>"
-                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                                aria-valuemin="0" aria-valuemax="100">
+                                            </div>
                                         </div>
                                         <span class="text-muted"><?= $func->getBrowserStatistic($value['browser'], $countBrowser['total'])['figure'] ?>%</span>
                                     </div>
@@ -207,7 +209,8 @@ $piecharts = array(
                                             <div class="progress-bar bg-danger" role="progressbar"
                                                 style="width: <?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['figure'] ?>%"
                                                 aria-valuenow="<?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['figure'] ?>"
-                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                                aria-valuemin="0" aria-valuemax="100">
+                                            </div>
                                         </div>
                                         <span class="text-muted"><?= $func->getDeviceStatistic($value['device'], $countDevice['total'])['figure'] ?>%</span>
                                     </div>

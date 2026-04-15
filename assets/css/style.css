@@ -531,7 +531,7 @@ div.box-tintuc-video{padding:50px 0}
 #video-select{position:relative;}
 #video-select iframe{height:calc(420px - 40px);}
 #video-select .video-list{position:relative;}
-#video-select .listvideos{width:100%;height:40px;padding:0 10px;border-radius:0.2rem;}
+#video-select .listvideos{width:100%;height:40px;padding:0 10px;border-radius:0.2rem;outline: none;}
 .arrow-dropdown{position:absolute;right:9px;bottom:12px;height:16px;pointer-events:none;}
 .arrow-dropdown img{transform:scale(0.6);}
 .proprice_item_color span{}
@@ -674,13 +674,14 @@ color:#000;}
 .layout-sign #form-newsletter .newsletter-button{margin-top:0;width:100%;}
 .layout-sign #form-newsletter .newsletter-button input[type="submit"]{font-size:15px;line-height:25px;color:#000;background-color:var(--color2)!important;padding:10px 10px;border-radius:5px;font-family:'ro-b';}
 .layout-sign #form-newsletter .newsletter-button input[type="submit"]:hover{background-color:#fff!important;color:var(--color1);}
-#video-img-select .youtube-player{height:282px;position:relative;cursor:pointer;}
-#video-img-select .youtube-player .btn-player{display:inline-block;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:100;pointer-events:none;}
+#video-img-select .pic-video{height:282px;position:relative;cursor:pointer;}
+#video-img-select .pic-video::before{ display: none; }
+#video-img-select .pic-video .btn-player{display:inline-block;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:100;pointer-events:none;width: 68px;}
 #video-img-select .video-main{height:100%;overflow:hidden;margin-bottom:6px;}
-#video-img-select .youtube-player .swiper-lazy{width:100%;height:100%;}
+#video-img-select .pic-video .pre-picture{width:100%;height:100%;}
 #video-img-select .fb_iframe_widget{width:100%;}
 #video-img-select .video-list{position:relative;}
-#video-img-select .listvideos{width:100%;height:40px;padding:0 10px}
+#video-img-select .listvideos{width:100%;height:40px;padding:0 10px;outline: none;border-radius:0.2rem;}
 #video-img-select .arrow-dropdown{position:absolute;right:9px;bottom:12px;height:16px;pointer-events:none;}
 #video-img-select .arrow-dropdown img{transform:scale(0.6);}
 .loai_noibat{margin:0 -10px;}

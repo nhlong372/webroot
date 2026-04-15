@@ -109,11 +109,11 @@
                 <div class="layout-video">
                     <div class="title-main"><span>Video Nổi Bật</span></div>
                     <div class="videohome-intro">
-                        <?php echo $addons->set('video-fotorama', 'video-fotorama', 4); ?>
+                        <?php /*echo $addons->set('video-fotorama', 'video-fotorama', 4);*/ ?>
                         <?php /*echo $addons->set('video-slick', 'video-slick', 4);*/ ?>
                         <?php /*echo $addons->set('video-img-slick', 'video-img-slick', 4);*/ ?>
-                        <?php /*echo $addons->set('video-select', 'video-select', 4);*/  ?>
-                        <?php /*echo $addons->set('video-img-select', 'video-img-select', 4);*/ ?>
+                        <?php /*echo $addons->set('video-select', 'video-select', 4);*/ ?>
+                        <?php echo $addons->set('video-img-select', 'video-img-select', 4); ?>
                     </div>
                 </div>
             </div>

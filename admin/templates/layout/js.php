@@ -24,6 +24,7 @@
     var ORDER_MAX_TOTAL = <?= (!empty($maxTotal)) ? $maxTotal : 1 ?>;
     var ORDER_PRICE_FROM = <?= (!empty($price_from)) ? $price_from : 1 ?>;
     var ORDER_PRICE_TO = <?= (!empty($price_to)) ? $price_to : ((!empty($maxTotal)) ? $maxTotal : 1) ?>;
+    var CARTSITE = '<?= (CARTSITE) ? 'true' : 'false' ?>';
 </script>
 
 <!-- Js Files -->

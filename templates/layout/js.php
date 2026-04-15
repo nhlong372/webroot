@@ -39,6 +39,7 @@ $js->set("fotorama/fotorama.js");
 $js->set("slick/slick.js");
 $js->set("fancybox3/jquery.fancybox.js");
 $js->set("photobox/photobox.js");
+$js->set("select2/select2.full.js");
 // $js->set("simplenotify/simple-notify.js");
 // $js->set("fileuploader/jquery.fileuploader.min.js");
 //$js->set("datetimepicker/php-date-formatter.min.js");

@@ -3,204 +3,207 @@ include "config.php";
 
 $type = (!empty($_GET["type"])) ? htmlspecialchars($_GET["type"]) : '';
 
- if($type == 'video-slick') {
-    $videonb = $d->rawQuery("select link_video, id, name$lang from #_photo where type = ? and act <> ? and find_in_set('noibat',status) and find_in_set('hienthi',status) order by numb, id desc",array('video','photo_static')); if(count($videonb)) { ?>
-    <div class="load-video-tc w-clear">
-    <?php if(count($videonb)>0){ ?>
-        <div class="h-l-v">
-            <?php for($i=0;$i<count($videonb);$i++){ ?>
-                <div class="item-video">
-                    <iframe title="<?=$videonb[$i]['name'.$lang]?>" width="100%" src="//www.youtube.com/embed/<?=$func->getYoutube($videonb[$i]['link_video'])?>" frameborder="0" allowfullscreen></iframe>
+if ($type == 'video-slick') {
+    $videonb = $d->rawQuery("select link_video, id, name$lang from #_photo where type = ? and act <> ? and find_in_set('noibat',status) and find_in_set('hienthi',status) order by numb, id desc", array('video', 'photo_static'));
+    if (count($videonb)) { ?>
+        <div class="load-video-tc w-clear">
+            <?php if (count($videonb) > 0) { ?>
+                <div class="h-l-v">
+                    <?php for ($i = 0; $i < count($videonb); $i++) { ?>
+                        <div class="item-video">
+                            <iframe title="<?= $videonb[$i]['name' . $lang] ?>" width="100%" src="//www.youtube.com/embed/<?= $func->getYoutube($videonb[$i]['link_video']) ?>" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    <?php } ?>
                 </div>
-            <?php } ?> 
-        </div>
-        <div class="h-r-v">
-            <?php for($i=0;$i<count($videonb);$i++){ ?>
-                <div class="item-duoi clearfix">
-                    <a>
-                        <img src="http://img.youtube.com/vi/<?php preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $videonb[$i]['link_video'], $matches);echo $matches[1]; ?>/0.jpg" border="0" alt="<?=$videonb[$i]['name'.$lang]?>"/>
-                    </a>
+                <div class="h-r-v">
+                    <?php for ($i = 0; $i < count($videonb); $i++) { ?>
+                        <div class="item-duoi clearfix">
+                            <a>
+                                <img src="http://img.youtube.com/vi/<?php preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $videonb[$i]['link_video'], $matches);
+                                                                    echo $matches[1]; ?>/0.jpg" border="0" alt="<?= $videonb[$i]['name' . $lang] ?>" />
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
-            <?php } ?>    
-        </div>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.h-l-v').slick({
-                    infinite: true,
-                    accessibility:true,
-                    slidesToShow:1,   
-                    slidesToScroll: 1,
-                    autoplay:false,
-                    autoplaySpeed:3000,  
-                    speed:1000,
-                    arrows:false,
-                    centerMode:false,
-                    dots:false,
-                    draggable:true, 
-                    asNavFor: '.h-r-v',  
-              });
-                $('.h-r-v').slick({
-                    lazyLoad: 'ondemand',
-                    infinite: true,
-                    accessibility:true,
-                    vertical:false,
-                    slidesToShow: 3,    
-                    slidesToScroll: 1, 
-                    autoplay:false,  
-                    autoplaySpeed:2500,  
-                    speed:1500,
-                    arrows:false, 
-                    centerMode:false, 
-                    dots:false,  
-                    draggable:true, 
-                    asNavFor: '.h-l-v',
-                    focusOnSelect: true,
-                    responsive: [               
-                        {
-                          breakpoint: 960,
-                          settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('.h-l-v').slick({
                             infinite: true,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        },
-                        {
-                          breakpoint: 700,
-                          settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        },
-                        {
-                          breakpoint: 460,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        },
-                        {
-                          breakpoint: 320,
-                          settings: {
+                            accessibility: true,
                             slidesToShow: 1,
                             slidesToScroll: 1,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        }               
-                      ]
-                });
-            });
-         </script>
-    <?php } ?>
-    </div>
-<?php } } ?>
-
-
-<?php if($type == 'video-img-slick') {
-    $videonb = $d->rawQuery("select link_video, id, name$lang,photo from #_photo where type = ? and act <> ? and find_in_set('noibat',status) and find_in_set('hienthi',status) order by numb, id desc",array('video','photo_static')); if(count($videonb)) { ?>
-    <div class="load-video-tc w-clear">
-    <?php if(count($videonb)>0){ ?>
-        <div class="h-l-v">
-            <?php for($i=0;$i<count($videonb);$i++){ ?>
-                <div class="item-video">                    
-                    <a data-fancybox="video" data-src="<?=$videonb[$i]['link_video']?>">
-                    <img onerror="this.src='<?=THUMBS?>/600x405x2/assets/images/noimage.png';" src="<?=THUMBS?>/600x405x1/<?=UPLOAD_PHOTO_L.$videonb[$i]['photo']?>" alt="<?=$videonb[$i]['name'.$lang]?>" />
-                    </a>
-                </div>
-            <?php } ?> 
-        </div>
-        <div class="h-r-v">
-            <?php for($i=0;$i<count($videonb);$i++){ ?>
-                <div class="item-duoi clearfix">
-                    <a>                     
-                        <img onerror="this.src='<?=THUMBS?>/145x120x2/assets/images/noimage.png';" src="<?=THUMBS?>/145x120x1/<?=UPLOAD_PHOTO_L.$videonb[$i]['photo']?>" alt="<?=$videonb[$i]['name'.$lang]?>" />
-                    </a>
-                </div>
-            <?php } ?>    
-        </div>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.h-l-v').slick({
-                    infinite: true,
-                    accessibility:true,
-                    slidesToShow:1,   
-                    slidesToScroll: 1,
-                    autoplay:false,
-                    autoplaySpeed:3000,  
-                    speed:1000,
-                    arrows:false,
-                    centerMode:false,
-                    dots:false,
-                    draggable:true, 
-                    asNavFor: '.h-r-v',  
-              });
-                $('.h-r-v').slick({
-                    lazyLoad: 'ondemand',
-                    infinite: true,
-                    accessibility:true,
-                    vertical:false,
-                    slidesToShow: 4,    
-                    slidesToScroll: 1, 
-                    autoplay:false,  
-                    autoplaySpeed:2500,  
-                    speed:1500,
-                    arrows:false, 
-                    centerMode:false, 
-                    dots:false,  
-                    draggable:true, 
-                    asNavFor: '.h-l-v',
-                    focusOnSelect: true,
-                    responsive: [               
-                        {
-                          breakpoint: 960,
-                          settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
+                            autoplay: false,
+                            autoplaySpeed: 3000,
+                            speed: 1000,
+                            arrows: false,
+                            centerMode: false,
+                            dots: false,
+                            draggable: true,
+                            asNavFor: '.h-r-v',
+                        });
+                        $('.h-r-v').slick({
+                            lazyLoad: 'ondemand',
                             infinite: true,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        },
-                        {
-                          breakpoint: 700,
-                          settings: {
+                            accessibility: true,
+                            vertical: false,
                             slidesToShow: 3,
                             slidesToScroll: 1,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        },
-                        {
-                          breakpoint: 460,
-                          settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        },
-                        {
-                          breakpoint: 320,
-                          settings: {
+                            autoplay: false,
+                            autoplaySpeed: 2500,
+                            speed: 1500,
+                            arrows: false,
+                            centerMode: false,
+                            dots: false,
+                            draggable: true,
+                            asNavFor: '.h-l-v',
+                            focusOnSelect: true,
+                            responsive: [{
+                                    breakpoint: 960,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 1,
+                                        infinite: true,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                },
+                                {
+                                    breakpoint: 700,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 1,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                },
+                                {
+                                    breakpoint: 460,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                },
+                                {
+                                    breakpoint: 320,
+                                    settings: {
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                </script>
+            <?php } ?>
+        </div>
+<?php }
+} ?>
+
+
+<?php if ($type == 'video-img-slick') {
+    $videonb = $d->rawQuery("select link_video, id, name$lang,photo from #_photo where type = ? and act <> ? and find_in_set('noibat',status) and find_in_set('hienthi',status) order by numb, id desc", array('video', 'photo_static'));
+    if (count($videonb)) { ?>
+        <div class="load-video-tc w-clear">
+            <?php if (count($videonb) > 0) { ?>
+                <div class="h-l-v">
+                    <?php for ($i = 0; $i < count($videonb); $i++) { ?>
+                        <div class="item-video">
+                            <a data-fancybox="video" data-src="<?= $videonb[$i]['link_video'] ?>">
+                                <img onerror="this.src='<?= THUMBS ?>/600x405x2/assets/images/noimage.png';" src="<?= THUMBS ?>/600x405x1/<?= UPLOAD_PHOTO_L . $videonb[$i]['photo'] ?>" alt="<?= $videonb[$i]['name' . $lang] ?>" />
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="h-r-v">
+                    <?php for ($i = 0; $i < count($videonb); $i++) { ?>
+                        <div class="item-duoi clearfix">
+                            <a>
+                                <img onerror="this.src='<?= THUMBS ?>/145x120x2/assets/images/noimage.png';" src="<?= THUMBS ?>/145x120x1/<?= UPLOAD_PHOTO_L . $videonb[$i]['photo'] ?>" alt="<?= $videonb[$i]['name' . $lang] ?>" />
+                            </a>
+                        </div>
+                    <?php } ?>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('.h-l-v').slick({
+                            infinite: true,
+                            accessibility: true,
                             slidesToShow: 1,
                             slidesToScroll: 1,
-                            variableWidth:false,
-                            vertical:false,
-                          }
-                        }               
-                      ]
-                });
-            });
-         </script>
-    <?php } ?>
-    </div>
-<?php } } 
+                            autoplay: false,
+                            autoplaySpeed: 3000,
+                            speed: 1000,
+                            arrows: false,
+                            centerMode: false,
+                            dots: false,
+                            draggable: true,
+                            asNavFor: '.h-r-v',
+                        });
+                        $('.h-r-v').slick({
+                            lazyLoad: 'ondemand',
+                            infinite: true,
+                            accessibility: true,
+                            vertical: false,
+                            slidesToShow: 4,
+                            slidesToScroll: 1,
+                            autoplay: false,
+                            autoplaySpeed: 2500,
+                            speed: 1500,
+                            arrows: false,
+                            centerMode: false,
+                            dots: false,
+                            draggable: true,
+                            asNavFor: '.h-l-v',
+                            focusOnSelect: true,
+                            responsive: [{
+                                    breakpoint: 960,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 1,
+                                        infinite: true,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                },
+                                {
+                                    breakpoint: 700,
+                                    settings: {
+                                        slidesToShow: 3,
+                                        slidesToScroll: 1,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                },
+                                {
+                                    breakpoint: 460,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                },
+                                {
+                                    breakpoint: 320,
+                                    settings: {
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        variableWidth: false,
+                                        vertical: false,
+                                    }
+                                }
+                            ]
+                        });
+                    });
+                </script>
+            <?php } ?>
+        </div>
+    <?php }
+}
 
 
 if ($type == 'video-fotorama') {
@@ -217,38 +220,104 @@ if ($type == 'video-fotorama') {
 if ($type == 'video-select') {
     $video_home = $d->rawQuery("select link_video, id, name$lang from #_photo where type = ? and act <> ? and find_in_set('noibat',status) and find_in_set('hienthi',status) order by numb, id desc", array('video', 'photo_static'));
     if (count($video_home)) { ?>
-        <div class="video-main">
-            <iframe width="100%" height="100%" src="//www.youtube.com/embed/<?= $func->getYoutube($video_home[0]['link_video']) ?>" frameborder="0" allowfullscreen></iframe>
+
+
+        <div class="video-box video-main">
+            <?php foreach ($video_home as $k => $v) { ?>
+                <div class="video-item" id="<?= $v['id'] ?>">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?= $func->getYoutube($v['link_video']) ?>" frameborder="0" allowfullscreen></iframe>
+                </div>
+            <?php } ?>
         </div>
 
-        <div class="video-list">
+        <div class="select-box video-list">
+            <select id="videoSelect" class="select2 listvideos">
+                <?php foreach ($video_home as $k => $v) { ?>
+                    <option value="<?= $v['id'] ?>"><?= $v['name' . $lang] ?></option>
+                <?php }  ?>
+            </select>
+            <div class="arrow-dropdown"><img src="assets/images/dropdown.png"></div>
+        </div>
+
+        <?php /*<div class="video-main">
+            <iframe id="<?= $video_home[0]['id'] ?>" width="100%" height="100%" src="//www.youtube.com/embed/<?= $func->getYoutube($video_home[0]['link_video']) ?>" frameborder="0" allowfullscreen></iframe>
+        </div>*/ ?>
+
+        <?php /*<div class="video-list">
             <select class="listvideos">
                 <?php foreach ($video_home as $k => $v) { ?>
                     <option value="<?= $v['id'] ?>"><?= $v['name' . $lang] ?></option>
                 <?php } ?>
             </select>
             <div class="arrow-dropdown"><img src="assets/images/dropdown.png"></div>
-        </div>
+        </div>*/ ?>
     <?php }
 }
 
 if ($type == 'video-img-select') {
     $video_home = $d->rawQuery("select link_video, id, name$lang, photo from #_photo where type = ? and act <> ? and find_in_set('noibat',status) and find_in_set('hienthi',status) order by numb, id desc", array('video', 'man_photo'));
     if (count($video_home)) { ?>
-        <div class="video-main">
+        <?php /*<div class="video-main">
             <div class="youtube-player" data-video-id="<?= $func->getYoutube($video_home[0]['link_video']) ?>">
                 <img class="btn-player" src="assets/images/icon-video.png" alt="Play">
-                <img class="swiper-lazy" onerror="this.src='<?=THUMBS?>/504x282x1/assets/images/noimage.png';" src="<?=THUMBS?>/504x282x1/<?= UPLOAD_PHOTO_L . $video_home[0]['photo'] ?>"  alt="<?=$video_home[0]['name'.$lang]?>" title="<?=$video_home[0]['name'.$lang]?>" />
+                <img class="swiper-lazy" onerror="this.src='<?= THUMBS ?>/504x282x1/assets/images/noimage.png';" src="<?= THUMBS ?>/504x282x1/<?= UPLOAD_PHOTO_L . $video_home[0]['photo'] ?>" alt="<?= $video_home[0]['name' . $lang] ?>" title="<?= $video_home[0]['name' . $lang] ?>" />
             </div>
+        </div>*/ ?>
+
+        <div class="video-box video-main">
+            <?php foreach ($video_home as $k => $v) { ?>
+                <div class="video-item" id="<?= $v['id'] ?>">
+                    <div class="pic-video" data-video-id="<?= $func->getYoutube($v['link_video']) ?>">
+                        <img class="btn-player" src="assets/images/icon-video.png" alt="Play">
+                        <img class="pre-picture" onerror="this.src='<?= THUMBS ?>/504x300x1/assets/images/noimage.png';" src="<?= THUMBS ?>/504x300x1/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" title="<?= $video_home[0]['name' . $lang] ?>" />
+                    </div>
+                </div>
+            <?php } ?>
         </div>
-        <div class="video-list">
-            <select class="listvideos">
+
+        <div class="select-box video-list">
+            <select id="videoSelect" class="select2 listvideos">
                 <?php foreach ($video_home as $k => $v) { ?>
                     <option value="<?= $v['id'] ?>"><?= $v['name' . $lang] ?></option>
-                <?php } ?>
+                <?php }  ?>
             </select>
-            <div class="arrow-dropdown"><img src="assets/images/dropdown.png"></div>
+            <!-- <div class="arrow-dropdown"><img src="assets/images/dropdown.png"></div> -->
         </div>
+        
+        <script>
+            // Preload ảnh
+            $(".video-item iframe").each(function() {
+                $("<iframe>").attr("src", this.src); // preload ngầm
+            });
+
+            // Ẩn hết trừ cái đầu
+            $(".video-item").hide();
+            $(".video-item").first().show();
+
+            $("#videoSelect").on("change", function() {
+                var selectedId = $(this).val();
+                if (!selectedId) return;
+
+                // Ẩn hiện nhanh, không fade để tránh giật
+                $(".video-item").hide(0); // hide ngay
+                $("#" + selectedId).show(0); // show ngay
+
+                // Optional: nếu vẫn muốn fade nhẹ nhưng mượt
+                $('.video-item').fadeOut(100);
+                $('#' + selectedId).fadeIn(200);
+            });
+
+            // Nếu dùng Select2, trigger change ban đầu
+            if (typeof $.fn.select2 !== "undefined") {
+                $("#videoSelect").select2();
+                $("#videoSelect").trigger("change");
+            }
+
+            /* Select 2 */
+            if ($(".select2").length) {
+                $(".select2").select2();
+            }
+        </script>
     <?php }
 }
 
@@ -286,9 +355,9 @@ if ($type == 'messages-facebook') { ?>
 <?php }
 
 if ($type == 'tiktok') { ?>
-    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@<?=$optsetting['tiktok']?>" data-unique-id="<?=$optsetting['tiktok']?>" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@<?= $optsetting['tiktok'] ?>" data-unique-id="<?= $optsetting['tiktok'] ?>" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
         <section>
-            <a target="_blank" href="https://www.tiktok.com/@<?=$optsetting['tiktok']?>?refer=creator_embed">@<?=$optsetting['tiktok']?></a>
+            <a target="_blank" href="https://www.tiktok.com/@<?= $optsetting['tiktok'] ?>?refer=creator_embed">@<?= $optsetting['tiktok'] ?></a>
         </section>
     </blockquote>
     <script async src="https://www.tiktok.com/embed.js"></script>
@@ -306,5 +375,5 @@ if ($type == 'script-main') { ?>
             js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-    </script>    
+    </script>
 <?php } ?>

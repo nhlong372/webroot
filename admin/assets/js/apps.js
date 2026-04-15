@@ -14,14 +14,14 @@ function validateForm(ele) {
             }
             form.classList.add("was-validated");
           },
-          false
+          false,
         );
       });
       $("." + ele)
         .find("input[type=submit],button[type=submit]")
         .removeAttr("disabled");
     },
-    false
+    false,
   );
 }
 
@@ -384,7 +384,7 @@ function holdonOpen(
   theme = "sk-circle",
   text = "Loading...",
   backgroundColor = "rgba(0,0,0,0.8)",
-  textColor = "white"
+  textColor = "white",
 ) {
   var options = {
     theme: theme,
@@ -407,7 +407,7 @@ function goToByScroll(id, minusTop) {
     {
       scrollTop: $("#" + id).offset().top - minusTop,
     },
-    "slow"
+    "slow",
   );
 }
 
@@ -415,7 +415,7 @@ function goToByScroll(id, minusTop) {
 function showNotify(
   text = "Notify text",
   title = "Thông báo",
-  status = "success"
+  status = "success",
 ) {
   new Notify({
     status: status, // success, warning, error
@@ -441,7 +441,7 @@ function notifyDialog(
   content = "",
   title = "Thông báo",
   icon = "fas fa-exclamation-triangle",
-  type = "blue"
+  type = "blue",
 ) {
   $.alert({
     title: title,
@@ -472,7 +472,7 @@ function confirmDialog(
   value,
   title = "Thông báo",
   icon = "fas fa-exclamation-triangle",
-  type = "blue"
+  type = "blue",
 ) {
   $.confirm({
     title: title,
@@ -703,7 +703,7 @@ function slugConvert(slug, focus = false) {
   slug = slug.replace(/đ/gi, "d");
   slug = slug.replace(
     /\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi,
-    ""
+    "",
   );
   slug = slug.replace(/ /gi, "-");
   slug = slug.replace(/\-\-\-\-\-/gi, "-");
@@ -883,7 +883,7 @@ function readImage(inputFile, elementPhoto) {
         reader.readAsDataURL(inputFile[0].files[0]);
       } else {
         notifyDialog(
-          "Dung lượng hình ảnh lớn. Dung lượng cho phép <= 4MB ~ 4096KB"
+          "Dung lượng hình ảnh lớn. Dung lượng cho phép <= 4MB ~ 4096KB",
         );
         return false;
       }
@@ -996,7 +996,7 @@ function previewWatermark() {
           '<img src="' + dataUrl + '" alt="Preview Watermark">',
           "Preview Watermark",
           "fas fa-image",
-          "blue"
+          "blue",
         );
       });
     },
@@ -1067,7 +1067,7 @@ function randomPassword() {
   for (i = 0; i < 9; i++) {
     str +=
       "!@#$%^&*()?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".charAt(
-        Math.floor(Math.random() * 62)
+        Math.floor(Math.random() * 62),
       );
   }
 
@@ -1247,7 +1247,7 @@ $(document).ready(function () {
       $(this).val(
         picker.startDate.format("DD/MM/YYYY") +
           " - " +
-          picker.endDate.format("DD/MM/YYYY")
+          picker.endDate.format("DD/MM/YYYY"),
       );
     });
 
@@ -1516,7 +1516,7 @@ $(document).ready(function () {
               }
             } else {
               $(".result-database").html(
-                '<div class="col-12"><span class="text-danger">Xử lý thất bại. Vui lòng thử lại sau.</span></div>'
+                '<div class="col-12"><span class="text-danger">Xử lý thất bại. Vui lòng thử lại sau.</span></div>',
               );
             }
 
@@ -1567,7 +1567,7 @@ $(document).ready(function () {
         setTimeout(function () {
           $("html,body").animate(
             { scrollTop: slugOffset.offset().top - 40 },
-            "medium"
+            "medium",
           );
         }, 500);
       } else if (elementsInValid.length) {
@@ -1599,7 +1599,7 @@ $(document).ready(function () {
           setTimeout(function () {
             $("html,body").animate(
               { scrollTop: cardOffset.offset().top - 100 },
-              "medium"
+              "medium",
             );
           }, 500);
         }
@@ -1730,7 +1730,7 @@ $(document).ready(function () {
       confirmDialog(
         "send-email",
         "Bạn muốn gửi thông tin cho các mục đã chọn ?",
-        ""
+        "",
       );
     });
   }
@@ -1798,7 +1798,7 @@ $(document).ready(function () {
       var fileName = $(this).val();
       fileName = fileName.substr(
         fileName.lastIndexOf("\\") + 1,
-        fileName.length
+        fileName.length,
       );
       $(this).siblings("label").html(fileName);
     });
@@ -1862,7 +1862,7 @@ $(document).ready(function () {
         if (img) {
           $(".watermark-position label img").attr(
             "src",
-            ASSET + "assets/images/noimage.png"
+            ASSET + "assets/images/noimage.png",
           );
           $(this).find("img").attr("src", img);
           $(this).find("img").show();
@@ -1894,7 +1894,7 @@ $(document).ready(function () {
       ".title-seo, .keywords-seo, .description-seo",
       function () {
         seoCount($(this));
-      }
+      },
     );
   }
   if ($(".create-seo").length) {
@@ -1903,7 +1903,7 @@ $(document).ready(function () {
         confirmDialog(
           "create-seo",
           "Nội dung SEO đã được thiết lập. Bạn muốn tạo lại nội dung SEO ?",
-          ""
+          "",
         );
       else seoCreate();
     });
@@ -1977,7 +1977,7 @@ $(document).ready(function () {
   /* Check filer */
   $("body").on("click", ".filer-checkbox", function () {
     var input = $(".my-jFiler-items .jFiler-items-list").find(
-      "input.filer-checkbox:checked"
+      "input.filer-checkbox:checked",
     );
 
     if (input.length) $(".sort-filer").attr("disabled", true);
@@ -2023,13 +2023,13 @@ $(document).ready(function () {
     confirmDialog(
       "delete-all-filer",
       "Bạn có chắc muốn xóa các hình ảnh đã chọn ?",
-      folder
+      folder,
     );
   });
 
   /* Hash upload multi filer */
   $("form.validation-form").append(
-    '<input type="hidden" name="hash" value="' + HASH + '" />'
+    '<input type="hidden" name="hash" value="' + HASH + '" />',
   );
   $("#filer-gallery").attr({
     "data-params": BASE64_QUERY_STRING,
@@ -2113,14 +2113,14 @@ $(document).ready(function () {
       },
       afterShow: function () {
         var jFilerItems = $(
-          ".my-jFiler-items .jFiler-items-list li.jFiler-item"
+          ".my-jFiler-items .jFiler-items-list li.jFiler-item",
         );
         var jFilerItemsLength = 0;
         var jFilerItemsLast = 0;
         if (jFilerItems.length) {
           jFilerItemsLength = jFilerItems.length;
           jFilerItemsLast = parseInt(
-            jFilerItems.last().find("input[type=number]").val()
+            jFilerItems.last().find("input[type=number]").val(),
           );
         }
         $(".jFiler-items-list li.jFiler-item").each(function (index) {
@@ -2150,7 +2150,7 @@ $(document).ready(function () {
             var parent = el.find(".jFiler-jProgressBar").parent();
             el.find(".jFiler-jProgressBar").fadeOut("slow", function () {
               $(
-                '<div class = "jFiler-item-others text-success"><i class = "icon-jfi-check-circle"></i> Success</div>'
+                '<div class = "jFiler-item-others text-success"><i class = "icon-jfi-check-circle"></i> Success</div>',
               )
                 .hide()
                 .appendTo(parent)
@@ -2160,7 +2160,7 @@ $(document).ready(function () {
             var parent = el.find(".jFiler-jProgressBar").parent();
             el.find(".jFiler-jProgressBar").fadeOut("slow", function () {
               $(
-                '<div class = "jFiler-item-others text-error"><i class = "icon-jfi-minus-circle"></i> Error</div>'
+                '<div class = "jFiler-item-others text-error"><i class = "icon-jfi-minus-circle"></i> Error</div>',
               )
                 .hide()
                 .appendTo(parent)
@@ -2172,7 +2172,7 @@ $(document).ready(function () {
           var parent = el.find(".jFiler-jProgressBar").parent();
           el.find(".jFiler-jProgressBar").fadeOut("slow", function () {
             $(
-              '<div class = "jFiler-item-others text-error"><i class = "icon-jfi-minus-circle"></i> Error</div>'
+              '<div class = "jFiler-item-others text-error"><i class = "icon-jfi-minus-circle"></i> Error</div>',
             )
               .hide()
               .appendTo(parent)
@@ -2296,14 +2296,14 @@ $(document).ready(function () {
       },
       afterShow: function () {
         var jFilerItems = $(
-          ".my-jFiler-items .jFiler-items-list li.jFiler-item"
+          ".my-jFiler-items .jFiler-items-list li.jFiler-item",
         );
         var jFilerItemsLength = 0;
         var jFilerItemsLast = 0;
         if (jFilerItems.length) {
           jFilerItemsLength = jFilerItems.length;
           jFilerItemsLast = parseInt(
-            jFilerItems.last().find("input[type=number]").val()
+            jFilerItems.last().find("input[type=number]").val(),
           );
         }
         $(".jFiler-items-list li.jFiler-item").each(function (index) {
@@ -2688,7 +2688,7 @@ $(document).ready(function () {
 
     apexMixedChart = new ApexCharts(
       document.querySelector("#apexMixedChart"),
-      options
+      options,
     );
     apexMixedChart.render();
   }
@@ -2708,7 +2708,7 @@ function readVideo(inputFile, elementPhoto) {
         reader.readAsDataURL(inputFile[0].files[0]);
       } else {
         notifyDialog(
-          "Dung lượng video lớn. Dung lượng cho phép <= 20MB ~ 20480KB"
+          "Dung lượng video lớn. Dung lượng cho phép <= 20MB ~ 20480KB",
         );
         return false;
       }
@@ -2795,31 +2795,33 @@ $(document).ready(function () {
   setInterval(updateTime, 1000);
 });
 
-var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-var pieData = {
-  labels: ["Mới đặt", "Đã xác nhận", "Đã Giao", "Đã hủy"],
-  datasets: [
-    {
-      data: [PIECHARTS['data'][0], PIECHARTS['data'][1], PIECHARTS['data'][2], PIECHARTS['data'][3]],
-      backgroundColor: [
-        "#007bff",
-        "#17a2b8",
-        "#28a745",
-        "#dc3545",
-      ],
+if (CARTSITE == true) {
+  var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+  var pieData = {
+    labels: ["Mới đặt", "Đã xác nhận", "Đã Giao", "Đã hủy"],
+    datasets: [
+      {
+        data: [
+          PIECHARTS["data"][0],
+          PIECHARTS["data"][1],
+          PIECHARTS["data"][2],
+          PIECHARTS["data"][3],
+        ],
+        backgroundColor: ["#007bff", "#17a2b8", "#28a745", "#dc3545"],
+      },
+    ],
+  };
+  var pieOptions = {
+    legend: {
+      display: false,
     },
-  ],
-};
-var pieOptions = {
-  legend: {
-    display: false,
-  },
-};
-// Create pie or douhnut chart
-// You can switch between pie and douhnut using the method below.
-// eslint-disable-next-line no-unused-vars
-var pieChart = new Chart(pieChartCanvas, {
-  type: "doughnut",
-  data: pieData,
-  options: pieOptions,
-});
+  };
+  // Create pie or douhnut chart
+  // You can switch between pie and douhnut using the method below.
+  // eslint-disable-next-line no-unused-vars
+  var pieChart = new Chart(pieChartCanvas, {
+    type: "doughnut",
+    data: pieData,
+    options: pieOptions,
+  });
+}
